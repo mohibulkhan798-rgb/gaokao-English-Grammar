@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高考英语语法思维导图 - 考前扫盲</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --paper: #FAF6F1;
+  --card: #FFFCFA;
+  --ink: #4A433E;
+  --ink-soft: #8A8178;
+  --ink-faint: #B4AAA2;
+  --line: rgba(180, 150, 140, 0.18);
+  --accent: #C9A39C;
+  --accent-soft: #F4E8E4;
+  --rose: #E8C4BE;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --font-serif: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", "SimSun", Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --tile: #F0D9D5;
+  --tile-fg: #8F6863;
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --border: var(--line);
+  --accent-light: var(--accent-soft);
+}
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+body {
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(ellipse 90% 55% at 12% -8%, rgba(232, 196, 188, 0.35), transparent 52%),
+    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(214, 226, 216, 0.32), transparent 48%),
+    #FAF6F1;
+  color: var(--ink);
+  line-height: 1.65;
+  padding-bottom: 88px;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.header {
+  background: rgba(255, 252, 250, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--ink);
+  padding: 22px 20px 16px;
+  text-align: left;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--line);
+}
+.header h1 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+  text-wrap: balance;
+  color: #5C534C;
+}
+.header p {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.header .tip {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #9A6B66;
+  background: var(--accent-soft);
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.desk {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 8px 12px 0;
+  min-width: 0;
+}
+.quick-nav {
+  display: flex;
+  overflow-x: auto;
+  padding: 12px 0 4px;
+  gap: 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  min-width: 0;
+  width: 100%;
+}
+.quick-nav::-webkit-scrollbar { display: none; }
+.qnav-btn {
+  flex-shrink: 0;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink-soft);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  transition: transform 160ms var(--ease-out), background 200ms ease, color 200ms ease;
+}
+.qnav-btn:active { transform: scale(0.97); }
+
+.folder {
+  margin: 12px 0 0;
+  background: var(--card);
+  border-radius: 22px;
+  padding: 16px 16px 18px;
+  box-shadow: 0 8px 24px rgba(180, 140, 130, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  min-width: 0;
+  overflow: hidden;
+}
+.folder-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 2px 6px 12px;
+}
+.folder-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  flex-shrink: 0;
+  background: var(--tile);
+  color: var(--tile-fg);
+}
+.folder-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+.folder-sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+.icon-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 12px 4px;
+  padding: 4px 2px 0;
+}
+.desk-icon {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 4px 4px;
+  border-radius: 14px;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 160ms var(--ease-out), background 200ms ease;
+  position: relative;
+}
+.desk-icon:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.desk-icon:active { transform: scale(0.97); }
+.desk-glyph {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--tile-fg);
+  position: relative;
+  background: var(--tile);
+  box-shadow: 0 6px 14px rgba(180, 140, 130, 0.12);
+  letter-spacing: 0.04em;
+}
+.desk-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.35;
+  max-width: 92px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.desk-icon.reviewed .desk-glyph::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #8FA392;
+  box-shadow: 0 0 0 2px var(--card);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='white' d='M6.4 11.2 3.2 8l1.1-1.1 2.1 2.1 5.3-5.3L12.8 5z'/></svg>");
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.desk-icon.reviewed .desk-label { color: var(--ink-soft); }
+
+.progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(255, 252, 250, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px 16px;
+  box-shadow: 0 -2px 16px rgba(180, 140, 130, 0.1);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.progress-bar .pg-info {
+  font-size: 13px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.progress-bar .pg-track {
+  flex: 1;
+  height: 5px;
+  background: var(--accent-soft);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-bar .pg-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 220ms var(--ease-out);
+  width: 0%;
+}
+.btn-all {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 550;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 160ms var(--ease-out);
+}
+.btn-all:active { transform: scale(0.97); }
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(90, 70, 66, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms var(--ease-out);
+}
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-sheet {
+  width: min(760px, 100%);
+  max-height: min(86dvh, 860px);
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(160, 120, 112, 0.22);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.96) translateY(10px);
+  opacity: 0;
+  transition: transform 260ms var(--ease-out), opacity 220ms var(--ease-out);
+}
+.modal-backdrop.open .modal-sheet {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+.modal-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 18px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.modal-kicker {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9A6B66;
+  margin-bottom: 4px;
+  letter-spacing: 0.08em;
+}
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.modal-close {
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 160ms var(--ease-out), background 200ms ease;
+}
+.modal-close:active { transform: scale(0.97); }
+.modal-body {
+  overflow: auto;
+  padding: 18px 20px 28px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  -webkit-overflow-scrolling: touch;
+}
+.modal-body .detail-item {
+  font-size: 17px;
+  line-height: 1.8;
+  padding: 10px 0 10px 14px;
+  color: var(--text-primary);
+  border-left: 3px solid var(--border);
+  margin: 8px 0;
+}
+.modal-body .label {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 17.5px;
+  display: inline;
+}
+.modal-body .eg {
+  color: var(--text-secondary);
+  font-size: 16.5px;
+  display: block;
+  margin-top: 6px;
+  padding-left: 10px;
+  border-left: 2px dashed var(--border);
+  line-height: 1.75;
+}
+.modal-body .highlight-box {
+  background: #F4E8E4;
+  border-left: 3px solid var(--accent);
+  padding: 12px 14px;
+  margin: 12px 0;
+  border-radius: 0 10px 10px 0;
+  font-size: 16.5px;
+  line-height: 1.75;
+}
+.modal-body .hb-title {
+  font-weight: 700;
+  color: #9A6B66;
+  font-size: 15px;
+  margin-bottom: 6px;
+  letter-spacing: 0.08em;
+}
+.modal-body .compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15.5px;
+  margin: 10px 0;
+}
+.modal-body .compare-table th {
+  background: var(--accent-soft);
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 650;
+  font-size: 15px;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.modal-body .compare-table td {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.modal-body .formula {
+  background: var(--accent-soft);
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-family: "SF Mono", Consolas, monospace;
+  font-size: 16px;
+  margin: 10px 0;
+  color: var(--ink);
+  letter-spacing: 0.2px;
+}
+.modal-body .tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 650;
+  margin-right: 4px;
+}
+body.modal-open { overflow: hidden; }
+
+@media (hover: hover) and (pointer: fine) {
+  .desk-icon:hover { background: var(--accent-soft); }
+  .qnav-btn:hover { background: var(--accent-soft); color: #9A6B66; }
+  .modal-close:hover { background: #EBD6D1; }
+}
+@media (max-width: 520px) {
+  .icon-row { grid-template-columns: repeat(3, 1fr); }
+  .desk-glyph { width: 52px; height: 52px; }
+  .modal-title { font-size: 20px; }
+  .modal-body, .modal-body .detail-item, .modal-body .label { font-size: 16.5px; }
+  .progress-bar { gap: 8px; padding: 10px 12px; }
+  .progress-bar .pg-info { font-size: 12px; max-width: 38%; overflow: hidden; text-overflow: ellipsis; }
+  .btn-all { padding: 8px 10px; font-size: 12px; flex-shrink: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal-backdrop, .modal-sheet, .desk-icon, .qnav-btn, .btn-all, .modal-close, .progress-bar .pg-fill {
+    transition: none;
+  }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>高考英语语法 · 考前扫盲导图</h1>
+  <p>知识点按桌面图标横排整理，点开即可复习</p>
+  <div class="tip">点击知识点查看详情 · 共 11 大语法体系</div>
+</div>
+
+<div class="desk">
+  <div class="quick-nav" id="qnav"></div>
+  <div id="content"></div>
+</div>
+
+<div class="progress-bar">
+  <span class="pg-info" id="pgText">已复习 0 / 0 个知识点</span>
+  <div class="pg-track"><div class="pg-fill" id="pgFill"></div></div>
+  <button class="btn-all" type="button" onclick="markAllRead()">全部已复习</button>
+</div>
+
+<div class="modal-backdrop" id="topicModal" aria-hidden="true">
+  <div class="modal-sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <div>
+        <div class="modal-kicker" id="modalKicker"></div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+      </div>
+      <button class="modal-close" type="button" onclick="closeModal()" aria-label="关闭">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+
+const DATA = [
+{
+  id: 'noun', icon: '名', title: '名词 Nouns', sub: '数·格·主谓一致', bg: 'var(--cat-noun)', tx: 'var(--cat-noun-tx)', bd: 'var(--cat-noun-bd)',
+  subs: [
+    {
+      title: '可数与不可数',
+      dot: '#1967D2',
+      items: [
+        '<span class="label">可数名词复数规则：</span>',
+        '<div class="eg">一般加-s：book→books</div><div class="eg">以s/x/z/ch/sh结尾加-es：bus→buses, box→boxes</div><div class="eg">辅音+y变i+es：city→cities；元音+y直接+s：boy→boys</div><div class="eg">f/fe变v+es：knife→knives（但roof→roofs）</div><div class="eg">o结尾：hero/tomato/potato+es；photo/piano/radio+s</div>',
+        '<span class="label">不可数名词要点：</span>',
+        '<div class="eg">常见：advice, news, information, furniture, equipment, weather, progress, homework, housework, fun, luck, wealth, knowledge, bread, water, rice, meat</div><div class="eg">抽象名词一般不可数：happiness, freedom, courage, honesty</div><div class="eg">不可数名词用量词计量：a piece of advice / two pieces of furniture</div>',
+        '<div class="highlight-box"><div class="hb-title">高频考点</div>people/police/cattle 单复同形，作主语谓语用复数<br>news/mathematics/physics 形式复数意义单数，谓语用单数</div>'
+      ]
+    },
+    {
+      title: '名词所有格',
+      dot: '#1565C0',
+      items: [
+        '<span class="label">\'s 所有格：</span><div class="eg">Tom\'s book, the teacher\'s desk</div><div class="eg">以s结尾的复数只加\'：students\' books, teachers\' office</div><div class="eg">共有/分别：Tom and Mary\'s room（共用）；Tom\'s and Mary\'s rooms（各自）</div>',
+        '<span class="label">of 所有格：</span><div class="eg">the door of the room, the cover of the book</div><div class="eg">用于无生命的东西（但有\'s例外：today\'s newspaper, ten minutes\' walk）</div>',
+        '<span class="label">双重所有格：</span>a friend <strong>of my father\'s</strong> = 我父亲的一个朋友（强调"其中之一"）'
+      ]
+    },
+    {
+      title: '主谓一致',
+      dot: '#0D47A1',
+      items: [
+        '<span class="label">就近原则（or, either...or, neither...nor, not only...but also）：</span><div class="eg">Either you or I <strong>am</strong> wrong.</div><div class="eg">Neither he nor they <strong>are</strong> responsible.</div>',
+        '<span class="label">就远原则（with/together with/as well as/but/except + 名词）：</span><div class="eg">The teacher together with his students <strong>is</strong> going to the museum.</div><div class="eg">Nobody but you and I <strong>was</strong> there.</div>',
+        '<span class="label">集合名词辨析：</span>',
+        '<table class="compare-table"><tr><th>强调整体（单数）</th><th>强调个体（复数）</th></tr><tr><td>class, family, team, audience, crew, government, public, group</td><td>当成员分别行动时用复数</td></tr></table><div class="eg">The family <strong>is</strong> large.（整体）<br>The family <strong>are</strong> watching TV.（每个成员）</div>',
+        '<span class="label">数量词+主语：</span><div class="eg">the number of + 复数名词 → 谓语<strong>单数</strong></div><div class="eg">a number of + 复数名词 → 谓语<strong>复数</strong></div><div class="eg">every/each/no + 单数名词 → 谓语<strong>单数</strong></div><div class="eg">many a + 单数名词 → 谓语<strong>单数</strong>（意为许多）</div><div class="eg">more than one + 单数名词 → 谓语<strong>单数</strong></div>',
+        '<div class="highlight-box"><div class="hb-title">易错提醒</div>one of + 复数名词 + who/that → 从句中动词用<strong>复数</strong>（最近原则）<br>the only one of + 复数名词 + who/that → 从句中动词用<strong>单数</strong></div>'
+      ]
+    }
+  ]
+},
+{
+  id: 'pronoun', icon: '代', title: '代词 Pronouns', sub: '人称·物主·反身·不定·关系', bg: 'var(--cat-pronoun)', tx: 'var(--cat-pronoun-tx)', bd: 'var(--cat-pronoun-bd)',
+  subs: [
+    {
+      title: '人称代词与物主代词',
+      dot: '#7C3AED',
+      items: [
+        '<span class="label">人称代词主格 vs 宾格：</span><table class="compare-table"><tr><th>主格（做主语）</th><th>宾格（做宾语）</th></tr><tr><td>I, we, you, he/she/it, they</td><td>me, us, you, him/her/it, them</td></tr></table>',
+        '<span class="label">形容词性物主代词 vs 名词性物主代词：</span><table class="compare-table"><tr><th>形容词性（后接名词）</th><th>名词性（独立使用=形物+名词）</th></tr><tr><td>my, your, his/her/its/our/their</td><td>mine, yours, his/hers/its/ours/theirs</td></tr></table><div class="eg">This is <strong>my</strong> book. = This book is <strong>mine</strong>.</div>',
+        '<div class="highlight-box"><div class="hb-title">高考常考</div>it 的用法：指代上文提到的事物、时间、距离、天气、环境等<br>It is no use/good doing sth.<br>It takes sb some time to do sth.<br>I find it + adj./n. + to do sth.</div>'
+      ]
+    },
+    {
+      title: '反身代词',
+      dot: '#6D28D9',
+      items: [
+        '<span class="label">反身代词列表：</span>myself, yourself, himself, herself, itself, ourselves, yourselves, themselves',
+        '<span class="label">常见搭配：</span><div class="eg">by oneself = 独自地（alone）</div><div class="eg">enjoy oneself = 玩得开心</div><div class="eg">help oneself to... = 随便吃...</div><div class="eg">teach oneself = 自学</div><div class="eg">devote oneself to = 致力于</div><div class="eg">come to oneself = 苏醒</div>'
+      ]
+    },
+    {
+      title: '指示代词与不定代词',
+      dot: '#5B21B6',
+      items: [
+        '<span class="label">this/these vs that/those：</span>this/these 指近处/即将提到；that/those 指远处/已提到（避免重复）',
+        '<span class="label">such 用法：</span>such + a/an + adj. + 单数名词；such + adj. + 复数名词',
+        '<span class="label">same 前必须加 the：</span>the same ... as ...',
+        '<span class="label">both/either/neither（两者）：</span><div class="eg">both → 两者都（肯定）</div><div class="eg">either → 两者之一</div><div class="eg">neither → 两者都不（否定）</div>',
+        '<span class="label">all/none/none（三者及以上）：</span><div class="eg">all → 全都（可接可数/不可数）</div><div class="eg">none → 都不（可接可数/不可数，谓语可单可复）</div><div class="eg">no one = nobody（只能指人，谓语单数）</div>',
+        '<span class="label">another/the other/others/the others 辨析：</span>',
+        '<table class="compare-table"><tr><th>词</th><th>含义</th><th>范围</th></tr><tr><td>another</td><td>另一个（三者以上）</td><td>泛指</td></tr><tr><td>the other</td><td>另一个</td><td>特指（两者中的另一个）</td></tr><tr><td>others</td><td>别的/其他的</td><td>泛指剩余部分</td></tr><tr><td>the others</td><td>其余的</td><td>特指剩余的全部</td></tr></table>',
+        '<span class="label">复合不定代词：</span>something/somebody/someone（用于肯定句或表示请求建议的疑问句）；anything/anybody/anyone（用于否定句和疑问句）；nothing/nobody/no one（表完全否定）；everything/everyone/everybody（表全体）<br><div class="highlight-box"><div class="hb-title">考点</div>复合不定代词的定语<strong>后置</strong>：something <strong>important</strong>, anything <strong>else</strong>, nothing <strong>special</strong></div>'
+      ]
+    },
+    {
+      title: 'it 作形式主语/宾语',
+      dot: '#4C1D95',
+      items: [
+        '<span class="label">it 作形式主语的句型：</span><div class="eg">It is + adj. (+ for/of sb.) + to do sth.</div><div class="eg">It is no use / no good doing sth.</div><div class="eg">It is said / reported / believed that ...</div><div class="eg">It seems / appears that ...</div><div class="eg">It occurred to me that ... （我忽然想到……）</div><div class="eg">It hit / struck me that ... （我猛然想到……）</div>',
+        '<span class="label">it 作形式宾语：</span><div class="eg">think/find/make/consider/regard/feel it + adj./n. + to do / that从句</div><div class="eg">I find <strong>it</strong> important to learn English well.</div><div class="eg">We made <strong>it</strong> clear that everyone should follow the rules.</div>',
+        '<span class="label">强调句型 It is/was ... that/who ...</span><div class="eg">去掉 It is/was 和 that/who 后句子仍成立则为强调句</div><div class="eg">It was <strong>in the park</strong> that I met her.（强调地点）</div><div class="eg">It was <strong>yesterday</strong> that he told me the news.（强调时间）</div><div class="eg">强调 not until 句型：It was not until midnight that he came back.</div>'
+      ]
+    }
+  ]
+},
+{
+  id: 'article', icon: '冠', title: '冠词 Articles', sub: 'a/an/the/零冠词', bg: 'var(--cat-article)', tx: 'var(--cat-article-tx)', bd: 'var(--cat-article-bd)',
+  subs: [
+    {
+      title: '不定冠词 a/an',
+      dot: '#D97706',
+      items: [
+        '<span class="label">a vs an：</span>a 用于辅音音素开头的单词前；an 用于元音音素（a/e/i/o）开头的单词前<div class="eg">a university, a European, a useful book, an hour, an honest boy, an MP, an 11-year-old girl</div>',
+        '<span class="label">基本用法：</span>① 表"一个"（同类中的某一个）② 表类别（代表一类人或事物）③ 表示数量"一"<div class="eg">A horse is a useful animal. = Horses are useful animals. = The horse is a useful animal.</div>',
+        '<span class="label">固定搭配含 a/an：</span>have a cold, catch a cold, in a hurry, take a walk, have a try, make a living, as a result, tell a lie, keep a secret, once upon a time'
+      ]
+    },
+    {
+      title: '定冠词 the',
+      dot: '#B45309',
+      items: [
+        '<span class="label">the 必须用的场合：</span>① 双方都知道的人或物 ② 上文提过的人或物 ③ 世界上独一无二的事物（sun, moon, earth, world, sky, universe）④ 序数词/最高级前 ⑤ 方位词前（east, west等，但turn left/right不用the）⑥ 某些专有名词前（河流、海洋、山脉、群岛、国家含Republic/Kingdom等）⑦ play + the + 乐器 ⑧ the + 形容词 = 一类人（the rich/poor/blind）⑨ "动词+sb.+介词+the+身体部位"',
+        '<span class="label">固定搭配含 the：</span>in the end, on the way, at the moment, in the morning/afternoon/evening, all the time, by the way, on the whole, on the other hand, in the distance, to the point'
+      ]
+    },
+    {
+      title: '零冠词',
+      dot: '#92400E',
+      items: [
+        '<span class="label">不加冠词的情况：</span>① 泛指的复数名词/不可数名词 ② 人名、地名、国名（非特殊）前 ③ 三餐、球类运动、棋类游戏前 ④ by + 交通工具 ⑤ 学科名称前 ⑥ 星期、月份、节日（但the Spring Festival需the）前 ⑦ 称呼、头衔、职务前 ⑧ turn/go become + 名词（表身份变化）',
+        '<div class="highlight-box"><div class="hb-title">高考高频</div><u>most</u> interesting（非常有趣，≠最高级）<br><u>as</u> good <u>as</u>（同样好，前后都不加the）<br>all <u>of</u> a sudden（突然地）<br><u>in</u> fact / <u>in</u> danger / <u>in</u> trouble / <u>in</u> space / <u>at</u> first<br><u>day after day</u> / <u>face to face</u></div>'
+      ]
+    }
+  ]
+},
+{
+  id: 'adj', icon: '形', title: '形容词 Adjectives', sub: '比较级·位置·修饰', bg: 'var(--cat-adj)', tx: 'var(--cat-adj-tx)', bd: 'var(--cat-adj-bd)',
+  subs: [
+    {
+      title: '比较级与最高级构成',
+      dot: '#059669',
+      items: [
+        '<span class="label">规则变化：</span><table class="compare-table"><tr><th>类型</th><th>变化方式</th><th>例</th></tr><tr><td>单音节词</td><td>+er/est</td><td>tall→taller→tallest</td></tr><tr><td>以e结尾</td><td>+r/st</td><td>nice→nicer→nicest</td></tr><tr><td>闭音节辅重</td><td>双写+er/est</td><td>big→bigger→biggest</td></tr><tr><td>辅音+y</td><td>y→i+er/est</td><td>busy→busier→busiest</td></tr><tr><td>多音节词</td><td>more/most</td><td>beautiful→more beautiful</td></tr></table>',
+        '<span class="label">不规则变化：</span><table class="compare-table"><tr><th>原级</th><th>比较级</th><th>最高级</th></tr><tr><td>good/well</td><td>better</td><td>best</td></tr><tr><td>bad/ill</td><td>worse</td><td>worst</td></tr><tr><td>many/much</td><td>more</td><td>most</td></tr><tr><td>little</td><td>less</td><td>least</td></tr><tr><td>far</td><td>farther/further</td><td>farthest/furthest</td></tr><tr><td>old</td><td>older/elder</td><td>oldest/eldest</td></tr><tr><td>late</td><td>later/latter</td><td>latest/last</td></tr></table>',
+        '<div class="highlight-box"><div class="hb-title">区别辨析</div>further 还可表示"进一步"；elder/eldest 只能用于家庭成员<br>latter 后者（与former"前者"配对）；latest 最新的；last 最后的</div>'
+      ]
+    },
+    {
+      title: '比较级句型',
+      dot: '#047857',
+      items: [
+        '<span class="label">基本句型：</span><div class="formula">A is + 比较级 + than B</div>',
+        '<span class="label">倍数表达法（重要！）：</span><table class="compare-table"><tr><th>句式</th></tr><tr><td>A is <strong>3 times as + adj.原级 + as</strong> B</td></tr><tr><td>A is <strong>3 times + 比较级 + than</strong> B</td></tr><tr><td>A is <strong>3 times the + 名词(size/length...) + of</strong> B</td></tr></table>',
+        '<span class="label">比较级的特殊用法：</span><div class="eg">the + 比较级..., the + 比较级...（越……越……）</div><div class="eg">比较级 + and + 比较级（越来越……）</div><div class="eg">the + 比较级 + of the two（两个中较……的那个）— 注意有the！</div><div class="eg">less + 原级 + than（不如……）</div>',
+        '<span class="label">常用修饰比较级的词：</span>much, even, far, still, a lot, a great deal, a bit, rather, any, slightly, by far',
+        '<div class="highlight-box"><div class="hb-title">易错点</div>"比较范围"确定是否使用最高级：<br>of/in/among + 最高级范围<br>China is the largest country <strong>in</strong> Asia.（中国属于亚洲，用in）<br>Of the two girls, Mary is <strong>the more</strong> clever.（两者中较……用比较级+the）<br>否定词+比较级 = 最高级含义：I can\'t agree more. = 我完全同意。</div>'
+      ]
+    },
+    {
+      title: '形容词的位置与顺序',
+      dot: '#065F46',
+      items: [
+        '<span class="label">前置 vs 后置：</span>大多数形容词前置；以下情况后置：① 不定代词之后 ② 修饰something/anything/nothing时 ③ 以-able/-ible结尾的词与最高级/every/the only连用 ④ 表示长宽高深旧的词组（a bridge 50 meters long）⑤ 表语性形容词（afraid, asleep, awake, alive, alone, ashamed, alike, aware）',
+        '<span class="label">多个形容词排列顺序（口诀）：</span><div class="formula">限描大，长龄颜，色籍材，类用途</div><table class="compare-table"><tr><th>顺序</th><th>类型</th><th>例</th></tr><tr><td>1</td><td>限定（冠词、指示、物主、数词）</td><td>a, the, this, my, three</td></tr><tr><td>2</td><td>描绘（主观评价）</td><td>beautiful, nice, lovely</td></tr><tr><td>3</td><td>大小/形状</td><td>big, small, round, square</td></tr><tr><td>4</td><td>新旧/年龄</td><td>new, old, young</td></tr><tr><td>5</td><td>颜色</td><td>red, green</td></tr><tr><td>6</td><td>出处/国籍</td><td>Chinese, American</td></tr><tr><td>7</td><td>材料</td><td>wooden, stone, plastic</td></tr><tr><td>8</td><td>用途/类别</td><td>writing (desk), sleeping (bag)</td></tr></table>'
+      ]
+    }
+  ]
+},
+{
+  id: 'adv', icon: '副', title: '副词 Adverbs', sub: '程度·频率·方式·位置', bg: 'var(--cat-adv)', tx: 'var(--cat-adv-tx)', bd: 'var(--cat-adv-bd)',
+  subs: [
+    {
+      title: '副词的分类',
+      dot: '#DC2626',
+      items: [
+        '<span class="label">程度副词：</span>very, too, so, quite, rather, fairly, extremely, highly, deeply, partly, nearly, almost, hardly, scarcely, barely',
+        '<span class="label">频率副词（按频率排序）：</span>always(100%) > usually(80%) > often(60%) > sometimes(40%) > seldom/rarely(20%) > never(0%)',
+        '<span class="label">方式副词：</span>quickly, slowly, carefully, badly, well, hard, fast',
+        '<span class="label">时间/地点副词：</span>now, then, today, yesterday, here, there, abroad, home, upstairs, downstairs',
+        '<span class="label">疑问/连接/关系副词：</span>when, where, why, how, however, whenever, wherever',
+        '<div class="highlight-box"><div class="hb-title">注意区别</div>hard 努力地/硬的；hardly 几乎不<br>late 迟/晚；lately 近来<br>high 高高地；高度赞扬；highly 高度地（抽象）<br>close 靠近；closely 密切地/仔细地<br>deep 深；deeply 深深地（情感）<br>most 最；mostly 主要地<br>wide 宽；widely 广泛地</div>'
+      ]
+    },
+    {
+      title: '形容词变副词（后缀法）',
+      dot: '#DC2626',
+      items: [
+        '<span class="label">直接 +ly：</span>',
+        '<div class="eg">quick → quickly  慢 → slowly  小心 → carefully</div><div class="eg">bad → badly  好 → well（不规则！） 快 → fast（原形不变）</div><div class="eg">happy → happily  easy → easily</div><div class="eg">true → truly  simple → simply</div><div class="eg">terrible → terribly  possible → possibly</div>',
+        '<span class="label">以-y结尾：变i + ly：</span><div class="eg">happy → happyily? 不！happy → happ<i>i</i>ly ✓<br>heavy → heavily  angry → angrily  noisy → noisily  lucky → luckily</div><div class="eg">例外：dry → dryly / drily  shy → shyly（不变i，直接加ly）</div>',
+        '<span class="label">以-le结尾：去掉e + y：</span><div class="eg">simple → simply  gentle → gently  terrible → terribly<br>noble → nobly  capable → capably  incredible → incredibly</div><div class="eg">但 -ple/-ble 结尾且发音为 /bl/ 时才去e：<br>flexible → flexibly  responsible → responsibly</div>',
+        '<span class="label">以-ll结尾：直接 + y：</span><div class="eg">full → fully  dull → dully<br>whole → wholly（whole去e后加l+y）</div>',
+        '<span class="label">以-ic结尾：+ ally：</span><div class="eg">basic → basically  specific → specifically<br>scientific → scientifically  fantastic → fantastically<br>economic → economically  tragic → tragically</div>',
+        '<span class="label">特殊变形（必须记！）：</span><div class="eg">good → <strong>well</strong>（最常考！good的副词不是goodly）</div><div class="eg">fast → <strong>fast</strong>（形/副同形）</div><div class="eg">hard → <strong>hard</strong>（努力地）/ hardly（几乎不）</div><div class="eg">late → <strong>late</strong>（晚）/ lately（近来）</div><div class="eg">early → <strong>early</strong>（早）（形/副同形）</div><div class="eg">straight → straight（笔直地）</div>',
+        '<div class="highlight-box"><div class="hb-title">易错点总结</div>1. good 的副词是 <strong>well</strong>，不是 goodly！<br>2. friendly → 本身已是副词含义（或用 in a friendly way）<br>3. lovely / lonely / lively 以ly结尾但都是<strong>形容词</strong>！<br>4. likely 可作副词：He will <strong>likely</strong> come<br>5. daily → daily / dailyly（两种都对）</div>'
+      ]
+    },
+    {
+      title: '副词的比较级',
+      dot: '#B91C1C',
+      items: [
+        '<span class="label">规则变化：</span>加-er/-est（hard→harder, fast→faster）或 more/most（carefully→more carefully）',
+        '<span class="label">不规则：</span>well→better→best; badly→worse→worst; little→less→least; much→more→most; far→farther/further→farthest/furthest',
+        '<span class="label">同级比较：</span><div class="formula">as + adv.原级 + as（肯定）/ not as(so) + adv.原级 + as（否定）</div>',
+        '<div class="highlight-box"><div class="hb-title">enough 位置</div>enough 修饰形容词/副词时<strong>后置</strong>：<br>He is old <strong>enough</strong> to go to school.<br>enough 修饰名词时<strong>前置</strong>：<br>We have <strong>enough</strong> time.</div>'
+      ]
+    },
+    {
+      title: '副词在句中的位置',
+      dot: '#991B1B',
+      items: [
+        '<span class="label">位置规律：</span><div class="eg">① 频率副词：be动词后，实义动词前，助动词/情态动词之间</div><div class="eg">② 程度副词：修饰形容词/副词/动词放在它们前面</div><div class="eg">③ 方式副词：放在动词（及宾语）后面</div><div class="eg">④ 时间/地点副句末优先，也可句首</div><div class="eg">⑤ 疑问副词放句首</div>',
+        '<div class="highlight-box"><div class="hb-title">also/too/as well/either</div>also 常用于 be/助/情态动词之后、实义动词之前<br>too/as well 用于肯定句句末（too前常有逗号）<br>either 用于否定句句末</div>'
+      ]
+    }
+  ]
+},
+{
+  id: 'prep', icon: '介', title: '介词 Prepositions', sub: '时间·地点·方式·搭配', bg: 'var(--cat-prep)', tx: 'var(--cat-prep-tx)', bd: 'var(--cat-prep-bd)',
+  subs: [
+    {
+      title: '时间介词',
+      dot: '#DB2777',
+      items: [
+        '<span class="label">at / in / on 区分：</span><table class="compare-table"><tr><th>at</th><th>in</th><th>on</th></tr><tr><td>具体时刻(at 6pm)</td><td>年/月/季节/上午下午晚上(in 2024)</td><td>具体某日(on Monday/on May 1st)</td></tr><tr><td>at noon/at night</td><td>世纪(in the 21st century)</td><td>具体某日的上下午(on the morning of...)</td></tr><tr><td>at present</td><td>in the future/past</td><td>在...时候(on the occasion of)</td></tr></table>',
+        '<span class="label">during / for / since / from...to / by / until / before / after：</span><div class="eg">during +时间段（在……期间，常用于过去进行时）</div><div class="eg">for + 时间段（持续了多久）</div><div class="eg">since + 时间点（自从……以来，常用于完成时）</div><div class="eg">from...to...（从……到……）</div><div class="eg">by + 时间点（到……为止，常用于完成时）</div><div class="eg">until/till（直到……）not...until（直到……才）</div><div class="eg">before / after + 时间点或时间段均可</div>',
+        '<span class="label">in / after + 时间段：</span><div class="eg">in + 时间段（将来时中表"……之后"，回答when提问）</div><div class="eg">after + 时间段（过去时中表"……之后"）</div>'
+      ]
+    },
+    {
+      title: '地点/方位介词',
+      dot: '#BE185D',
+      items: [
+        '<span class="label">at / in / on（地点）：</span>at 小地点（at the bus stop）；in 大地点/内部（in China, in the room）；on 接触表面（on the table, on the floor）',
+        '<span class="label">above / over / below / under：</span>above（不一定垂直正上方）；over（垂直上方，可覆盖）；below（低于）；under（垂直下方，接触或覆盖）',
+        '<span class="label">across / through / along / past / around / between / among：</span>across（表面穿过）；through（内部穿过）；along（沿着）；past（经过）；around（围绕）；between（两者之间）；among（三者及以上之中）',
+        '<span class="label">to / towards / into / out of / onto / off：</span>to（方向/目的地）；towards（朝向，不一定到达）；into（进入）；out of（出去）；onto（到...上面）；off（离开/脱离）',
+        '<span class="label">in / on / to（方位关系）：</span>in（范围内，包含边界）；on（毗邻，接壤）；to（范围外，不接壤）<div class="eg">Japan lies <strong>to</strong> the east of China.（在中国东边，隔海相望）</div><div class="eg">Mongolia lies <strong>on</strong> the north of China.（与中国北部接壤）</div>'
+      ]
+    },
+    {
+      title: '方式/原因/其他介词',
+      dot: '#9D174D',
+      items: [
+        '<span class="label">方式介词：</span>by（通过某种方式/手段/交通）；with（用某种工具）；in（用语言/材料/颜色/墨水）；through（通过/经由）；like（像……一样）',
+        '<span class="label">原因介词：</span>because of（因为，接名词/短语）；due to（由于，多用于正式文体）；thanks to（多亏了）；owing to（由于）',
+        '<span class="label">其他重要介词：</span>except/besides/except for/but（除…之外）；without（没有）；despite/in spite of（尽管）；about（关于/大约）；of（……的/属于）；for（为了/给/因为/对于）；with（带有/和/用/随着）；against（反对/靠/碰/撞）；beyond（超出）；within（在…之内）；regarding/concerning/about（关于）；including（包括）',
+        '<div class="highlight-box"><div class="hb-title">高考常考短语</div>instead of（而不是）；because of（因为）；in spite of（尽管）；due to（由于）；thanks to（多亏）；ahead of（在…前面）；regardless of（不管）；apart from（除了）；other than（除了/不同于）；but for（要不是）</div>'
+      ]
+    }
+  ]
+},
+{
+  id: 'conj', icon: '连', title: '连词 Conjunctions', sub: '并列·从属·逻辑关系', bg: 'var(--cat-conj)', tx: 'var(--cat-conj-tx)', bd: 'var(--cat-conj-bd)',
+  subs: [
+    {
+      title: '并列连词',
+      dot: '#059669',
+      items: [
+        '<span class="label">表示并列/递进：</span>and, both...and..., not only...but(also)..., neither...nor..., as well as',
+        '<span class="label">表示转折：</span>but, yet, while, whereas, nevertheless, however（注意however是副词，不是连词，需要用分号或句号分隔）',
+        '<span class="label">表示选择：</span>or, either...or..., otherwise（否则），whether...or...',
+        '<span class="label">表示因果：</span>for（因为，表补充说明，不放句首）, so',
+        '<div class="highlight-box"><div class="hb-title">主谓一致</div>not only...but also... / either...or... / neither...nor... → <strong>就近原则</strong><br>both...and... → 谓语用<strong>复数</strong></div>'
+      ]
+    },
+    {
+      title: '从属连词（引导状语从句）',
+      dot: '#047857',
+      items: [
+        '<span class="label">时间状语从句：</span>when, while, as, before, after, since, until/till, as soon as, immediately/directly/the moment/the instant(that), whenever, every time/each time/next time',
+        '<span class="label">条件状语从句：</span>if, unless(=if not), as long as/so long as, in case(以防), suppose/supposing/provided(that)/on condition(that), once',
+        '<span class="label">原因状语从句：</span>because（直接回答why）, since/as（已知原因）, now(that)(既然), seeing(that)/considering(that)',
+        '<span class="label">目的/结果状语从句：</span>so that / in order that（目的）；so...that... / such...that...（结果）',
+        '<span class="label">让步状语从句：</span>although/though(不能与but同时使用), even if/even though, whether...or..., no matter wh-/wh-ever, while(放句首表"虽然")',
+        '<span class="label">方式/地点状语从句：</span>as, as if/as though(好像); where, wherever, everywhere',
+        '<div class="highlight-box"><div class="hb-title">时态呼应</div>主句将来时 → 条件/时间状语从句<strong>用一般现在时表将来</strong><br>If it rains tomorrow, I will stay at home.<br>主句过去时 → as if/as though引导的方式从句用<strong>虚拟语气</strong></div>'
+      ]
+    },
+    {
+      title: 'that 与 what 的核心区别',
+      dot: '#065F46',
+      items: [
+        '<div class="formula">that = 连词（不充当成分，只起连接作用，有时可省略）<br>what = 代词（在从句中充当成分：主语/宾语/表语）</div><div class="eg">I know <strong>(that)</strong> he is honest.（that不充当成分）</div><div class="eg">I don\'t know <strong>what</strong> he said.（what=said的宾语）</div><div class="eg"><strong>What</strong> he said is true.（what=主语）</div>',
+        '<div class="highlight-box"><div class="hb-title">高频考点</div>what 引导主语从句/宾语从句/表语从句 → 名词性从句<br>what = the thing(s) that / whatever that<br>what 不引导定语从句！定语从句用 which/that/who</div>'
+      ]
+    }
+  ]
+},
+{
+  id: 'num', icon: '数', title: '数词 Numerals', sub: '基数·序数·分数·百分数', bg: 'var(--cat-num)', tx: 'var(--cat-num-tx)', bd: 'var(--cat-num-bd)',
+  subs: [
+    {
+      title: '基数词与序数词',
+      dot: '#2563EB',
+      items: [
+        '<span class="label">基数词读写注意：</span><div class="eg">21-99：twenty-one, thirty-two（十位数和个位数间加连字符）</div><div class="eg">101-999：one hundred (and) twenty-three</div><div class="eg">1,000以上：从右往左每三位一逗号，依次读 thousand, million, billion</div><div class="eg">dozen/score/hundred/thousand/million 前有数字时不加s</div><div class="eg">dozens of / scores of / hundreds of / thousands of（加of表"大量"，此时要加s）</div><div class="eg">in one\'s + 整十基数词复数 = 在某人几十岁时：in his thirties（在他三十多岁时）</div>',
+        '<span class="label">序数词：</span>first, second, third, fourth, fifth, eighth, ninth, twelfth, twentieth<div class="eg">缩写：1st, 2nd, 3rd, 4th, 21st, 22nd, 23rd</div><div class="eg">the + 序数词 + 名词；a + 序数词 + 名词（再一，又一）</div>'
+      ]
+    },
+    {
+      title: '分数、倍数、小数、年月日',
+      dot: '#1D4ED8',
+      items: [
+        '<span class="label">分数表达：</span><div class="formula">分子基数词，分母序数词；分子>1时分母加s<br>1/3 = one third; 2/3 = two thirds; 1/2 = one/a half; 1/4 = one quarter/one fourth; 3/4 = three quarters/three fourths</div>',
+        '<span class="label">小数表达：</span>0.5 = zero/nought point five; 3.14 = three point one four',
+        '<span class="label">年月日：</span>2024年6月3日 = June 3(rd), 2024 / June 3, 2024 / 3rd June, 2024<div class="eg">in the 1990s / in the 1990\'s（二十世纪九十年代）</div><div class="eg">in one\'s fifties（五十多岁）</div>',
+        '<span class="label">时刻表达：</span>7:00 = seven o\'clock / seven; 7:15 = seven fifteen / a quarter past seven; 7:30 = seven thirty / half past seven; 7:45 = seven forty-five / a quarter to eight'
+      ]
+    }
+  ]
+},
+{
+  id: 'verb', icon: '动', title: '动词 Verbs', sub: '时态·语态·情态·非谓语·虚拟', bg: 'var(--cat-verb)', tx: '--verb-td', bd: '--verb-bd',
+  subs: [
+    {
+      title: '动词时态一览（核心！）',
+      dot: '#EA580C',
+      items: [
+        '<span class="label">16种时态框架（4×4）：</span><table class="compare-table"><tr><th></th><th>一般</th><th>进行</th><th>完成</th><th>完成进行</th></tr><tr><td>现在</td><td>do/does</td><td>am/is/are doing</td><td>has/have done</td><td>has/have been doing</td></tr><tr><td>过去</td><td>did</td><td>was/were doing</td><td>had done</td><td>had been doing</td></tr><tr><td>将来</td><td>will/shall do</td><td>will be doing</td><td>will have done</td><td>will have been doing</td></tr><tr><td>过去将来</td><td>would do</td><td>would be doing</td><td>would have done</td><td>would have been doing</td></tr></table>',
+        '<span class="label">一般现在时：</span>① 客观事实/真理 ② 经常性习惯性动作 ③ 时间/条件状语从句中表将来 ④ 小说/报道中叙述过去增强生动感（历史现在时）',
+        '<span class="label">一般过去时：</span>① 过去某个时间发生的动作/状态 ② 过去经常/反复发生的动作（used to do / would do）③ 句中有明确的过去时间状语',
+        '<span class="label">一般将来时：</span>will/shall do; be going to do; be to do; be about to do; be doing(按计划安排); do/does(时间/条件从句)',
+        '<span class="label">现在进行时：</span>① 此时此刻正在进行的动作 ② 当前阶段正在进行的动作（说话瞬间不一定在做） ③ 表近期计划安排（go, come, leave, arrive等位移动词） ④ 与always/constantly/forever连用表达某种感情色彩（赞叹/厌烦）',
+        '<span class="label">过去进行时：</span>① 过去某时刻正在进行 ② 为过去的动作提供背景/铺垫 ③ 故事中描述场景 ④ politely wanted to ask / wondering / hoping（委婉语气）',
+        '<span class="label">现在完成时：</span>① 过去发生但对现在造成影响/结果 ② 过去开始持续到现在 ③ 已经/尚未（already/yet/just/ever/never/recently/lately/so far/up to now/in the last/past +段时间）<div class="highlight-box"><div class="hb-title">have gone to vs have been to</div>have gone to（去了还没回）<br>have been to（去过已经回来了）</div>',
+        '<span class="label">过去完成时：</span>① "过去的过去"——在过去某时刻前已完成 ② by the time + 过去时；before + 过去时；by the end of + 过去时间 ③ had hoped/planned/intended/meant/expected/thought/wanted（本来希望/打算……但没实现）',
+        '<span class="label">过去将来时：</span>① 主句是过去时 → 宾语从句中表将来 ② would do; was/were going to do; was/were about to do; was/were to do; was/were coming/going/leaving等'
+      ]
+    },
+    {
+      title: '被动语态',
+      dot: '#C2410C',
+      items: [
+        '<span class="label">被动语态结构：</span><div class="formula">be + done (by + 执行者)<br>各种时态的被动 = 对应时态的be形式 + 过去分词</div>',
+        '<span class="label">主动表被动的情况：</span><div class="eg">① 感官系动词：feel, sound, taste, smell, look, appear, prove + adj.</div><div class="eg">② 某些不及物动词（与well/easily/badly连用）：write, sell, read, wash, wear, cut, open, lock, shut</div><div class="eg">③ 不及物动词+副词：The door won\'t shut.（门关不上）</div><div class="eg">④ be worth doing（值得做，用主动形式表被动意义，doing不能用被动式）</div><div class="eg">⑤ need/require/want/deserve + doing = to be done</div>',
+        '<span class="label">get型被动语态：</span>get done（更口语化，强调动作的发生而非状态）<div class="eg">He got hurt on his way home.</div>',
+        '<span class="label">双宾语的被动：</span>give sb. sth. → sb. be given sth. / sth. be given to sb.',
+        '<span class="label">复合宾语的被动：</span>make/see/hear/watch/notice/observe + sb. + do（省to的不定式）→ 被动时要还原to<div class="eg">主动：I saw him enter the room. → 被动：He was seen <strong>to</strong> enter the room.</div></div>'
+      ]
+    },
+    {
+      title: '情态动词',
+      dot: '#9A3412',
+      items: [
+        '<span class="label">基本情态动词：</span>can(could), may(might), must, shall(should), will(would), ought to, need, dare',
+        '<span class="label">can / could / be able to：</span><div class="eg">can 表"能力"（现在）；could 表"能力"（过去）或委婉请求；be able to 有各种时态形式</div>',
+        '<span class="label">may / might：</span><div class="eg">may 表许可/可能性（肯定句中可能性的把握比can小）</div><div class="eg">may well / may as well（很可能/不妨）</div>',
+        '<span class="label">must / have to：</span>must（主观上的必须/义务）；have to（客观上的不得不）<div class="eg">must 表推测（肯定句）→ must do/be doing/have done（一定做了/正在做/已经做了）</div><div class="eg">mustn\'t（禁止）；needn\'t / don\'t have to（不必）</div>',
+        '<span class="label">shall / should / ought to：</span>shall（法律/规定/命令/威胁/承诺中用于二三人称）；should/ought to（应该）；should have done（本该做而没做）',
+        '<span class="label">will / would：</span>will（意愿/习惯/推测）；would（过去的意愿/习惯/委婉）',
+        '<span class="label">情态动词 + have done（对过去的推测/责备）：</span>',
+        '<table class="compare-table"><tr><th>结构</th><th>含义</th></tr><tr><td>must have done</td><td>一定做过（肯定推测，只用于肯定句）</td></tr><tr><td>can\'t/couldn\'t have done</td><td>不可能做过（否定推测）</td></tr><tr><td>may/might have done</td><td>可能/或许做过（不确定）</td></tr><tr><td>should/ought to have done</td><td>本应该做而没做（虚拟/责备）</td></tr><tr><td>shouldn\'t/oughtn\'t to have done</td><td>本不应该做却做了</td></tr><tr><td>needn\'t have done</td><td>本不必做却做了</td></tr><tr><td>would have done</td><td>本来会做（常与but连用表与过去事实相反）</td></tr><tr><td>could have done</td><td>本来能够做（实际未做）</td></tr></table>',
+        '<div class="highlight-box"><div class="hb-title">易混淆</div>dare/need 既可作情态动词也可作实义动词<br>作情态：dare/need + do（无人称/时态变化，否定/疑问不用do）<br>作实义：dares/needs + to do（有人称/时态变化，借助do构成疑问/否定）</div>'
+      ]
+    },
+    {
+      title: '非谓语动词 — 总览',
+      dot: '#EA580C',
+      items: [
+        '<span class="label">三种形式对比：</span>',
+        '<table class="compare-table"><tr><th>形式</th><th>功能</th><th>时态/语态</th></tr><tr><td>to do（不定式）</td><td>除谓语外的任何成分</td><td>to do / to be done / to have done / to have been done</td></tr><tr><td>doing（动名词/现在分词）</td><td>主/宾/表/定/状/补</td><td>doing / being done / having done / having been done</td></tr><tr><td>done（过去分词）</td><td>定/表/补/状</td><td>只有一种（表完成/被动）</td></tr></table>',
+        '<span class="label">逻辑主语判断：</span><div class="formula">to do → 通常表将来/目的<br>doing → 表主动/进行<br>done → 表被动/完成</div>',
+        '<span class="label">判断技巧：</span>看非谓语动词与逻辑主语的关系 → 主动用doing，被动用done，目的/将来用to do'
+      ]
+    },
+    {
+      title: '不定式 to do',
+      dot: '#C2410C',
+      items: [
+        '<span class="label">作主语（常用it做形式主语）：</span><div class="eg">To learn English well is important. = It is important to learn English well.</div>',
+        '<span class="label">作宾语：</span>want, hope, wish, expect, decide, plan, agree, promise, refuse, manage, pretend, offer, afford, fail, demand, desire, arrange, threaten',
+        '<span class="label">作宾补：</span><div class="eg">ask/tell/order/allow/permit/want/expect/wish/encourage/invite/advice/warn/remind/force/cause/get + sb. + to do</div><div class="eg">make/see/hear/watch/notice/observe/let/have + sb. + do（省略to的不定式）</div><div class="eg">help + sb. + (to) do（to可以省也可以不省）</div>',
+        '<span class="label">作定语：</span>被修饰的名词前有序数词/only/last/next/best或抽象名词时常用不定式<div class="eg">I have a lot of work <strong>to do</strong>. He is always the first <strong>to come</strong> and the last <strong>to leave</strong>.</div>',
+        '<span class="label">作结果状语：</span><div class="eg">only to do（出乎意料的结果，常与only连用）：He hurried to the station, only to find the train gone.</div><div class="eg">enough to do（足够……以致于）；too...to do（太……而不能）</div><div class="eg">so...as to do / such...as to do（如此……以至于）</div>',
+        '<span class="label">作目的状语：</span><div class="eg">to do / in order to do / so as to do（注意：so as to 不能置于句首）</div>',
+        '<span class="label">作原因状语：</span><div class="eg">be + adj. + to do（原因）：I\'m sorry to hear that. He was foolish to say that.</div>',
+        '<span class="label">疑问词 + to do（相当于一个名词性从句）：</span><div class="eg">I don\'t know <strong>what to do</strong>. (= I don\'t know what I should do.)</div><div class="eg">Please tell me <strong>how to get</strong> to the station.</div>',
+        '<div class="highlight-box"><div class="hb-title">省to的不定式</div>① 感官动词 see/watch/observe/notice/look at/hear/listen to/feel + do（被动还原to）<br>② 使役动词 make/let/have + do（have的被动也可省to）<br>③ had better / would rather / why not + do<br>④ help + (to) do<br>⑤ but/except/than 前有do的某种形式时，后接省to的不定式</div>'
+      ]
+    },
+    {
+      title: '动名词 doing & 现在分词',
+      dot: '#9A3412',
+      items: [
+        '<span class="label">动名词（Gerund）：</span>',
+        '<table class="compare-table"><tr><th>作主语</th><th>Seeing is believing.</th></tr><tr><th>作宾语</th><th>enjoy/practice/finish/avoid/keep/mind/consider/imagine/suggest/give up/look forward to/can\'t help/feel like/be used to/put off/be busy/devote...to/object to + doing</th></tr><tr><th>作表语</th><th>My hobby is reading.</th></tr><tr><th>作定语</th><th>a swimming pool（游泳用的池子）</th></tr></table>',
+        '<span class="label">现在分词（Present Participle）：</span>',
+        '<table class="compare-table"><tr><th>作定语</th><th>the falling leaves（正在飘落的叶子）</th></tr><tr><th>作表语</th><th>The story is moving.</th></tr><tr><th>作补语</th><th>I found him crying.</th></tr><tr><th>作状语</th><th>Hearing the news, she jumped with joy.</th></tr></table>',
+        '<span class="label">动名词 vs 不定式作宾语的区别：</span>',
+        '<table class="compare-table"><tr><th>只接doing</th><th>只接to do</th><th>两者皆可（含义不同）</th></tr><tr><td>finish/avoid/enjoy/mind/practice/give up/can\'t help(禁不住)/suggest/consider/imagine/allow(允许)/permit(允许)/forbid(禁止)+ sb. + doing/escape/miss/risk/resist/delay/keep/appreciate</td><td>want/hope/wish/decide/agree/promise/refuse/manage/pretend/offer/afford/fail/demand/arrange/threaten</td><td>remember/forget/stop/go on/try/mean/regret<br>remember to do（记得要做）<br>remember doing（记得做过）<br>stop to do（停下来去做另一件）<br>stop doing（停止正在做的事）<br>try to do（尽力做）<br>try doing（试着做）<br>mean to do（打算做）<br>mean doing（意味着）<br>regret to do（遗憾地要说）<br>regret doing（后悔做过）</td></tr></table>',
+        '<div class="highlight-box"><div class="hb-title">区分关键</div>动名词 = 名词化（强调动作本身/抽象概念）<br>现在分词 = 形容词/副词化（强调主动/进行的状态）<br>动名词作定语表"用途"：sleeping bag（睡袋）<br>现在分词作定语表"正在进行/主动"：sleeping baby（正在睡觉的婴儿）</div>'
+      ]
+    },
+    {
+      title: '过去分词 done',
+      dot: '#7C2D12',
+      items: [
+        '<span class="label">基本特点：</span>表被动 + 完成（不及物动词的过去分词只表完成，不表被动）',
+        '<span class="label">作定语：</span>the broken glass（被打破的杯子）；a developed country（发达国家）；fallen leaves（落叶，fall是不及物动词，此处只表完成）',
+        '<span class="label">作表语：</span>The window is broken.（窗户破了——状态）I am interested in music.',
+        '<span class="label">作宾补：</span><div class="eg">have/keep/get/leave/find/see/hear/watch/notice + sth./sb. + done</div><div class="eg">I had my bike repaired.（请人修车）</div><div class="eg">He found the door locked.（发现门锁着）</div>',
+        '<span class="label">作状语：</span><div class="eg">Seen from the hill, the city looks beautiful.（= When it is seen from...）</div><div class="eg">Given more time, we could do it better.（如果给更多时间的话）</div><div class="eg">Compared with/to...（与……相比）</div><div class="eg">Located/Situated in...（坐落于……）</div>',
+        '<div class="highlight-box"><div class="hb-title">with复合结构</div>with + n./pron. + doing（主动/进行）<br>with + n./pron. + done（被动/完成）<br>with + n./pron. + to do（将来/未做）<br>with + n./pron. + adj./adv./介词短语<br>例：With so many people <strong>looking at</strong> him, he felt nervous.<br>例：The murder <strong>was brought in</strong>, with his hands <strong>tied</strong> behind.</div>'
+      ]
+    },
+    {
+      title: '独立主格结构',
+      dot: '#9A3412',
+      items: [
+        '<span class="label">什么是独立主格？</span>名词/代词 + 非谓语动词/形容词/副词/介词短语，在句中作状语，有自己的逻辑主语，相当于一个状语从句。',
+        '<span class="label">常见形式：</span><div class="eg">Time permitting（= If time permits）, we will go for a picnic.</div><div class="eg">Weather permitting, the game will be held tomorrow.</div><div class="eg">The work finished（= After the work was finished）, he went home.</div><div class="eg">There being no bus, we had to walk home.</div><div class="eg">He came in, book in hand.（= with a book in his hand）</div>',
+        '<span class="label">with复合结构 vs 独立主格：</span>with复合结构是独立主格的一种，加了with前缀。两种本质相同。'
+      ]
+    },
+    {
+      title: '虚拟语气',
+      dot: '#DC2626',
+      items: [
+        '<span class="label">If条件句中的虚拟语气（三大类型）：</span>',
+        '<table class="compare-table"><tr><th>类型</th><th>If从句</th><th>主句</th><th>时间</th></tr><tr><td>与现在事实相反</td><td>did / were</td><td>would/could/might/should + do</td><td>现在</td></tr><tr><td>与过去事实相反</td><td>had done</td><td>would/could/might/should + have done</td><td>过去</td></tr><tr><td>与将来事实相反</span></td><td>① did ② should do ③ were to do</td><td>would/could/might/should + do</td><td>将来</td></tr></table>',
+        '<span class="label">混合虚拟语气：</span>从句与主句的时间不一致<div class="eg">If you had followed my advice（过去）, you would be successful now（现在）.</div>',
+        '<span class="label">倒装虚拟（省略if）：</span>Had/Were/Should + 主句 + 其他<div class="eg">If I were you = Were I you</div><div class="eg">If he had come = Had he come</div><div class="eg">If it should rain = Should it rain</div>',
+        '<span class="label">含蓄条件句（无if）：</span>without/but for/otherwise/or/or else 相当于 if not<div class="eg">But for your help, I couldn\'t have succeeded. = If it hadn\'t been for your help...</div><div class="eg">I was busy that day. Otherwise, I would have helped you.</div>',
+        '<span class="label">其他虚拟语气场景：</span><div class="eg">wish后的从句：与现在相反用did/were；与过去相反用had done；与将来相反用would/could do</div><div class="eg">as if/as though后的从句：与现在相反用did/were；与过去相反用had done</div><div class="eg">would rather后的从句：与现在/将来相反用did；与过去相反用had done</div><div class="eg">suggest/order/command/demand/request/require/insist/recommend/propose + that + (should) + do（should可省）</div><div class="eg">It is necessary/important/strange/natural/surprising/vital/essential that + (should) + do</div><div class="eg">It is (high/about) time (that) + did / should do（是时候了）</div><div class="eg">If only...!（要是……就好了！）</div>',
+        '<div class="highlight-box"><div class="hb-title">insist 的两种意思</div>insist on doing sth. = 坚持做某事（真实语气）<br>insist that sb. (should) do = 坚持要求（虚拟语气，should可省）<br>insist that sb. did/was = 坚持说/坚持认为（真实语气，用陈述语气）<br><div class="hb-title">suggest 的两种意思</div>suggest doing sth. = 建议/暗示做某事<br>suggest that sb. (should) do = 建议某人做某事（虚拟语气）<br>suggest that sb. did/was = 表明/暗示（真实语气）</div>'
+      ]
+    }
+  ]
+},
+{
+  id: 'clause', icon: '句', title: '三大从句 Clauses', sub: '名词性·定语·状语', bg: 'var(--clause)', tx: 'var(--clause-tx)', bd: 'var(--clause-bd)',
+  subs: [
+    {
+      title: '名词性从句（主/宾/表/同位语）',
+      dot: '#4338CA',
+      items: [
+        '<span class="label">四类名词性从句：</span><div class="eg">主语从句：<strong>What</strong> he said is true. / <strong>That</strong> he will come is certain.</div><div class="eg">宾语从句：I don\'t know <strong>if/whether</strong> he will come. / I wonder <strong>what</strong> you are doing.</div><div class="eg">表语从句：The question is <strong>who</strong> will go. / My idea is <strong>that</strong> we should start early.</div><div class="eg">同位语从句：The news <strong>that our team won</strong> excited us all. / I have no idea <strong>where he lives</strong>.</div>',
+        '<span class="label">引导词选择：</span><div class="eg">that（不做成分，只连接，不可省略的情况：主语从句句首、同位语从句、并列第二个that）</div><div class="eg">whether/if（是否，表一般疑问）— whether可与or not连用放句首；if不能放句首也不能引导主语从句</div><div class="eg">wh-词（what/who/which/when/where/how/why — 充当成分）</div>',
+        '<span class="label">语序：</span>名词性从句一律用<strong>陈述语序</strong>（主语在前，谓语在后）',
+        '<span class="label">时态呼应：</span>主句现在时 → 从句可用任意时态；主句过去时 → 从句通常用某种过去时（客观真理除外）',
+        '<span class="label">同位语从句 vs 定语从句：</span>',
+        '<table class="compare-table"><tr><th>同位语从句</th><th>定语从句</th></tr><tr><td>解释说明名词的内容</td><td>修饰限定名词</td></tr><tr><td>that不做成分，不可省</td><td>that做主/宾时可省</td></tr><tr><td>从句完整</td><td>从句缺少成分</td></tr></table><div class="eg">同位语：The news <strong>that he told me</strong> is false.（that=宾语 → 定语从句）</div><div class="eg">同位语：The news <strong>that he won the game</strong> spread quickly.（从句完整 → 同位语从句）</div>',
+        '<div class="highlight-box"><div class="hb-title">whatever/whoever/whichever</div>= anyone who / anything that（兼具先行词+关系词的功能）<br>Whoever comes first will get a prize. = Anyone who comes first will get a prize.</div>'
+      ]
+    },
+    {
+      title: '定语从句',
+      dot: '#3730A3',
+      items: [
+        '<span class="label">关系代词：</span>',
+        '<table class="compare-table"><tr><th>词</th><th>指代</th><th>从句中的作用</th></tr><tr><td>who</td><td>人</td><td>主语</td></tr><tr><td>whom</td><td>人</td><td>宾语</td></tr><tr><td>whose</td><td>人/物</td><td>定语</td></tr><tr><td>which</td><td>物</td><td>主/宾</td></tr><tr><td>that</td><td>人/物</td><td>主/宾（受限）</td></tr><tr><td>as</td><td>人/物</td><td>主/宾（such/the same/as/so...as）</td></tr></table>',
+        '<span class="label">关系副词：</span>when（时间，=介词+which）；where（地点，=介词+which）；why（原因，=for which，只修饰reason）',
+        '<span class="label">只用that不用which的情况（重点！）：</span>① 先行词为all/much/anything/something/nothing/everything/little/few/none/the one等不定代词时 ② 先行词被all/every/no/some/any/much/only/very/the few/the little/each等词修饰时 ③ 先行词既有人又有物时 ④ 句中已有which避免重复时 ⑤ 当先行词是序数词/最高级或被其修饰时 ⑥ 当先行词被the only/the very/the same/the next/the last修饰时',
+        '<span class="label">介词+关系代词（介词提前）：</span><div class="eg">The house <strong>in which</strong> he lives is very old. = The house <strong>which/that</strong> he lives <strong>in</strong> is very old.</div><div class="eg">介词+whom（指人）；介词+which（指物）</div><div class="eg">注意：介词提前时不能用that！</div>',
+        '<span class="label">非限制性定语从句（逗号隔开）：</span>① 补充说明，去掉不影响主句完整 ② 不能用that ③ 只能用which（不用that）④ 可修饰整个主句（which代替整个主句的意思）<div class="eg">He failed the exam, <strong>which</strong> made his parents angry.</div>',
+        '<span class="label">as 引导定语从句：</span>① such/as/the same/so...as ② as有"正如/就像"之意，常译为"正如""这一点" ③ as可位于句首/句中/句尾，which只能在句尾<div class="eg"><strong>As</strong> is known to all, the earth goes round the sun.</div><div class="eg">He is such a kind man <strong>as</strong> everyone likes.</div>',
+        '<span class="label">定语从句的主谓一致：</span>从句谓语的单复数由<strong>先行词</strong>决定<div class="eg">One of the boys who <strong>are</strong> from America.（先行词boys，复数）</div><div class="eg">The only one of the boys who <strong>is</strong> from America.（先行词the only one，单数）</div>',
+        '<div class="highlight-box"><div class="hb-title">where的扩展用法</div>where可引导定语从句修饰抽象名词：situation/case/point/stage/activity/position/job/race/event/condition/experiment等<div class="eg">This is the situation <strong>where</strong> we find ourselves.</div></div>'
+      ]
+    },
+    {
+      title: '状语从句',
+      dot: '#312E81',
+      items: [
+        '<span class="label">九大类状语从句：</span>时间/地点/原因/条件/目的/结果/让步/方式/比较',
+        '<span class="label">时间状语从句：</span><div class="eg">when（当……时候，既可接时间点也可接时间段）</div><div class="eg">while（当……时候/然而/尽管，只接时间段，谓语常用进行时）</div><div class="eg">as（一边……一边/随着/正当……时候，强调两个动作同时发生）</div><div class="eg">before（在……之前）— 常考：It will be + 时间段 + before...（要过多久才……）</div><div class="eg">after（在……之后）</div><div class="eg">since（自从）— 常考：It is/has been + 时间段 + since...（自从……有多久了）</div><div class="eg">until/till（直到）— not until...（直到……才）；延续性动词+until（一直做到……）</div><div class="eg">as soon as / the moment / immediately / directly（一……就……）</div><div class="eg">whenever / every time / each time / next time（每当/下次）</div>',
+        '<span class="label">条件状语从句：</span>unless(=if not)；as long as；in case；once（一旦）；supposing/provided(that)/on condition(that)',
+        '<span class="label">让步状语从句：</span>although/though（不与but连用）；even if/even though；whether...or...；no matter wh- = wh-ever（whatever/whoever/whichever/whenever/wherever/however）；while（句首表"虽然"）',
+        '<span class="label">结果状语从句：</span>so...that...（so + adj./adv.）；such...that...（such + (a/an) + adj. + n.）<div class="eg">so + many/much/few/little + n. + that...（so也可以接名词）</div><div class="eg">so...that位于句首时主句部分倒装</div>',
+        '<span class="label">地点状语从句：</span>where；wherever；everywhere',
+        '<div class="highlight-box"><div class="hb-title">wherever = no matter where</div>"no matter + 疑问词"只能引导让步状语从句<br>"疑问词 + ever"还可引导名词性从句<br>Whatever/Whoever/Whichever/Whenever/Wherever/However</div>'
+      ]
+    }
+  ]
+},
+{
+  id: 'special', icon: '特', title: '特殊结构与易错点', sub: '倒装·强调·there be·插入语', bg: 'var(--special)', tx: 'var(--special-tx)', bd: 'var(--special-bd)',
+  subs: [
+    {
+      title: '倒装句',
+      dot: '#D97706',
+      items: [
+        '<span class="label">全部倒装（谓语全部移至主语前）：</span><div class="eg">① There be句型</div><div class="eg">② here/there/now/then/out/away/up/down等副词开头 + 不及物动词（come/go/run/fly/rise/follow等），且主语是名词时</div><div class="eg">Here comes the bus. / Away flew the birds. / Out rushed the children.</div><div class="eg">③ 分词/形容词/介词短语 + be + 主语（表语倒装）</div><div class="eg">Standing at the top of the tower was a huge statue.</div>',
+        '<span class="label">部分倒装（助动词/情态动词/be移至主语前）：</span><div class="eg">① 否定词/半否定词置于句首：never/seldom/rarely/hardly/scarcely/barely/little/not/until/by no means/in no case/at no time/on no account/in no way/not only...but also/hardly...when/no sooner...than</div><div class="eg">② "So + adj./adv." 位于句首</div><div class="eg">③ "Only + 状语"位于句首</div><div class="eg">④ so / neither / nor + 助动词 + 主语（表示"也"/"也不"）</div><div class="eg">⑤ as/though引导让步状语从句（表语/状语/动词原形 + as/though + 主语 + 谓语）</div>',
+        '<div class="highlight-box"><div class="hb-title">固定搭配</div>Hardly...when... / No sooner...than...（一……就……，主句用过去完成时，部分倒装）<br>Not until...（直到……才……，主句倒装，until从句不倒装）<br>Not only...but also...（not only部分倒装，but also部分不倒装）</div>'
+      ]
+    },
+    {
+      title: '强调句',
+      dot: '#B45309',
+      items: [
+        '<span class="label">It is/was + 被强调部分 + that/who + 其余部分</span>',
+        '<span class="label">可强调的成分：</span>主语、宾语、状语（时间/地点/原因等），但不能强调谓语/定语/同位语',
+        '<span class="label">判断方法：</span>把It is/was和that/who去掉，句子仍然成立则是强调句',
+        '<span class="label">强调句的一般疑问句：</span>Is/Was it + 被强调部分 + that/who...?',
+        '<span class="label">强调句的特殊疑问句：</span>特殊疑问词 + is/was it + that...?',
+        '<span class="label">强调 not until：</span><div class="formula">It was not until + 时间 + that + 主语 + did + ...</div><div class="eg">It was not until midnight that he came back.（不是直到半夜他才回来）</div>',
+        '<span class="label">强调句与定语从句/时间状语从句的区别：</span><div class="eg">It was 8 o\'clock <strong>that</strong> he arrived.（强调句：他到达的时间是8点）</div><div class="eg">It was 8 o\'clock <strong>when</strong> he arrived.（时间状语从句：当他到达时是8点钟）</div><div class="eg">It was the library <strong>that</strong> he visited yesterday.（强调句：昨天他参观的是图书馆）</div><div class="eg">It was in the library <strong>where</strong> he met her.（定语从句：他在图书馆遇见了她）</div>'
+      ]
+    },
+    {
+      title: 'There be 句型',
+      dot: '#92400E',
+      items: [
+        '<span class="label">基本结构：</span>There be + 名词 + 地点/时间状语（表示"存在有"）',
+        '<span class="label">be的变化：</span>根据就近原则确定单复数；可以有各种时态<div class="eg">There is a book on the desk. / There are many students in the classroom.</div><div class="eg">There has been / There will be / There was / There being / There having been</div>',
+        '<span class="label">There be 的非谓语形式：</span><div class="eg">There being no bus, we had to walk home.（作原因状语）</div><div class="eg">I don\'t want there to be any trouble.（作宾语）</div>',
+        '<span class="label">There be 的变形：</span>There exist/live/stand/lie/seem/appear/happen/remain/occur/come/arise/flow/follow/enter + 名词',
+        '<span class="label">There be 与 have 的区别：</span>There be表"存在"；have表"所属"<div class="eg">There is a pen on the desk.（桌子上有一支笔）</div><div class="eg">I have a pen.（我有一支笔）</div>',
+        '<div class="highlight-box"><div class="hb-title">搭配</div>There is no need (for sb.) to do sth.<br>There is no doubt that...<br>There is no possibility of...<br>There is (no) chance of doing sth.<br>There is no point (in) doing sth.</div>'
+      ]
+    },
+    {
+      title: '插入语与分隔结构',
+      dot: '#78350F',
+      items: [
+        '<span class="label">常用插入语：</span>I think/I believe/I suppose/I guess/I\'m afraid/I hope/I wonder/I assume/it seems/you know/you see/I mean/that is/to be exact/believe it or not/generally speaking/frankly speaking/judging from/to tell the truth/what\'s worse/worse still/what\'s more/besides/however/nevertheless/anyway/anyhow/in fact/as a matter of fact',
+        '<span class="label">插入语的处理方法：</span>理解时可以先忽略插入语，找到主干后再加入插入语理解完整意思。插入语前后常有逗号隔开。',
+        '<span class="label">分隔结构：</span>语法上紧密相关的成分被其他词语隔开<div class="eg">定语从句与先行词被分隔：The new machine <strong>that they bought yesterday</strong> has broken down.</div><div class="eg">主语与谓语被分隔：The ability <strong>to store information</strong> is very important.</div><div class="eg">谓语与宾语被分隔：He explained <strong>to us carefully</strong> the difficult problem.</div>'
+      ]
+    }
+  ]
+}
+];
+
+let totalSubs = 0;
+let openedSubs = new Set();
+
+const TILES = [
+  { bg: '#F0D9D5', fg: '#8F6863' },
+  { bg: '#E8DCC8', fg: '#7A6B52' },
+  { bg: '#D7E2D6', fg: '#5F735E' },
+  { bg: '#DDD8E6', fg: '#6A6578' },
+  { bg: '#F0DDD0', fg: '#8A6A58' },
+  { bg: '#D5E0E5', fg: '#5A6E76' },
+  { bg: '#E8D4D8', fg: '#7A5E66' },
+  { bg: '#EBE4C8', fg: '#7A7048' },
+  { bg: '#E2DFD6', fg: '#6A6660' },
+  { bg: '#D8E4DC', fg: '#5A7264' },
+  { bg: '#E8D8CC', fg: '#7A6458' }
+];
+
+function glyphText(title, index) {
+  const compact = title.replace(/[A-Za-z0-9\s·—&/（）()]/g, '');
+  return (compact.slice(0, 2) || String(index + 1));
+}
+
+function render() {
+  const qnav = document.getElementById('qnav');
+  const content = document.getElementById('content');
+  totalSubs = 0;
+  let qnavHtml = '';
+  let catHtml = '';
+
+  DATA.forEach((cat, ci) => {
+    qnavHtml += `<button class="qnav-btn" type="button" onclick="jumpTo(${ci})">${cat.icon} ${cat.title.split(' ')[0]}</button>`;
+    totalSubs += cat.subs.length;
+
+    const tile = TILES[ci % TILES.length];
+    catHtml += `<section class="folder" id="cat-${ci}" style="--tile:${tile.bg};--tile-fg:${tile.fg}">
+      <div class="folder-head">
+        <div class="folder-icon">${cat.icon}</div>
+        <div>
+          <div class="folder-title">${cat.title}</div>
+          <div class="folder-sub">${cat.sub} · ${cat.subs.length} 个知识点</div>
+        </div>
+      </div>
+      <div class="icon-row">`;
+
+    cat.subs.forEach((sub, si) => {
+      const subId = `${cat.id}-${si}`;
+      catHtml += `<button class="desk-icon" type="button" id="${subId}" onclick="openTopic(${ci}, ${si})">
+        <span class="desk-glyph">${glyphText(sub.title, si)}</span>
+        <span class="desk-label">${sub.title}</span>
+      </button>`;
+    });
+
+    catHtml += `</div></section>`;
+  });
+
+  qnav.innerHTML = qnavHtml;
+  content.innerHTML = catHtml;
+  updateProgress();
+}
+
+function openTopic(ci, si) {
+  const cat = DATA[ci];
+  const sub = cat.subs[si];
+  const subId = `${cat.id}-${si}`;
+  openedSubs.add(subId);
+  document.getElementById(subId)?.classList.add('reviewed');
+  updateProgress();
+
+  document.getElementById('modalKicker').textContent = cat.title;
+  document.getElementById('modalTitle').textContent = sub.title;
+  document.getElementById('modalBody').innerHTML = sub.items.map(item => `<div class="detail-item">${item}</div>`).join('');
+
+  const modal = document.getElementById('topicModal');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+}
+
+function closeModal() {
+  const modal = document.getElementById('topicModal');
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+}
+
+function updateProgress() {
+  const pct = totalSubs ? Math.round(openedSubs.size / totalSubs * 100) : 0;
+  document.getElementById('pgFill').style.width = pct + '%';
+  document.getElementById('pgText').textContent = `已复习 ${openedSubs.size} / ${totalSubs} 个知识点`;
+}
+
+function jumpTo(ci) {
+  document.getElementById(`cat-${ci}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function markAllRead() {
+  DATA.forEach((cat, ci) => {
+    cat.subs.forEach((_, si) => {
+      const id = `${cat.id}-${si}`;
+      openedSubs.add(id);
+      document.getElementById(id)?.classList.add('reviewed');
+    });
+  });
+  updateProgress();
+}
+
+document.getElementById('topicModal').addEventListener('click', (e) => {
+  if (e.target.id === 'topicModal') closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+render();
+</script>
+</body>
+</html>
