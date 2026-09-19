@@ -1,0 +1,23 @@
+{
+  "name": "阅读技巧第1课 细节理解题",
+  "short_name": "阅读第1课",
+  "start_url": "./reading-lesson1.html",
+  "display": "standalone",
+  "background_color": "#FAF6F1",
+  "theme_color": "#FAF6F1",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

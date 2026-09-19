@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF6F1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="阅读第1课">
+<meta name="format-detection" content="telephone=no">
+<title>阅读技巧第1课 细节理解题</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --paper: #FAF6F1;
+  --card: #FFFCFA;
+  --ink: #4A433E;
+  --ink-soft: #8A8178;
+  --ink-faint: #B4AAA2;
+  --line: rgba(180, 150, 140, 0.18);
+  --accent: #C9A39C;
+  --accent-soft: #F4E8E4;
+  --rose: #E8C4BE;
+  --ok: #6E8B73;
+  --ok-soft: #E4EDE4;
+  --bad: #B46A63;
+  --bad-soft: #F6E4E1;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --font-serif: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", "SimSun", Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+html { width: 100%; overflow-x: hidden; }
+body {
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(ellipse 90% 55% at 12% -8%, rgba(232, 196, 188, 0.35), transparent 52%),
+    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(214, 226, 216, 0.32), transparent 48%),
+    #FAF6F1;
+  color: var(--ink);
+  line-height: 1.65;
+  padding-bottom: calc(48px + env(safe-area-inset-bottom));
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+a { color: inherit; }
+.header {
+  background: rgba(255, 252, 250, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: calc(14px + env(safe-area-inset-top)) 20px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--line);
+}
+.wrap { max-width: 880px; margin: 0 auto; }
+.header h1 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #5C534C;
+}
+.header p { font-size: 14px; color: var(--ink-soft); margin-top: 4px; }
+.header .tip {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #9A6B66;
+  background: var(--accent-soft);
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.nav-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 0 4px;
+  scrollbar-width: none;
+}
+.nav-row::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  min-height: 40px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink-soft);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.nav-btn:active { transform: scale(0.97); }
+.desk { max-width: 880px; margin: 0 auto; padding: 8px 16px 0; }
+.section { margin: 22px 0 8px; }
+.section-kicker {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #9A6B66;
+  font-weight: 650;
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 600;
+  margin: 4px 0 12px;
+  color: #5C534C;
+}
+.card {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 16px 16px 18px;
+  box-shadow: 0 8px 24px rgba(180, 140, 130, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  margin: 12px 0;
+}
+.skill {
+  overflow: hidden;
+  padding: 0;
+}
+.skill-head {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 16px 18px;
+  min-height: 64px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.skill-no {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: #F0D9D5;
+  color: #8F6863;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.skill-head h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+}
+.chev {
+  margin-left: auto;
+  color: var(--ink-soft);
+  transition: transform 220ms var(--ease-out);
+  font-size: 18px;
+}
+.skill.open .chev { transform: rotate(180deg); }
+.skill-body {
+  display: none;
+  padding: 0 18px 20px;
+  border-top: 1px solid var(--line);
+}
+.skill.open .skill-body { display: block; }
+.skill-body p, .passage p { margin: 10px 0; font-size: 16.5px; }
+.steps { padding-left: 1.2em; margin: 8px 0 12px; }
+.steps li { margin: 6px 0; }
+.warn, .koujue {
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin: 12px 0 0;
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+.warn {
+  background: #F4E8E4;
+  border-left: 3px solid var(--accent);
+}
+.koujue {
+  background: #EDE6D8;
+  border-left: 3px solid #B7A37A;
+  font-family: var(--font-serif);
+}
+.warn b, .koujue b { display: block; margin-bottom: 4px; letter-spacing: 0.06em; font-size: 13px; font-family: var(--font-sans); }
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+.table-wrap::after {
+  content: "左右滑动查看完整表格";
+  display: none;
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 6px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  min-width: 0;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 9px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--accent-soft); font-weight: 650; }
+.h-sub {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  margin: 8px 0 6px;
+}
+.meta { color: var(--ink-soft); font-size: 13px; margin-bottom: 10px; }
+.passage {
+  font-size: 16.5px;
+  line-height: 1.8;
+}
+.passage .lead { margin-bottom: 12px; }
+.p-h {
+  font-weight: 700;
+  margin: 16px 0 6px;
+  font-size: 16.5px;
+}
+.check { color: #7A5E58; }
+.q {
+  margin: 16px 0 8px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+.q-stem { font-weight: 650; font-size: 16.5px; margin-bottom: 8px; }
+.opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  min-height: 48px;
+  margin: 8px 0;
+  cursor: pointer;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.opt.selected { border-color: var(--accent); background: var(--accent-soft); }
+.opt.correct { border-color: var(--ok); background: var(--ok-soft); }
+.opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.q-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  min-height: 40px;
+  font-size: 14px;
+  font-weight: 550;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn.sec { background: var(--accent-soft); color: #8F6863; }
+.reveal {
+  display: none;
+  margin-top: 8px;
+  font-size: 14.5px;
+  color: #6A5A56;
+  background: #F7F1EA;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.reveal.show { display: block; }
+.answer-lock .skill-body { background: #FBF8F4; }
+@media (hover: hover) and (pointer: fine) {
+  .nav-btn:hover, .skill-head:hover { background: var(--accent-soft); }
+  .opt:hover { background: #FBF6F2; }
+}
+.phone-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.phone-hint {
+  font-size: 12px;
+  color: #9A6B66;
+  background: var(--accent-soft);
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.to-top {
+  position: fixed;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 18px;
+  box-shadow: 0 8px 18px rgba(180, 140, 130, 0.28);
+  z-index: 90;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+@media (max-width: 520px) {
+  .header h1, .section-title { font-size: 21px; }
+  .desk { padding: 8px max(12px, env(safe-area-inset-right)) 0 max(12px, env(safe-area-inset-left)); }
+  .passage, .skill-body p, .q-stem { font-size: 16px; }
+  .h-sub { font-size: 18px; }
+  .card { border-radius: 18px; padding: 14px; }
+  .skill { padding: 0; }
+  .table-wrap::after { display: block; }
+  table { font-size: 13.5px; min-width: 360px; }
+  th, td { padding: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chev { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="wrap">
+    <h1>阅读技巧 · 第1课 细节理解题</h1>
+    <p>浙江高三英语阅读理解与七选五技巧讲义 · 学生版</p>
+    <div class="phone-bar">
+      <span class="phone-hint">手机可添加到主屏幕</span>
+      <button class="btn sec" type="button" id="shareBtn">发给手机 / 分享</button>
+    </div>
+    <div class="nav-row">
+      <button class="nav-btn" type="button" onclick="jump('methods')">方法速记</button>
+      <button class="nav-btn" type="button" onclick="jump('practice')">例题练习</button>
+      <button class="nav-btn" type="button" onclick="jump('homework')">课后作业</button>
+      <button class="nav-btn" type="button" onclick="jump('answers')">参考答案</button>
+    </div>
+  </div>
+</div>
+
+<div class="desk">
+  <section class="section" id="methods">
+    <div class="section-kicker">METHOD</div>
+    <h2 class="section-title">一、方法速记</h2>
+
+    <article class="card skill" id="skill-1">
+      <button class="skill-head" type="button" onclick="toggleSkill('skill-1')" aria-expanded="false">
+        <span class="skill-no">1</span>
+        <span>
+          <h3>技巧1：关键词定位法</h3>
+        </span>
+        <span class="chev">▾</span>
+      </button>
+      <div class="skill-body">
+        <p><strong>定位词优先级：</strong>专有名词（大写）&gt; 数字 &gt; 特殊符号（引号/破折号）&gt; 名词短语</p>
+        <div class="warn"><b>易错提醒</b>⚠️ 不要选全文反复出现的高频词做定位词！</div>
+        <p><strong>操作三步走：</strong></p>
+        <ol class="steps">
+          <li><strong>圈词（3秒）：</strong>读题干，圈1-2个最独特的定位词</li>
+          <li><strong>扫读（10秒）：</strong>回原文快速找定位词及其同义词</li>
+          <li><strong>比对（5秒）：</strong>在定位句前后1-2句范围内比对选项</li>
+        </ol>
+        <div class="koujue"><b>口诀</b>专有数字先圈画，名词动词辅助查；高频词汇别当靶，定位句前后两句比对差。</div>
+      </div>
+    </article>
+
+    <article class="card skill" id="skill-2">
+      <button class="skill-head" type="button" onclick="toggleSkill('skill-2')" aria-expanded="false">
+        <span class="skill-no">2</span>
+        <span>
+          <h3>技巧2：同义替换识别</h3>
+        </span>
+        <span class="chev">▾</span>
+      </button>
+      <div class="skill-body">
+        <p>正确答案一定不是原文原句，一定经过改写。三种常见改写：</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>类型</th><th>说明</th><th>示例</th></tr>
+            <tr><td>同义词替换</td><td>原文词换成同义词</td><td>essential → crucial</td></tr>
+            <tr><td>句式转换</td><td>主动↔被动、条件↔结果</td><td>Nava developed AI → AI was developed by Nava</td></tr>
+            <tr><td>归纳概括</td><td>具体描述→抽象概括</td><td>rescued 237 people → efficiency in processing data</td></tr>
+          </table>
+        </div>
+        <div class="warn"><b>易错提醒</b>⚠️ 看到和原文一模一样的词，反而要警惕——那是干扰项的特征。</div>
+        <div class="koujue"><b>口诀</b>原文原句不能选，同义替换才是真；词性转换上下义，归纳概括要认准。</div>
+      </div>
+    </article>
+
+    <article class="card skill" id="skill-3">
+      <button class="skill-head" type="button" onclick="toggleSkill('skill-3')" aria-expanded="false">
+        <span class="skill-no">3</span>
+        <span>
+          <h3>技巧3：干扰项排除法</h3>
+        </span>
+        <span class="chev">▾</span>
+      </button>
+      <div class="skill-body">
+        <div class="table-wrap">
+          <table>
+            <tr><th>干扰类型</th><th>特征</th><th>怎么识别</th></tr>
+            <tr><td>偷换概念</td><td>主语/宾语被替换</td><td>逐项比对主谓宾</td></tr>
+            <tr><td>无中生有</td><td>原文完全没提</td><td>回原文找依据</td></tr>
+            <tr><td>扩大范围</td><td>some→all, may→will</td><td>注意绝对化词汇：always, never, all, only</td></tr>
+            <tr><td>张冠李戴</td><td>A做的事安到B头上</td><td>标注每个选项对应的主体是谁</td></tr>
+          </table>
+        </div>
+        <p><strong>排除顺序：</strong>先排无中生有 → 再排偷换概念 → 最后比对剩下的</p>
+        <div class="koujue"><b>口诀</b>偷换概念无中生有，扩大范围颠倒因果；四类干扰排三遍，正确答案跑不脱。</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="practice">
+    <div class="section-kicker">PRACTICE</div>
+    <h2 class="section-title">二、例题练习</h2>
+
+    <article class="card" id="ex1">
+      <h3 class="h-sub">练习1：2026届杭州一模 · 阅读A篇</h3>
+      <p class="meta">建议用时：8分钟</p>
+      <div class="passage">
+        <p class="lead">Media literacy isn’t just a nice-to-have skill anymore — it’s essential. At its core, media literacy means understanding how media works — who created a message, why it was made, and how it’s meant to influence the audience. Students are constantly surrounded by messages: some are helpful, others misleading. Teaching them to analyze, question, and evaluate media gives them the tools to think critically and make informed choices. The good news? You can build media literacy into what you’re already doing, one step at a time.</p>
+        <div class="p-h">Use Headlines as Warm-Ups</div>
+        <p>Start class with a real-world headline — ideally one related to your subject area.</p>
+        <p class="check">☑ Is this information reliable?</p>
+        <p class="check">☑ Where did it come from?</p>
+        <p class="check">☑ What might be missing?</p>
+        <p>This five-minute routine builds awareness and can lead to great discussions.</p>
+        <div class="p-h">Compare Two Sources</div>
+        <p>Pick two texts on the same topic but from different perspectives. This could be editorials, news articles, or video content. Ask students to compare:</p>
+        <p class="check">☑ Language and tone.</p>
+        <p class="check">☑ Choice of images.</p>
+        <p class="check">☑ What facts are emphasized or ignored?</p>
+        <p>This is a great way to teach bias (偏见) and point of view, especially in ELA or social studies.</p>
+        <div class="p-h">Build Visual Literacy</div>
+        <p>Use political cartoons, advertisements, or photos to practise interpreting:</p>
+        <p>What’s the message?</p>
+        <p class="check">☑ How is it being communicated visually?</p>
+        <p class="check">☑ Who benefits from this image?</p>
+        <p>This kind of analysis helps students read beyond the text.</p>
+        <p>This is about teaching students to be curious, and you just need to model curiosity. When you say, “Let’s figure out where this came from,” you’re demonstrating to students how to think critically. And when they see you do it regularly, they start doing it too.</p>
+      </div>
+      <div class="q" data-qid="ex1-21">
+        <div class="q-stem">21. What is the primary purpose of teaching media literacy to students?</div>
+        <button class="opt" type="button" data-choice="A">A. To arouse their interest in media.</button>
+        <button class="opt" type="button" data-choice="B">B. To enhance their literature skills.</button>
+        <button class="opt" type="button" data-choice="C">C. To develop their critical thinking ability.</button>
+        <button class="opt" type="button" data-choice="D">D. To broaden their general media knowledge.</button>
+        <div class="q-actions">
+          <button class="btn sec" type="button" onclick="revealAnswer('ex1-21')">对答案</button>
+        </div>
+        <div class="reveal" id="rev-ex1-21"></div>
+      </div>
+      <div class="q" data-qid="ex1-22">
+        <div class="q-stem">22. Which technique of teaching media literacy is recommended?</div>
+        <button class="opt" type="button" data-choice="A">A. Using visual aids in teaching.</button>
+        <button class="opt" type="button" data-choice="B">B. Asking students to compare two sources.</button>
+        <button class="opt" type="button" data-choice="C">C. Providing materials that include pictures.</button>
+        <button class="opt" type="button" data-choice="D">D. Having students figure out better headlines.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex1-22')">对答案</button></div>
+        <div class="reveal" id="rev-ex1-22"></div>
+      </div>
+      <div class="q" data-qid="ex1-23">
+        <div class="q-stem">23. How can teachers best stimulate students’ curiosity?</div>
+        <button class="opt" type="button" data-choice="A">A. Ask routine questions.</button>
+        <button class="opt" type="button" data-choice="B">B. Show, don’t just tell.</button>
+        <button class="opt" type="button" data-choice="C">C. Reward curious students.</button>
+        <button class="opt" type="button" data-choice="D">D. Tell, don’t just watch.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex1-23')">对答案</button></div>
+        <div class="reveal" id="rev-ex1-23"></div>
+      </div>
+    </article>
+
+    <article class="card" id="ex2">
+      <h3 class="h-sub">练习2：2026届浙江强基联盟 · 阅读A篇</h3>
+      <p class="meta">建议用时：8分钟</p>
+      <div class="passage">
+        <p class="lead">Days of heavy rain caused dangerous flooding in central Texas on Friday. The Guadalupe River overflowed, flooding neighborhoods and washing away roads and bridges. Hundreds of people had to leave their homes. Officials say this is the worst flooding the region has seen in years. Below is the breakdown of damages by county.</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>County</th><th>Economic Losses</th><th>Buildings Damaged</th></tr>
+            <tr><td>Hunt</td><td>$ 28 million</td><td>85 (including 12 historic structures)</td></tr>
+            <tr><td>Kerr</td><td>$ 15 million</td><td>62 (including 3 bridges, 2 historic buildings)</td></tr>
+            <tr><td>Comal</td><td>$ 5 million</td><td>34 (including 2 highways)</td></tr>
+            <tr><td>Blanco</td><td>$ 2 million</td><td>18 (including 1 historic building)</td></tr>
+          </table>
+        </div>
+        <p>Below were key updates as of Friday night.</p>
+        <div class="p-h">1. Casualties &amp; Emergency Response</div>
+        <p>The floods have killed 24 people, and 25 campers from Camp Mystic remain missing as searches continue. Emergency crews including the Texas National Guard have rescued 237 people using helicopters supported by over 500 personnel from federal agencies (including FEMA and the U.S. Coast Guard) that are currently assisting in affected areas.</p>
+        <div class="p-h">2. Challenges</div>
+        <p>Rescue teams struggled to reach isolated communities as flooded roads and downed power lines blocked access, delaying critical aid. To make matters worse, early weather warnings had underestimated the flood’s severity, leaving residents little time to reach safety.</p>
+        <div class="p-h">3. Government Response</div>
+        <p>Governor Greg Abbott issued an emergency disaster declaration for 15 central Texas counties, accelerating state funding for recovery efforts. Lieutenant Governor Dan Patrick noted communication outages likely delayed locating missing campers.</p>
+        <div class="p-h">4. Recovery Outlook</div>
+        <p>The Red Cross has set up 12 shelters, helping more than 1,200 displaced families. Environmental agencies warn that flooded factories could cause pollution. Meanwhile, transportation officials say highway repairs may take weeks.</p>
+      </div>
+      <div class="q" data-qid="ex2-21">
+        <div class="q-stem">21. Which county was most severely affected in the floods?</div>
+        <button class="opt" type="button" data-choice="A">A. Hunt.</button>
+        <button class="opt" type="button" data-choice="B">B. Kerr.</button>
+        <button class="opt" type="button" data-choice="C">C. Comal.</button>
+        <button class="opt" type="button" data-choice="D">D. Blanco.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex2-21')">对答案</button></div>
+        <div class="reveal" id="rev-ex2-21"></div>
+      </div>
+      <div class="q" data-qid="ex2-22">
+        <div class="q-stem">22. How many people have been saved by emergency crews as of Friday night?</div>
+        <button class="opt" type="button" data-choice="A">A. 49.</button>
+        <button class="opt" type="button" data-choice="B">B. 237.</button>
+        <button class="opt" type="button" data-choice="C">C. 500.</button>
+        <button class="opt" type="button" data-choice="D">D. 1200.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex2-22')">对答案</button></div>
+        <div class="reveal" id="rev-ex2-22"></div>
+      </div>
+      <div class="q" data-qid="ex2-23">
+        <div class="q-stem">23. What did Governor Greg Abbott do in response to the disaster?</div>
+        <button class="opt" type="button" data-choice="A">A. Ordered search-and-rescue operations.</button>
+        <button class="opt" type="button" data-choice="B">B. Raised emergency funds for recovery.</button>
+        <button class="opt" type="button" data-choice="C">C. Established shelters for affected families.</button>
+        <button class="opt" type="button" data-choice="D">D. Declared a state of emergency disaster.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex2-23')">对答案</button></div>
+        <div class="reveal" id="rev-ex2-23"></div>
+      </div>
+    </article>
+
+    <article class="card" id="ex3">
+      <h3 class="h-sub">练习3：2025届宁波十校 · 阅读A篇</h3>
+      <p class="meta">建议用时：8分钟</p>
+      <div class="passage">
+        <p class="lead">From romantic getaways to family adventures, the world of cruising offers a variety of experiences tailored to different preferences and age groups. Whether you are seeking luxury, affordability, or a blend of entertainment and relaxation, there is a cruise line that fits the bill.</p>
+        <div class="p-h">Virgin Voyages</div>
+        <p>Virgin Voyages is an adult-only cruise line designed for younger couples. It offers cruises from two to 15 nights, featuring acrobatic shows, late-night dance parties, and themed nights. Relaxation options include yoga classes, spa treatments, and dining at the vegetarian-friendly Razzle Dazzle restaurant.</p>
+        <div class="p-h">Seabourn Cruise Line</div>
+        <p>Seabourn provides a luxurious cruising experience with all-oceanfront suites and personalized service. Its ships accommodate 458 or 600 guests and offer durations from seven to 90 days. Every cabin features ocean views, and ships include fitness centers, spas, casinos, pools, putting courses, and live music venues. Seabourn’s upscale dining options and stimulating activities ensure a premium experience.</p>
+        <div class="p-h">Holland America Line</div>
+        <p>Holland America Line offers an affordable premium cruising experience. Catering to adults, its midsize ships carry 1,432 to 2,668 guests and offer cruises from one to 133 days. Enrichment programs like digital photography, cooking demonstrations, and mixology workshops provide entertainment. Passengers can also enjoy a variety of dining options and relaxation activities.</p>
+        <div class="p-h">Disney Cruise Line</div>
+        <p>Disney Cruise Line is renowned for its family-friendly atmosphere, colorful services, and well-equipped staterooms. With ships ranging from 2,713 to 4,000 passengers, voyages last from two to 15 nights. Disney’s entertainment options include Mickey’s Party and pirate-themed dinners, appealing to passengers of all ages. Kid-friendly dining venues and facilities are available, while adults can enjoy exclusive dining areas, quiet pool spots, and nightlife options.</p>
+      </div>
+      <div class="q" data-qid="ex3-21">
+        <div class="q-stem">21. Who are the target audience of Seabourn Cruise Line?</div>
+        <button class="opt" type="button" data-choice="A">A. Families with children.</button>
+        <button class="opt" type="button" data-choice="B">B. Young couples fond of adventure.</button>
+        <button class="opt" type="button" data-choice="C">C. Adults who seek a reasonably priced experience.</button>
+        <button class="opt" type="button" data-choice="D">D. Travelers preferring luxurious and exclusive services.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex3-21')">对答案</button></div>
+        <div class="reveal" id="rev-ex3-21"></div>
+      </div>
+      <div class="q" data-qid="ex3-22">
+        <div class="q-stem">22. What sets Disney Cruise Line apart from other cruise lines?</div>
+        <button class="opt" type="button" data-choice="A">A. All-oceanfront suites.</button>
+        <button class="opt" type="button" data-choice="B">B. Kid-friendly entertainment.</button>
+        <button class="opt" type="button" data-choice="C">C. Cruises lasting up to 15 nights.</button>
+        <button class="opt" type="button" data-choice="D">D. Programs like digital photography.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex3-22')">对答案</button></div>
+        <div class="reveal" id="rev-ex3-22"></div>
+      </div>
+      <div class="q" data-qid="ex3-23">
+        <div class="q-stem">23. Where is the text probably taken from?</div>
+        <button class="opt" type="button" data-choice="A">A. A travel guide.</button>
+        <button class="opt" type="button" data-choice="B">B. A product advertisement.</button>
+        <button class="opt" type="button" data-choice="C">C. A science magazine.</button>
+        <button class="opt" type="button" data-choice="D">D. An entertainment newspaper.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex3-23')">对答案</button></div>
+        <div class="reveal" id="rev-ex3-23"></div>
+      </div>
+    </article>
+
+    <article class="card" id="ex4">
+      <h3 class="h-sub">练习4：2026届新阵地教育联盟 · 阅读C篇</h3>
+      <p class="meta">建议用时：10分钟</p>
+      <div class="passage">
+        <p class="lead">Can doctors make better cancer treatment decisions if they consult fish? Previous studies have shown that zebrafish avatars could help identify cancer treatments. Rita Fior, a developmental biologist and her colleagues now want to determine whether that ability can benefit patients.</p>
+        <p>Zebrafish avatars are tiny, fast-growing models of individual cancer patients created by transplanting the patient’s own tumor (肿瘤) cells into 2-day-old zebrafish embryos (胚胎). These tiny fish then act as living substitutes for the patient, allowing researchers to test multiple cancer drugs or radiation on the patient’s tumor cells within 4-7 days—far quicker than traditional mouse models.</p>
+        <p>In a 2024 report in <em>Nature Communications</em>, the scientists generated avatars for 55 patients and putting the fish on the same type of chemo-therapy the people received. For 50 of the patients, the fish “predicted” the outcome of treatment. An added benefit, Fior says, is that avatars can reveal key characteristics of tumors such as whether they are likely to spread.</p>
+        <p>Zebrafish are more similar to humans than cell cultures and far cheaper to raise than mice. The small, transparent embryos are also easier to analyze, says Sofia de Oliveira, a biologist at the Albert Einstein College of Medicine. “You can visualize the whole animal under the microscope,” she explains, “and easily determine the spread of cancer cells.”</p>
+        <p>In the clinical trial, Fior and her team will test that promise by separating cancer cells from the fluid that builds up in the stomach of people whose cancer cells have spread outside the original site and is usually drained as part of treatment. “We are not doing an extra procedure on the patients,” she says. The cells will then be implanted into the fish embryos. Instead of testing experimental drugs, as many other clinical trials do, the study will determine which combination of treatments works best. Most of the patients will receive medications suggested by the zebrafish results.</p>
+      </div>
+      <div class="q" data-qid="ex4-28">
+        <div class="q-stem">28. What are zebrafish avatars?</div>
+        <button class="opt" type="button" data-choice="A">A. Models of mouse embryos.</button>
+        <button class="opt" type="button" data-choice="B">B. Radiation on the tumor cells.</button>
+        <button class="opt" type="button" data-choice="C">C. Drugs for multiple cancers.</button>
+        <button class="opt" type="button" data-choice="D">D. Replacements for cancer patients.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex4-28')">对答案</button></div>
+        <div class="reveal" id="rev-ex4-28"></div>
+      </div>
+      <div class="q" data-qid="ex4-29">
+        <div class="q-stem">29. How do zebrafish avatars help doctors with cancer treatments?</div>
+        <button class="opt" type="button" data-choice="A">A. By forecasting treatment results.</button>
+        <button class="opt" type="button" data-choice="B">B. By predicting where tumors will spread.</button>
+        <button class="opt" type="button" data-choice="C">C. By killing tumor cells in cancer patients.</button>
+        <button class="opt" type="button" data-choice="D">D. By transplanting zebrafish cells into humans.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex4-29')">对答案</button></div>
+        <div class="reveal" id="rev-ex4-29"></div>
+      </div>
+      <div class="q" data-qid="ex4-30">
+        <div class="q-stem">30. What makes zebrafish an ideal species for cancer research?</div>
+        <button class="opt" type="button" data-choice="A">A. Their similarity to cell cultures.</button>
+        <button class="opt" type="button" data-choice="B">B. Their small sizes and dark embryos.</button>
+        <button class="opt" type="button" data-choice="C">C. Their low cost and ease of analysis.</button>
+        <button class="opt" type="button" data-choice="D">D. Their complex appearance and structure.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex4-30')">对答案</button></div>
+        <div class="reveal" id="rev-ex4-30"></div>
+      </div>
+      <div class="q" data-qid="ex4-31">
+        <div class="q-stem">31. What is the primary goal of the clinical trial led by Fior and her team?</div>
+        <button class="opt" type="button" data-choice="A">A. To develop new experimental drugs for cancers.</button>
+        <button class="opt" type="button" data-choice="B">B. To test the safety of chemo-therapy on zebrafish.</button>
+        <button class="opt" type="button" data-choice="C">C. To identify the ideal combination of cancer therapies.</button>
+        <button class="opt" type="button" data-choice="D">D. To separate cancer cells from the fluid of cancer patients.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('ex4-31')">对答案</button></div>
+        <div class="reveal" id="rev-ex4-31"></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="homework">
+    <div class="section-kicker">HOMEWORK</div>
+    <h2 class="section-title">三、课后作业</h2>
+
+    <article class="card" id="hw1">
+      <h3 class="h-sub">作业1：2026届新阵地教育联盟 · 阅读A篇</h3>
+      <p class="meta">建议用时：7分钟</p>
+      <div class="passage">
+        <p class="lead">Coachella (officially called the Coachella Valley Music and Arts Festival and sometimes known as Coachella Festival) is an annual music and arts festival held in Indio, California, in the Coachella Valley in the Colorado Desert. It is typically held in mid-April, spanning two weekends. The event features musical artists from many genres of music, including rock, pop, indie, hip hop and electronic dance music, as well as art installations and sculptures. Across the grounds, several stages continuously host live music.</p>
+        <div class="p-h">General Festival Information</div>
+        <p>All ages welcome.</p>
+        <p>Kids 5 &amp; under Free. (General admission only)</p>
+        <p>Both weekends will feature the same lineup, art, food and activities.</p>
+        <p>Lineup &amp; set times are subject to change without notice.</p>
+        <p>Onsite camping is 18+ unless accompanied by a parent or legal guardian.</p>
+        <div class="p-h">About Passes</div>
+        <p>A Festival Pass is a single wristband that is worn all three days.</p>
+        <p>A wristband is valid for the entire weekend that you purchased.</p>
+        <p>A wristband is only valid for the specific weekend that you purchased.</p>
+        <p>A wristband is required to enter the parking, camping and venue grounds.</p>
+        <p>Wristbands are invalid if tampered with or removed.</p>
+        <p>Wristbands are non-transferable once applied.</p>
+        <p>Do not put your wristband on until you are on your way to the festival and have registered it.</p>
+        <div class="p-h">Open Hours</div>
+        <p>General parking opens Friday-Sunday from 11:00 am to 12:00 pm.</p>
+        <p>Coachella shuttle service will depart from local hotels at 1:00 pm Friday-Sunday.</p>
+      </div>
+      <div class="q" data-qid="hw1-21">
+        <div class="q-stem">21. What does Coachella Festival feature?</div>
+        <button class="opt" type="button" data-choice="A">A. Single-stage shows.</button>
+        <button class="opt" type="button" data-choice="B">B. Various music types.</button>
+        <button class="opt" type="button" data-choice="C">C. One-weekend duration.</button>
+        <button class="opt" type="button" data-choice="D">D. Recorded performances.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw1-21')">对答案</button></div>
+        <div class="reveal" id="rev-hw1-21"></div>
+      </div>
+      <div class="q" data-qid="hw1-22">
+        <div class="q-stem">22. What do we know about Coachella Festival?</div>
+        <button class="opt" type="button" data-choice="A">A. Kids aged 5 can access everything free.</button>
+        <button class="opt" type="button" data-choice="B">B. The lineup is guaranteed not to change.</button>
+        <button class="opt" type="button" data-choice="C">C. Festival-goers should enter with a paper ticket.</button>
+        <button class="opt" type="button" data-choice="D">D. Wristbands can not be transferred once put on.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw1-22')">对答案</button></div>
+        <div class="reveal" id="rev-hw1-22"></div>
+      </div>
+      <div class="q" data-qid="hw1-23">
+        <div class="q-stem">23. When can Coachella festival-goers take the shuttle bus to reach the venue?</div>
+        <button class="opt" type="button" data-choice="A">A. 1:00 pm Saturday.</button>
+        <button class="opt" type="button" data-choice="B">B. 12:00 am Friday.</button>
+        <button class="opt" type="button" data-choice="C">C. 11:00 am Sunday.</button>
+        <button class="opt" type="button" data-choice="D">D. 2:00 pm Saturday.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw1-23')">对答案</button></div>
+        <div class="reveal" id="rev-hw1-23"></div>
+      </div>
+    </article>
+
+    <article class="card" id="hw2">
+      <h3 class="h-sub">作业2：2026届新阵地教育联盟 · 阅读B篇</h3>
+      <p class="meta">建议用时：10分钟</p>
+      <div class="passage">
+        <p class="lead">My parents have a big cat at home named Comet. He has big ears, a large head, huge feet, and a gentle personality—but we have no way of knowing for sure. He came from the local animal shelter. My brother and I didn’t really want him, since he was a kitten and we wanted to adopt an adult cat because we thought the kittens would be more likely to find another home, but my little sister insisted.</p>
+        <p>We brought Comet home that day. He soon fell ill and grew alarmingly weak—his ribs stuck out, his eyes swelled, and his fur dulled. He became so fragile that I feared touching him, though he clearly needed care.</p>
+        <p>Some years later, I went home one afternoon after having had an emotional breakdown. My whole life was upside down. I felt hollow, dead, an empty shell of a person. I had no idea what pieces were even worth picking up again.</p>
+        <p>I found Comet curled up in a corner that afternoon. He’d been asleep, but he lifted his head and looked at me when I came in. I reached a hand toward him. He nuzzled it, immediately burst into a deep, loud purr, and gave me a perfectly content cat grin. I moved my hand down to scratch his back and sides, and he stretched luxuriously, giving me looks of absolute adoration.</p>
+        <p>At that point, it hit me: this cat loved me. The cat I didn’t want, the cat I couldn’t bear to take care of when his life depended on it, loved me. And he would always love me. No matter what was going on in my life, Comet would still look up from a nap when I entered the room, would still love to be touched by me.</p>
+        <p>I believe love is steadfast. I believe that real love, whether it comes from your families, or a shelter cat, is offered determinedly and unconditionally. Love is what enables us to pick up the pieces of our broken lives and go on.</p>
+      </div>
+      <div class="q" data-qid="hw2-24">
+        <div class="q-stem">24. Why was the writer unwilling to adopt Comet initially?</div>
+        <button class="opt" type="button" data-choice="A">A. He thought adult cats were more gentle.</button>
+        <button class="opt" type="button" data-choice="B">B. His sister resisted adopting Comet.</button>
+        <button class="opt" type="button" data-choice="C">C. Kittens were thought easier to be adopted.</button>
+        <button class="opt" type="button" data-choice="D">D. Comet was a weak and sick kitten.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw2-24')">对答案</button></div>
+        <div class="reveal" id="rev-hw2-24"></div>
+      </div>
+      <div class="q" data-qid="hw2-25">
+        <div class="q-stem">25. How did Comet help the writer go through his emotional breakdown?</div>
+        <button class="opt" type="button" data-choice="A">A. By lying quietly beside him.</button>
+        <button class="opt" type="button" data-choice="B">B. By making him feel deeply loved.</button>
+        <button class="opt" type="button" data-choice="C">C. By distracting him with grins.</button>
+        <button class="opt" type="button" data-choice="D">D. By protecting him from loneliness.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw2-25')">对答案</button></div>
+        <div class="reveal" id="rev-hw2-25"></div>
+      </div>
+      <div class="q" data-qid="hw2-26">
+        <div class="q-stem">26. What does the underlined word “steadfast” in paragraph 6 mean?</div>
+        <button class="opt" type="button" data-choice="A">A. Faithful.</button>
+        <button class="opt" type="button" data-choice="B">B. Romantic.</button>
+        <button class="opt" type="button" data-choice="C">C. Temporary.</button>
+        <button class="opt" type="button" data-choice="D">D. Unforgettable.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw2-26')">对答案</button></div>
+        <div class="reveal" id="rev-hw2-26"></div>
+      </div>
+      <div class="q" data-qid="hw2-27">
+        <div class="q-stem">27. Which of the following can be a suitable title for the text?</div>
+        <button class="opt" type="button" data-choice="A">A. Love wins all</button>
+        <button class="opt" type="button" data-choice="B">B. Love on four feet</button>
+        <button class="opt" type="button" data-choice="C">C. An encounter with a kitten</button>
+        <button class="opt" type="button" data-choice="D">D. A rescue of a shelter kitten</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw2-27')">对答案</button></div>
+        <div class="reveal" id="rev-hw2-27"></div>
+      </div>
+    </article>
+
+    <article class="card" id="hw3">
+      <h3 class="h-sub">作业3：2026届浙江强基联盟 · 阅读B篇</h3>
+      <p class="meta">建议用时：10分钟</p>
+      <div class="passage">
+        <p class="lead">In a city of wealth, comfort and fine food, there’s a quiet alley (小巷) in London’s Camden where passers-by often take several photos. Sharing space with elegant cafes and world-class bars, a tiny fruit and vegetable stand seems to have been transported from a country road far away. But what makes the stall even more remarkable in the heart of Camden is that payment is on the honor system—customers just throw coins into an old mailbox—and most of the items on offer are priced at £1 in a neighborhood where fresh food usually goes for much, much more.</p>
+        <p>The greengrocer with a heart of gold—a Chinese immigrant in her 50s who runs this stall alone—is rarely glimpsed by her grateful customers. Lena Wong rises before dawn to prepare to work in her small plot in Enfield, outside London. Depending on the season, she’ll reap onions, eggplant, green peppers, etc. And she works several overnight shifts every week at a nursing home to supplement her and her husband’s modest salaries.</p>
+        <p>All this started one day as she was selling produce in Enfield, and a young customer said that he barely earned enough to buy food. “I hate the idea of young people walking around hungry,” Lena Wong said. The seed was planted. “I want young people to feel that they’re not forgotten, that they are treasured,” she said. “That not everyone is out for himself. I can make money anytime. Right now, I want to give young people a helping hand.”</p>
+        <p>Sometimes, when she arrives late in the day, customers get a chance to thank her in person. In return, she’s fond of offering botanical sayings that she collected from a life that has had its share of both joy and pain. “Even in a field full of weeds,” Lena Wong likes to say, “you can grow something—if you put in the effort.”</p>
+      </div>
+      <div class="q" data-qid="hw3-24">
+        <div class="q-stem">24. Why is the stall in the quiet alley special?</div>
+        <button class="opt" type="button" data-choice="A">A. It is located in an expensive cafe.</button>
+        <button class="opt" type="button" data-choice="B">B. People often take good pictures there.</button>
+        <button class="opt" type="button" data-choice="C">C. It operates on a trust and credit system.</button>
+        <button class="opt" type="button" data-choice="D">D. The goods sold there come from distant places.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw3-24')">对答案</button></div>
+        <div class="reveal" id="rev-hw3-24"></div>
+      </div>
+      <div class="q" data-qid="hw3-25">
+        <div class="q-stem">25. What can we learn about Lena Wong’s job?</div>
+        <button class="opt" type="button" data-choice="A">A. It requires her to work long hours.</button>
+        <button class="opt" type="button" data-choice="B">B. It pays well to support her family.</button>
+        <button class="opt" type="button" data-choice="C">C. It attracts widespread media attention.</button>
+        <button class="opt" type="button" data-choice="D">D. It focuses on organic produce.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw3-25')">对答案</button></div>
+        <div class="reveal" id="rev-hw3-25"></div>
+      </div>
+      <div class="q" data-qid="hw3-26">
+        <div class="q-stem">26. Who inspired Lena Wong to help others?</div>
+        <button class="opt" type="button" data-choice="A">A. Her grateful customers.</button>
+        <button class="opt" type="button" data-choice="B">B. A hungry youth.</button>
+        <button class="opt" type="button" data-choice="C">C. Her modest husband.</button>
+        <button class="opt" type="button" data-choice="D">D. Some young people.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw3-26')">对答案</button></div>
+        <div class="reveal" id="rev-hw3-26"></div>
+      </div>
+      <div class="q" data-qid="hw3-27">
+        <div class="q-stem">27. Which of the following best describes Lena Wong according to the text?</div>
+        <button class="opt" type="button" data-choice="A">A. Kind-hearted.</button>
+        <button class="opt" type="button" data-choice="B">B. Well-educated.</button>
+        <button class="opt" type="button" data-choice="C">C. Job-centered.</button>
+        <button class="opt" type="button" data-choice="D">D. Strong-willed.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw3-27')">对答案</button></div>
+        <div class="reveal" id="rev-hw3-27"></div>
+      </div>
+    </article>
+
+    <article class="card" id="hw4">
+      <h3 class="h-sub">作业4：2025届宁波十校 · 阅读B篇</h3>
+      <p class="meta">建议用时：10分钟</p>
+      <div class="passage">
+        <p class="lead">My childhood was a painted picture of a sunny sky and rolling green fields stretching to the horizon. It tasted of sharp berries and smelt of sour grapes. My family lived in a cabin in the countryside, but I lived in my mother’s arms. They were so delicate but strong, and her red hair falling around me was like a curtain that separated me from the world.</p>
+        <p>Childhood was simple. The borders of my village were the furthest my troubles went and monsters only lived in the pages of books. Every day was a waking dream of running races and muddy knees. My village was archaic, dying cabins housing dying farmers with dying traditions. There weren’t many children but me and the other boys; boys of butchers and sellers formed our own group.</p>
+        <p>They called us wild. I suppose we were. Trees and mountains formed our playgrounds and fights broke out as easily as sudden laughter. Liberated from the restrictions of society, we would bound into the woods, deeper and deeper until we found a lake which, with a wild yell, we would jump into all at once.</p>
+        <p>My most vivid memories from boyhood center around that lake. Water shone brightly and the sounds of our screams broke into the outcry from birds. The shock of cold water against sweating skin would wake every nerve in my body and my bare feet would hit the sinking muddy bottom. As we submerged, time would stop, movements slowing as bubbles rose around us.</p>
+        <p>I was drowning. I was living. I was living. I was drowning. For timelessness or a second (both felt the same), we would pause, curl up, and then be forced back out into breathing air.</p>
+        <p>We should have known that it wouldn’t last forever. Yet, even under the best circumstances, there’s something so tragic about growing up: your perspective on the people and life around you changes; you always struggle to reach a mirror, only to find yourself tall enough to see your reflection one day and find a different person staring back out at you.</p>
+      </div>
+      <div class="q" data-qid="hw4-24">
+        <div class="q-stem">24. Why does the author describe his mother’s red hair as “a curtain that separated me from the world”?</div>
+        <button class="opt" type="button" data-choice="A">A. To show her artistic personality.</button>
+        <button class="opt" type="button" data-choice="B">B. To emphasize her protective presence.</button>
+        <button class="opt" type="button" data-choice="C">C. To illustrate his fascination with colors.</button>
+        <button class="opt" type="button" data-choice="D">D. To reveal his fear of social interactions.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw4-24')">对答案</button></div>
+        <div class="reveal" id="rev-hw4-24"></div>
+      </div>
+      <div class="q" data-qid="hw4-25">
+        <div class="q-stem">25. What does the underlined word “archaic” in paragraph 2 most probably mean?</div>
+        <button class="opt" type="button" data-choice="A">A. Old-fashioned.</button>
+        <button class="opt" type="button" data-choice="B">B. Time-honored.</button>
+        <button class="opt" type="button" data-choice="C">C. Mountain-ringed.</button>
+        <button class="opt" type="button" data-choice="D">D. Poverty-stricken.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw4-25')">对答案</button></div>
+        <div class="reveal" id="rev-hw4-25"></div>
+      </div>
+      <div class="q" data-qid="hw4-26">
+        <div class="q-stem">26. What does the lake symbolize in the author’s boyhood memories?</div>
+        <button class="opt" type="button" data-choice="A">A. A dangerous pause in time.</button>
+        <button class="opt" type="button" data-choice="B">B. A mirror reflecting adulthood.</button>
+        <button class="opt" type="button" data-choice="C">C. A place of social restrictions.</button>
+        <button class="opt" type="button" data-choice="D">D. A temporary escape from reality.</button>
+        <div class="q-actions"><button class="btn sec" type="button" onclick="revealAnswer('hw4-26')">对答案</button></div>
+        <div class="reveal" id="rev-hw4-26"></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="answers">
+    <div class="section-kicker">KEY</div>
+    <h2 class="section-title">参考答案（做完再看）</h2>
+    <article class="card skill answer-lock" id="key-box">
+      <button class="skill-head" type="button" onclick="toggleSkill('key-box')" aria-expanded="false">
+        <span class="skill-no">答</span>
+        <span>
+          <h3>第1课 细节理解题 · 答案表</h3>
+        </span>
+        <span class="chev">▾</span>
+      </button>
+      <div class="skill-body">
+        <div class="table-wrap">
+          <table>
+            <tr><th>篇目</th><th>题号</th><th>答案</th></tr>
+            <tr><td rowspan="3">练习1：杭州一模A篇</td><td>21</td><td>C</td></tr>
+            <tr><td>22</td><td>B</td></tr>
+            <tr><td>23</td><td>B</td></tr>
+            <tr><td rowspan="3">练习2：强基联盟A篇</td><td>21</td><td>A</td></tr>
+            <tr><td>22</td><td>B</td></tr>
+            <tr><td>23</td><td>D</td></tr>
+            <tr><td rowspan="3">练习3：宁波十校A篇</td><td>21</td><td>D</td></tr>
+            <tr><td>22</td><td>B</td></tr>
+            <tr><td>23</td><td>A</td></tr>
+            <tr><td rowspan="4">练习4：新阵地C篇</td><td>28</td><td>D</td></tr>
+            <tr><td>29</td><td>A</td></tr>
+            <tr><td>30</td><td>C</td></tr>
+            <tr><td>31</td><td>C</td></tr>
+            <tr><td rowspan="3">作业1：新阵地A篇</td><td>21</td><td>B</td></tr>
+            <tr><td>22</td><td>D</td></tr>
+            <tr><td>23</td><td>A</td></tr>
+            <tr><td rowspan="4">作业2：新阵地B篇</td><td>24</td><td>C</td></tr>
+            <tr><td>25</td><td>B</td></tr>
+            <tr><td>26</td><td>A</td></tr>
+            <tr><td>27</td><td>B</td></tr>
+            <tr><td rowspan="4">作业3：强基联盟B篇</td><td>24</td><td>C</td></tr>
+            <tr><td>25</td><td>A</td></tr>
+            <tr><td>26</td><td>B</td></tr>
+            <tr><td>27</td><td>A</td></tr>
+            <tr><td rowspan="3">作业4：宁波十校B篇</td><td>24</td><td>B</td></tr>
+            <tr><td>25</td><td>A</td></tr>
+            <tr><td>26</td><td>D</td></tr>
+          </table>
+        </div>
+      </div>
+    </article>
+  </section>
+</div>
+<button class="to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到顶部">↑</button>
+
+<script>
+const ANSWERS = {
+  "ex1-21": "C", "ex1-22": "B", "ex1-23": "B",
+  "ex2-21": "A", "ex2-22": "B", "ex2-23": "D",
+  "ex3-21": "D", "ex3-22": "B", "ex3-23": "A",
+  "ex4-28": "D", "ex4-29": "A", "ex4-30": "C", "ex4-31": "C",
+  "hw1-21": "B", "hw1-22": "D", "hw1-23": "A",
+  "hw2-24": "C", "hw2-25": "B", "hw2-26": "A", "hw2-27": "B",
+  "hw3-24": "C", "hw3-25": "A", "hw3-26": "B", "hw3-27": "A",
+  "hw4-24": "B", "hw4-25": "A", "hw4-26": "D"
+};
+
+function toggleSkill(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle("open");
+  const btn = el.querySelector(".skill-head");
+  if (btn) btn.setAttribute("aria-expanded", el.classList.contains("open") ? "true" : "false");
+}
+
+function jump(id) {
+  document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+document.querySelectorAll(".q").forEach((box) => {
+  box.querySelectorAll(".opt").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (box.dataset.locked === "1") return;
+      box.querySelectorAll(".opt").forEach((x) => x.classList.remove("selected"));
+      btn.classList.add("selected");
+      box.dataset.choice = btn.dataset.choice;
+    });
+  });
+});
+
+function revealAnswer(qid) {
+  const box = document.querySelector(`[data-qid="${qid}"]`);
+  const key = ANSWERS[qid];
+  const picked = box.dataset.choice;
+  box.dataset.locked = "1";
+  box.querySelectorAll(".opt").forEach((btn) => {
+    if (btn.dataset.choice === key) btn.classList.add("correct");
+    if (btn.classList.contains("selected") && btn.dataset.choice !== key) btn.classList.add("wrong");
+  });
+  const panel = document.getElementById("rev-" + qid);
+  panel.classList.add("show");
+  panel.textContent = "答案：" + key;
+}
+
+const shareBtn = document.getElementById("shareBtn");
+if (shareBtn) {
+  shareBtn.addEventListener("click", async () => {
+    const payload = {
+      title: document.title,
+      text: "高考英语阅读技巧第1课（细节理解题）",
+      url: location.href
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(payload);
+        return;
+      }
+    } catch (err) {
+      if (err && err.name === "AbortError") return;
+    }
+    try {
+      await navigator.clipboard.writeText(location.href);
+      shareBtn.textContent = "链接已复制";
+      setTimeout(() => { shareBtn.textContent = "发给手机 / 分享"; }, 1800);
+    } catch (err) {
+      prompt("复制这个链接到手机打开：", location.href);
+    }
+  });
+}
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
+</script>
+</body>
+</html>
