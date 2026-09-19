@@ -467,6 +467,7 @@ body.modal-open { overflow: hidden; }
   <h1>高考英语语法 · 考前扫盲导图</h1>
   <p>知识点按桌面图标横排整理，点开即可复习</p>
   <div class="tip">点击知识点查看详情 · 共 11 大语法体系</div>
+  <div class="tip" style="margin-left:8px;"><a href="classroom-feedback/2026-09-19.html" style="color:inherit;text-decoration:none;">9.19 课堂反馈 · that/what · whether/that · how/what</a></div>
 </div>
 
 <div class="desk">
@@ -904,7 +905,7 @@ const DATA = [
   ]
 },
 {
-  id: 'clause', icon: '句', title: '三大从句 Clauses', sub: '名词性·定语·状语', bg: 'var(--clause)', tx: 'var(--clause-tx)', bd: 'var(--clause-bd)',
+  id: 'clause', icon: '句', title: '三大从句 Clauses', sub: '名词性·定语·状语 · that/what/whether/how', bg: 'var(--clause)', tx: 'var(--clause-tx)', bd: 'var(--clause-bd)',
   subs: [
     {
       title: '名词性从句（主/宾/表/同位语）',
@@ -917,6 +918,40 @@ const DATA = [
         '<span class="label">同位语从句 vs 定语从句：</span>',
         '<table class="compare-table"><tr><th>同位语从句</th><th>定语从句</th></tr><tr><td>解释说明名词的内容</td><td>修饰限定名词</td></tr><tr><td>that不做成分，不可省</td><td>that做主/宾时可省</td></tr><tr><td>从句完整</td><td>从句缺少成分</td></tr></table><div class="eg">同位语：The news <strong>that he told me</strong> is false.（that=宾语 → 定语从句）</div><div class="eg">同位语：The news <strong>that he won the game</strong> spread quickly.（从句完整 → 同位语从句）</div>',
         '<div class="highlight-box"><div class="hb-title">whatever/whoever/whichever</div>= anyone who / anything that（兼具先行词+关系词的功能）<br>Whoever comes first will get a prize. = Anyone who comes first will get a prize.</div>'
+      ]
+    },
+    {
+      title: 'that vs what（先查成分）',
+      dot: '#4338CA',
+      items: [
+        '<div class="formula">从句完整 → that（不充当成分）<br>从句缺主/宾/表 → what（必须充当成分，= the thing(s) that）</div>',
+        '<span class="label">that：</span>纯连词，无实义。宾语从句中常可省；主语从句句首、同位语从句中不可省。',
+        '<span class="label">what：</span>连接代词，永远不能省，也不能引导定语从句。',
+        '<div class="eg">I know <strong>that</strong> media literacy is essential.（从句完整）</div><div class="eg">I know <strong>what</strong> media literacy means.（means 缺宾语）</div>',
+        '<div class="highlight-box"><div class="hb-title">易错</div>✗ I know what media literacy is essential.（从句已完整，what 没位置）<br>✗ I know that media literacy means.（means 缺宾语，that 不能充当成分）<br>Officials say <strong>(that)</strong> this is the worst flooding.（新闻里 that 可省）</div>'
+      ]
+    },
+    {
+      title: 'whether vs that（确定还是是否）',
+      dot: '#3730A3',
+      items: [
+        '<div class="formula">确定的陈述 → that<br>不确定的「是否」 → whether（或 if）</div>',
+        '<span class="label">that 常见前词：</span>say / believe / know / warn / note / think',
+        '<span class="label">whether 常见前词：</span>wonder / ask / not sure / doubt / decide',
+        '<div class="eg">Officials say <strong>that</strong> this is the worst flooding.（宣布事实）</div><div class="eg">They are not sure <strong>whether</strong> they can reach safety.（是否来得及）</div>',
+        '<div class="highlight-box"><div class="hb-title">语义差（必记）</div>I didn\'t know <strong>that</strong> he had left. = 他走了，我当时不知道。<br>I didn\'t know <strong>whether</strong> he had left. = 他走没走，我当时不清楚。</div>',
+        '<span class="label">只用 whether、不用 if：</span>① 介词后 ② whether to do ③ 主语从句句首 ④ whether … or not'
+      ]
+    },
+    {
+      title: 'how vs what（方式还是内容）',
+      dot: '#312E81',
+      items: [
+        '<div class="formula">how = 怎样 / 多么（方式、程度）<br>what = 什么（内容、事物）</div>',
+        '<div class="eg"><strong>How</strong> can teachers stimulate curiosity?（问方法）</div><div class="eg"><strong>What</strong> is the primary purpose?（问内容）</div>',
+        '<div class="eg">understanding <strong>how</strong> media works（怎样运作） vs understanding <strong>what</strong> the message is（信息是什么）</div>',
+        '<span class="label">how to / what to：</span><div class="eg">I don\'t know <strong>how to</strong> evaluate the source.（怎么评估）</div><div class="eg">I don\'t know <strong>what to</strong> evaluate.（评估什么）</div>',
+        '<div class="highlight-box"><div class="hb-title">固定句式</div>What if …? = 要是……会怎么样呢？<br>What facts are emphasized or ignored? → what + 名词</div>'
       ]
     },
     {

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>今日课堂反馈 · 2026-09-19</title>
+<style>
+@font-face {
+  font-family: "WQY";
+  src: url("/usr/share/fonts/truetype/wqy/wqy-microhei.ttc") format("collection");
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  --paper: #FAF6F1;
+  --card: #FFFCFA;
+  --ink: #3F3934;
+  --ink-soft: #7A726A;
+  --line: rgba(180, 150, 140, 0.22);
+  --accent: #C9A39C;
+  --accent-soft: #F4E8E4;
+  --blue: #1D4ED8;
+  --blue-bg: #DBEAFE;
+  --red: #B42318;
+  --red-bg: #FEE4E2;
+  --green: #176348;
+  --green-bg: #D1FADF;
+  --gold-bg: #FEF3C7;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "WQY", "WenQuanYi Micro Hei", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+@page { size: A4; margin: 12mm 11mm 14mm; }
+@media print {
+  body { background: #fff; }
+  .noprint { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+  .card, .photo-card, table, .quiz, .tip, .pair { break-inside: avoid; page-break-inside: avoid; }
+  h2, h3 { break-after: avoid; page-break-after: avoid; }
+  h2.new-page { break-before: page; page-break-before: always; }
+}
+.wrap { max-width: 880px; margin: 0 auto; padding: 18px 16px 40px; }
+.cover {
+  background: linear-gradient(180deg, #F8EEE9 0%, #FFFCFA 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px 22px 18px;
+  margin-bottom: 16px;
+}
+.kicker {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: #9A6B66;
+  font-weight: 700;
+}
+.cover h1 {
+  font-size: 26px;
+  margin: 8px 0 6px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+.sub { color: var(--ink-soft); margin: 0 0 12px; }
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: 12px;
+  color: #6B534F;
+}
+h2 {
+  font-size: 18px;
+  margin: 22px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #E8C4BE;
+}
+h3 { font-size: 15.5px; margin: 16px 0 8px; color: #5C534C; }
+p { margin: 8px 0; }
+.lead { color: var(--ink-soft); }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin: 10px 0;
+}
+.formula {
+  background: var(--accent-soft);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 8px 0 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 12px;
+  font-size: 12.8px;
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 7px 8px;
+  vertical-align: top;
+  text-align: left;
+}
+th { background: var(--accent-soft); }
+.ok { color: var(--green); font-weight: 700; }
+.bad { color: var(--red); font-weight: 700; text-decoration: line-through; }
+.hl {
+  background: var(--blue-bg);
+  color: var(--blue);
+  font-weight: 700;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 999px;
+  margin-right: 4px;
+}
+.tag-blue { background: var(--blue-bg); color: var(--blue); }
+.tag-red { background: var(--red-bg); color: var(--red); }
+.tag-green { background: var(--green-bg); color: var(--green); }
+.tag-gold { background: var(--gold-bg); color: #92400E; }
+.eg {
+  color: #5C534C;
+  padding: 6px 10px;
+  margin: 6px 0;
+  border-left: 3px solid #E8C4BE;
+  background: #FFF8F5;
+}
+.wrong {
+  background: var(--red-bg);
+  border-left: 3px solid var(--red);
+  padding: 8px 10px;
+  margin: 6px 0;
+  border-radius: 0 8px 8px 0;
+}
+.right {
+  background: var(--green-bg);
+  border-left: 3px solid var(--green);
+  padding: 8px 10px;
+  margin: 6px 0;
+  border-radius: 0 8px 8px 0;
+}
+.tip {
+  background: var(--gold-bg);
+  border-left: 3px solid #D97706;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border-radius: 0 10px 10px 0;
+}
+ol.note, ul.note { padding-left: 22px; margin: 6px 0; }
+ol.note li, ul.note li { margin: 5px 0; }
+.photo-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px;
+  margin: 10px 0 14px;
+}
+.photo-card img {
+  width: 100%;
+  height: auto;
+  max-height: 230mm;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+.photo-card figcaption {
+  font-size: 12px;
+  color: var(--ink-soft);
+  padding: 6px 4px 2px;
+}
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media (max-width: 640px) { .pair { grid-template-columns: 1fr; } }
+.quiz .q { margin: 8px 0 4px; font-weight: 700; }
+.quiz .a { color: var(--ink-soft); font-size: 12.8px; }
+.footer {
+  margin-top: 22px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+.toc a { color: #9A6B66; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="noprint card" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px;">
+    <strong>在线讲义</strong>
+    <a href="2026-09-19-class-feedback.pdf" style="background:#C9A39C;color:#fff;padding:6px 12px;border-radius:999px;text-decoration:none;font-size:13px;">下载 PDF</a>
+    <button type="button" onclick="window.print()" style="background:#F4E8E4;border:1px solid rgba(180,150,140,.22);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:13px;">打印本页</button>
+    <a href="../index.html" style="color:#9A6B66;font-size:13px;">返回语法导图</a>
+  </div>
+  <header class="cover">
+    <div class="kicker">CLASSROOM FEEDBACK · GAOKAO ENGLISH</div>
+    <h1>今日课堂反馈</h1>
+    <p class="sub">名词性从句引导词辨析 · 阅读蓝色高亮词 · 默写纠错 · 日后必盯清单</p>
+    <div class="meta">
+      <span class="chip">日期：2026年9月19日</span>
+      <span class="chip">材料：杭州一模阅读A + 浙江强基联盟阅读A</span>
+      <span class="chip">词汇：Unit 1 Teenage Life / Welcome Unit</span>
+    </div>
+  </header>
+
+  <section class="card toc">
+    <strong>本讲义怎么用：</strong>先把三组引导词的判断口诀背熟，再对照原卷蓝色词和默写红叉。最后一页的「日后必盯」建议订在书桌前，下次默写前先过一遍。
+    <ol class="note">
+      <li>语法：that / what；whether / that；how / what</li>
+      <li>阅读蓝色高亮词 + 课堂红笔批注</li>
+      <li>单词默写错误与空白项订正</li>
+      <li>课堂原图存档</li>
+      <li>日后必须注意的点 + 当堂自测</li>
+    </ol>
+  </section>
+
+  <h2>一、名词性从句：that 和 what</h2>
+  <p class="lead">这是今日最核心的语法。名词性从句（主语从句、宾语从句、表语从句、同位语从句）里，<strong>先看从句缺不缺成分</strong>，再选引导词。</p>
+  <div class="formula">口诀：从句完整用 that（不充当成分）；从句缺主/宾/表用 what（必须充当成分）。</div>
+  <table>
+    <tr>
+      <th></th>
+      <th>that</th>
+      <th>what</th>
+    </tr>
+    <tr>
+      <td>词性</td>
+      <td>纯连词，<strong>不充当成分</strong></td>
+      <td>连接代词，<strong>必须充当成分</strong></td>
+    </tr>
+    <tr>
+      <td>从句完整吗？</td>
+      <td>完整（主谓宾都在）</td>
+      <td>不完整（缺主语 / 宾语 / 表语）</td>
+    </tr>
+    <tr>
+      <td>含义</td>
+      <td>无实义，只起连接作用</td>
+      <td>= the thing(s) that「所……的东西」</td>
+    </tr>
+    <tr>
+      <td>能省略吗？</td>
+      <td>宾语从句中常可省</td>
+      <td><strong>永远不能省</strong></td>
+    </tr>
+    <tr>
+      <td>能引导定语从句吗？</td>
+      <td>可以（that 作关系代词）</td>
+      <td><strong>不能</strong>。定语从句用 which / that / who</td>
+    </tr>
+  </table>
+  <div class="eg">I know <strong>that</strong> media literacy is essential.<br>从句 <em>media literacy is essential</em> 主系表齐全 → 用 that。</div>
+  <div class="eg">I know <strong>what</strong> media literacy means.<br>means 是及物动词，后面缺宾语 → 用 what 来充当宾语。</div>
+  <div class="wrong">✗ I know <strong>what</strong> media literacy is essential.<br>从句已经完整，what 没有位置可坐。</div>
+  <div class="wrong">✗ I know <strong>that</strong> media literacy means.<br>means 缺宾语，that 又不能充当成分，句子残缺。</div>
+  <div class="tip"><strong>今日阅读原句：</strong>Officials say <strong>(that)</strong> this is the worst flooding the region has seen in years.<br>say 后面的从句完整，用 that，口语/新闻里常省略。Environmental agencies warn <strong>that</strong> flooded factories could cause pollution. 这里 that 写出更正式，不能换成 what。</div>
+  <div class="card">
+    <strong>再记两句主语从句：</strong>
+    <div class="eg"><strong>That</strong> media literacy is essential is obvious.（that 在句首不能省）</div>
+    <div class="eg"><strong>What</strong> students need is the tools to think critically.（what 作 need 的宾语）</div>
+  </div>
+
+  <h2>二、whether 和 that：语境完全不同</h2>
+  <p class="lead">很多同学一看到宾语从句就填 that。错。先问自己：<strong>后面说的是一件确定的事，还是「是否」这件事？</strong></p>
+  <div class="formula">口诀：确定的陈述用 that；不确定的「是否」用 whether（或 if）。</div>
+  <table>
+    <tr>
+      <th></th>
+      <th>that</th>
+      <th>whether</th>
+    </tr>
+    <tr>
+      <td>含义</td>
+      <td>陈述一件<strong>确定</strong>的事</td>
+      <td>表示<strong>是否</strong>，两可、未知</td>
+    </tr>
+    <tr>
+      <td>常见前词</td>
+      <td>say / believe / know / warn / note / think</td>
+      <td>wonder / ask / not sure / doubt / decide</td>
+    </tr>
+    <tr>
+      <td>or not</td>
+      <td>不能加</td>
+      <td>可以：whether … or not</td>
+    </tr>
+    <tr>
+      <td>语气</td>
+      <td>把内容当事实说出来</td>
+      <td>还在问、还在选</td>
+    </tr>
+  </table>
+  <div class="pair">
+    <div class="right">Officials say <strong>that</strong> this is the worst flooding.<br>官方在<strong>宣布事实</strong>。</div>
+    <div class="wrong">Officials are not sure <strong>that</strong> this is the worst flooding.<br>既「不确定」又用 that，语气打架。</div>
+  </div>
+  <div class="eg">Officials are not sure <strong>whether</strong> this is the worst flooding <strong>or not</strong>. → 还没确认。</div>
+  <div class="eg">I don't know <strong>whether</strong> the headline is reliable. ← 对应阅读里的问题 Is this information reliable?</div>
+  <div class="tip"><strong>极危险的语义差：</strong><br>
+    I didn't know <strong>that</strong> he had left. = 他已经走了，我当时不知道。（事实成立）<br>
+    I didn't know <strong>whether</strong> he had left. = 他走没走，我当时不清楚。（事实未定）<br>
+    考试里一换词，整句意思就反了。
+  </div>
+  <div class="card">
+    <strong>whether 和 if 也要分清（日后必考）：</strong>
+    <ul class="note">
+      <li>介词后面只用 whether：worried about <strong>whether</strong> they can be rescued</li>
+      <li>不定式前面只用 whether：decide <strong>whether to</strong> stay or leave</li>
+      <li>主语从句放句首只用 whether：<strong>Whether</strong> the warning was accurate is still unknown.</li>
+      <li>discuss / the question of 后倾向 whether</li>
+      <li>宾语从句里很多时候 whether / if 都能用：I wonder whether/if the information is reliable.</li>
+    </ul>
+  </div>
+
+  <h2>三、how 和 what</h2>
+  <p class="lead">今日两篇阅读的题干正好一对：一道问 how，一道问 what。不要靠语感蒙，看它问的是<strong>方式</strong>还是<strong>内容</strong>。</p>
+  <div class="formula">口诀：how = 怎样 / 多么（方式、程度）；what = 什么（内容、事物）。how 后常接形容词或副词；what 后常接名词，或单独作成分。</div>
+  <table>
+    <tr>
+      <th></th>
+      <th>how</th>
+      <th>what</th>
+    </tr>
+    <tr>
+      <td>问什么</td>
+      <td>方式、方法、程度、样子</td>
+      <td>内容、事物、身份、种类</td>
+    </tr>
+    <tr>
+      <td>结构</td>
+      <td>how + 句子；how + adj./adv.；how to do</td>
+      <td>what + 名词；what 作主/宾/表；what to do</td>
+    </tr>
+    <tr>
+      <td>今日原题</td>
+      <td>How can teachers best stimulate students' curiosity?</td>
+      <td>What is the primary purpose of teaching media literacy?</td>
+    </tr>
+  </table>
+  <div class="eg">understanding <strong>how</strong> media works → 媒介是<strong>怎样</strong>运作的（机制、方式）</div>
+  <div class="eg">understanding <strong>what</strong> the message is → 这条信息<strong>是什么</strong>（内容）</div>
+  <div class="eg">you're demonstrating to students <strong>how</strong> to think critically → 示范<strong>怎样</strong>批判性思考</div>
+  <div class="eg"><strong>What</strong> facts are emphasized or ignored? → what + 名词 facts，问「哪些事实」</div>
+  <div class="card">
+    <strong>how to 和 what to 不要混：</strong>
+    <div class="eg">I don't know <strong>how to</strong> evaluate the source. = 不知道<strong>怎么</strong>评估。</div>
+    <div class="eg">I don't know <strong>what to</strong> evaluate. = 不知道该评估<strong>什么</strong>。</div>
+  </div>
+  <div class="tip"><strong>挂钩今日单词第 27 条：</strong>What if …？= 要是……会怎么样呢？<br>这里的 what 不是「什么东西」，而是固定句式，后面直接接从句：What if the early warning is wrong?</div>
+  <div class="card">
+    <strong>三组词一句话串起来（用今日洪水篇）：</strong>
+    <div class="eg">Officials say <strong>that</strong> this is the worst flooding.（确定事实 → that）</div>
+    <div class="eg">Residents didn't know <strong>whether</strong> they could reach safety in time.（是否来得及 → whether）</div>
+    <div class="eg">They didn't know <strong>how</strong> to get out or <strong>what</strong> they should take with them.（怎么走 / 带什么）</div>
+  </div>
+
+  <h2>四、阅读理解：蓝色高亮词必须会</h2>
+  <p class="lead">蓝色是课堂上圈出的重点词。下面按两篇阅读整理：词性、中文、变形、以及卷面红笔补充。</p>
+
+  <h3>练习 1 · 2026 届杭州一模阅读 A（媒体素养）</h3>
+  <p>建议用时 8 分钟，课堂实际约 5 分钟。主旨题选 <strong>C</strong>：教媒体素养的首要目的是让学生会质疑、会评估信息，而不是只会读标题。</p>
+  <table>
+    <tr>
+      <th>高亮词</th>
+      <th>词性 / 释义</th>
+      <th>变形与搭配</th>
+      <th>课堂补充</th>
+    </tr>
+    <tr>
+      <td><span class="hl">essential</span></td>
+      <td>adj. 至关重要的</td>
+      <td>n. <strong>essence</strong> 本质；It is essential that …</td>
+      <td>红笔：essence</td>
+    </tr>
+    <tr>
+      <td><span class="hl">misleading</span></td>
+      <td>adj. 误导性的</td>
+      <td>v. mislead；a misleading headline</td>
+      <td>和 helpful 对举</td>
+    </tr>
+    <tr>
+      <td><span class="hl">evaluate</span></td>
+      <td>v. 评估、评价</td>
+      <td>n. evaluation；evaluate a source</td>
+      <td>analyze, question, and evaluate</td>
+    </tr>
+    <tr>
+      <td><span class="hl">perspectives</span></td>
+      <td>n. 视角、立场</td>
+      <td>from different perspectives</td>
+      <td>比较两则材料时必用</td>
+    </tr>
+    <tr>
+      <td><span class="hl">emphasized</span></td>
+      <td>v. 被强调</td>
+      <td>n. emphasis；put emphasis on</td>
+      <td>反义：<strong>neglect / overlook</strong> 忽视</td>
+    </tr>
+    <tr>
+      <td><span class="hl">bias</span></td>
+      <td>n. 偏见</td>
+      <td>adj. biased；without bias</td>
+      <td>卷面已注「偏见」</td>
+    </tr>
+    <tr>
+      <td><span class="hl">demonstrating</span></td>
+      <td>v. 示范、展示</td>
+      <td>n. demonstration；demonstrate how to …</td>
+      <td>红笔：<strong>演示</strong></td>
+    </tr>
+    <tr>
+      <td><span class="hl">stimulate</span></td>
+      <td>v. 激发、刺激</td>
+      <td>stimulate curiosity / interest</td>
+      <td>第 23 题：best stimulate</td>
+    </tr>
+  </table>
+  <div class="eg">Media literacy isn't just a nice-to-have skill — it's <span class="hl">essential</span>. Students are surrounded by messages: some helpful, others <span class="hl">misleading</span>. Teaching them to analyze, question, and <span class="hl">evaluate</span> gives them tools to think critically.</div>
+  <div class="eg">Compare two texts from different <span class="hl">perspectives</span>. What facts are <span class="hl">emphasized</span> or ignored（= neglect / overlook）? This teaches <span class="hl">bias</span> and point of view. When you say "Let's figure out where this came from," you're <span class="hl">demonstrating</span> how to think critically.</div>
+  <div class="tip">第 23 题 How can teachers best <span class="hl">stimulate</span> students' curiosity? 最佳策略是 <strong>Show, don't just tell</strong>（做出来给学生看，而不是只口头说）。这正是 demonstrating 那一句的同义改写。</div>
+
+  <h3>练习 2 · 2026 届浙江强基联盟阅读 A（得州洪灾）</h3>
+  <p>第 21 题：Which county was most severely affected? 选 <strong>A. Hunt</strong>。看表：经济损失 $28 million、受损建筑 85 栋，两项都是最高。阅读图表题先比数字，不要凭感觉。</p>
+  <table>
+    <tr>
+      <th>高亮词</th>
+      <th>词性 / 释义</th>
+      <th>变形与搭配</th>
+      <th>课堂补充</th>
+    </tr>
+    <tr>
+      <td><span class="hl">Officials</span></td>
+      <td>n. 官员</td>
+      <td>official adj. 官方的；Officials say that …</td>
+      <td>后面接 that 从句</td>
+    </tr>
+    <tr>
+      <td><span class="hl">Casualties</span></td>
+      <td>n. 伤亡人员</td>
+      <td>casualty 单数；heavy casualties</td>
+      <td>小标题 1：伤亡与救援</td>
+    </tr>
+    <tr>
+      <td><span class="hl">isolated</span></td>
+      <td>adj. 被隔绝的</td>
+      <td>v. isolate；n. isolation</td>
+      <td>isolated communities 孤岛式社区</td>
+    </tr>
+    <tr>
+      <td><span class="hl">issued</span></td>
+      <td>v. 颁布、发布</td>
+      <td>issue a declaration / warning；n. issue 问题</td>
+      <td>issued an emergency disaster declaration</td>
+    </tr>
+    <tr>
+      <td>accelerating</td>
+      <td>v. 加快</td>
+      <td>accelerate recovery；n. acceleration</td>
+      <td>红笔：= <strong>boost</strong></td>
+    </tr>
+    <tr>
+      <td>locating</td>
+      <td>v. 定位、找到</td>
+      <td>locate the missing campers</td>
+      <td>delayed locating = 耽误了搜寻</td>
+    </tr>
+  </table>
+  <div class="eg">The floods have killed 24 people, and 25 campers remain missing. Emergency crews <strong>have rescued 237 people</strong>（红笔划出的完成时结果）。Rescue teams struggled to reach <span class="hl">isolated</span> communities. Governor Abbott <span class="hl">issued</span> an emergency disaster declaration, <strong>accelerating</strong>（= boost）state funding. Communication outages delayed <strong>locating</strong> missing campers.</div>
+  <div class="tip">语法回扣：Officials say <strong>that</strong> this is the worst flooding. / agencies warn <strong>that</strong> flooded factories could cause pollution. 两句都是「权威方 + 陈述事实」，引导词是 that 不是 whether，也不是 what。</div>
+
+  <h2>五、单词默写：错的必须改掉</h2>
+  <p class="lead">红叉、圈词、写错词，全部收录。对的不重复讲；空白且被老师划掉的词标为「暂不要求」，没划掉的空白要补上。</p>
+
+  <h3>Unit 1 Teenage Life · 必须订正</h3>
+  <table>
+    <tr>
+      <th>题号</th>
+      <th>中文</th>
+      <th>你的答案</th>
+      <th>正确写法</th>
+      <th>为什么错</th>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>温室效应</td>
+      <td><span class="bad">greenhouse effection</span></td>
+      <td class="ok">greenhouse effect</td>
+      <td>effect 是名词「效应」。没有 effection 这个词。affect 才是动词「影响」；affection 是「喜爱」。</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>说得流利；精通</td>
+      <td><span class="bad">influence</span></td>
+      <td class="ok">fluent; be fluent in; proficient / be proficient in</td>
+      <td>influence = 影响，词义完全跑偏。流利用 fluent，精通用 proficient。</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>承担……的责任</td>
+      <td><span class="bad">take responsibility with sth</span></td>
+      <td class="ok">take responsibility for sth</td>
+      <td>和第 20 条 be responsible <strong>for</strong> 是同一介词。记住：责任相关一律 for。</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>日程安排</td>
+      <td>schedule</td>
+      <td class="ok">schedule / arrangement</td>
+      <td>schedule 对；老师补了 arrangement，两个都要会。</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>某方面的专家</td>
+      <td><span class="bad">an expert at</span></td>
+      <td class="ok">an expert in + 领域<br>an expert at + 技能 / doing</td>
+      <td>「某方面」是领域，优先 in：an expert in biology。at 更像 an expert at cooking。</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>被……吸引</td>
+      <td><span class="bad">be attracted in</span></td>
+      <td class="ok">be attracted to / by</td>
+      <td>第 28 条 attract one's attention 你写对了。被动「被吸引」换介词：to 或 by，绝不是 in。</td>
+    </tr>
+  </table>
+  <div class="tip">已经写对、继续保持：prefer A to B；confuse A with B；be suitable for；sign up for；quit doing sth.；the solution <strong>to</strong> the problem；concentrate on；be addicted to；behaviour（英式拼写按要求）。<br>尤其记住 <strong>confusing（修饰物）/ confused（修饰人）</strong> 这一组，下面 Welcome Unit 的 frighten 是同一套路。</div>
+
+  <h3>Welcome Unit · 必须订正与补全</h3>
+  <table>
+    <tr>
+      <th>题号</th>
+      <th>中文</th>
+      <th>你的答案</th>
+      <th>正确写法</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>登记；注册；挂号</td>
+      <td><span class="bad">regist</span></td>
+      <td class="ok">register（v.）</td>
+      <td>漏了 -er。register for a course 报名选课。</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>登记；注册；登记簿</td>
+      <td>register</td>
+      <td class="ok">register（n.）</td>
+      <td>名词「登记簿」也是 register。和第 3 条同形：一词多性。</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>惊吓的；害怕的</td>
+      <td><span class="bad">frighten（v.）</span></td>
+      <td class="ok">frightening（修饰物）<br>frightened（修饰人）</td>
+      <td>中文是形容词。动词 frighten = 使害怕。对照 confusing / confused。</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>使钦佩；给……留下深刻印象</td>
+      <td>leave an impression on</td>
+      <td class="ok">leave / make an impression on sb<br>impress sb；be impressed by</td>
+      <td>短语对。老师补了 impressed：人作主语用 be impressed。</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>留下好印象</td>
+      <td>（空）</td>
+      <td class="ok">leave / make a good impression</td>
+      <td>第 25 条的正向说法，要补上。</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>盼望；期待</td>
+      <td>look forward</td>
+      <td class="ok">look forward to (doing) sth</td>
+      <td>缺介词 to。to 是介词，后面加名词或 doing，不加原形动词。</td>
+    </tr>
+    <tr>
+      <td>5–7</td>
+      <td>性别 / 女 / 男</td>
+      <td>（空）</td>
+      <td class="ok">gender / female / male</td>
+      <td>课堂可能跳过，考试仍可能出现，建议补背。</td>
+    </tr>
+  </table>
+  <div class="card">
+    <strong>老师划掉、暂不作为默写要求：</strong>afternoon；morning；high school；小伙子 guy；junior；junior high；take notes；flashcard；partner。<br>
+    不是永远不学，只是这一轮先集中火力打高频词。
+  </div>
+  <div class="card">
+    <strong>Welcome Unit 已写对的，用来带动错词：</strong>
+    exchange；lecture；nationality；campus；formal；anxious；annoyed / annoy；outgoing；impression；What if …；concentrate on；experiment；leave alone；awkward；explore；confident / confidence；forward；flash；organize / organization；goal；strategy；improve；curious；company；personality；style；revise。
+  </div>
+
+  <h2>六、课堂原图存档</h2>
+  <p class="lead">原卷与默写纸拍照，便于对照笔迹和老师红笔。语法讲解以正文为准，图中若有反光或裁切，以本讲义文字订正。</p>
+
+  <figure class="photo-card">
+    <img src="photos/01-reading-hangzhou.jpg" alt="杭州一模阅读A课堂标注">
+    <figcaption>图1　杭州一模阅读 A：蓝色高亮 + essence / neglect·overlook / 演示 / 主旨题 C</figcaption>
+  </figure>
+  <figure class="photo-card">
+    <img src="photos/02-reading-zhejiang.jpg" alt="浙江强基联盟阅读A课堂标注">
+    <figcaption>图2　浙江强基联盟阅读 A：stimulate / Officials / Casualties / isolated / issued；rescued 237；accelerating = boost；第21题 Hunt</figcaption>
+  </figure>
+  <figure class="photo-card">
+    <img src="photos/03-vocab-unit1-p1.jpg" alt="Unit1 Teenage Life 默写第1页">
+    <figcaption>图3　Unit 1 第1页：greenhouse effection 打叉；influence 误当「流利」</figcaption>
+  </figure>
+  <figure class="photo-card">
+    <img src="photos/04-vocab-unit1-p2.jpg" alt="Unit1 Teenage Life 默写第2页">
+    <figcaption>图4　Unit 1 第2页：responsibility with、expert at、attracted in 为介词错误</figcaption>
+  </figure>
+  <figure class="photo-card">
+    <img src="photos/05-vocab-welcome-p15.jpg" alt="Welcome Unit 第15页默写">
+    <figcaption>图5　Welcome Unit p.15：regist 拼写错误；frighten 词性错误（应为形容词）</figcaption>
+  </figure>
+  <figure class="photo-card">
+    <img src="photos/06-vocab-welcome-p16.jpg" alt="Welcome Unit 第16页默写">
+    <figcaption>图6　Welcome Unit p.16：What if；look forward 需补 to；impressed 与 impression 成套记</figcaption>
+  </figure>
+  <figure class="photo-card">
+    <img src="photos/07-vocab-welcome-p17.jpg" alt="Welcome Unit 第17页默写">
+    <figcaption>图7　Welcome Unit p.17：本页整体较好；划掉项暂不要求</figcaption>
+  </figure>
+
+  <h2 class="new-page">七、日后必须注意的点</h2>
+  <p class="lead">不是「再看一遍笔记」，而是下次做题、默写时主动拦截的习惯。建议逐条打勾。</p>
+  <ol class="note">
+    <li><strong>名词性从句先查成分。</strong>把引导词遮住，从句还完整吗？完整 → that；缺主/宾/表 → what。不要凭中文「什么」就填 what。</li>
+    <li><strong>that 不等于 whether。</strong>say / warn / note 后多半是 that（宣布事实）。not sure / wonder / ask 后才是 whether（是否）。换一个词，句子真假都可能变。</li>
+    <li><strong>how 问方式，what 问内容。</strong>how to do = 怎么做；what to do = 做什么。阅读题干 How …？看方法；What …？看目的、对象、事实。</li>
+    <li><strong>介词不要凭中文硬译。</strong>责任 for，吸引 to/by，专家 in（领域），solution to，look forward to，prefer A to B，confuse A with B。默写错的全是介词，不是单词不会。</li>
+    <li><strong>拼写陷阱单独过。</strong>effect ≠ affect ≠ affection ≠ 不存在的 effection；register 不是 regist。</li>
+    <li><strong>-ing / -ed 形容词成套记。</strong>confusing / confused；frightening / frightened；annoying / annoyed。物用 -ing，人用 -ed。中文写「……的」时先问：修饰人还是物？</li>
+    <li><strong>近义词别串台。</strong>influence 是影响，fluent 才是流利。essential 的名词是 essence。emphasized 的反义课堂已给：neglect / overlook。</li>
+    <li><strong>阅读蓝色词要会「变形」。</strong>evaluate → evaluation；demonstrate → demonstration；isolate → isolation；issue 既是动词「颁布」也是名词「问题」。</li>
+    <li><strong>图表题先比数字。</strong>most severely affected = 损失金额 + 受损数量都最高的那一县。Hunt $28 million / 85 buildings。</li>
+    <li><strong>完成时在新闻里表结果。</strong>have rescued 237 people = 到目前为止已经救出。搜救还在继续（remain missing）并不矛盾。</li>
+    <li><strong>权威发言 = that 从句。</strong>Officials say that …；agencies warn that …。写作里也可以模仿，显得客观。</li>
+    <li><strong>媒体素养三问记住就能做主旨题：</strong>信息可靠吗？从哪来？缺了什么？目的是培养 critical thinking，不是让学生当记者。</li>
+  </ol>
+
+  <h3>下次默写前 60 秒自查</h3>
+  <ul class="note">
+    <li>greenhouse <strong>effect</strong></li>
+    <li>be fluent in；be proficient in（绝对不是 influence）</li>
+    <li>take responsibility <strong>for</strong>；be responsible <strong>for</strong></li>
+    <li>an expert <strong>in</strong> …</li>
+    <li>be attracted <strong>to / by</strong></li>
+    <li>register；look forward <strong>to</strong> doing</li>
+    <li>frightening / frightened</li>
+    <li>leave a good impression on sb</li>
+  </ul>
+
+  <h2 class="new-page">八、当堂 6 题自测（先做再看答案）</h2>
+  <div class="quiz card">
+    <div class="q">1. Students finally understood ______ media literacy really means.</div>
+    <div class="a">答案：what（means 缺宾语）</div>
+    <div class="q">2. Officials say ______ this is the worst flooding in years.</div>
+    <div class="a">答案：that（或省略。陈述确定事实，不能用 whether / what）</div>
+    <div class="q">3. Rescue teams were not sure ______ they could reach the isolated communities before night.</div>
+    <div class="a">答案：whether / if（是否赶得上，未知）</div>
+    <div class="q">4. The teacher is demonstrating to us ______ to evaluate a misleading headline.</div>
+    <div class="a">答案：how（示范「怎样」评估）</div>
+    <div class="q">5. ______ facts are emphasized or overlooked often shows the writer's bias.</div>
+    <div class="a">答案：What（what + 名词 facts）</div>
+    <div class="q">6. 改错：She is an expert at climate change and was attracted in the lecture.</div>
+    <div class="a">答案：an expert <strong>in</strong> climate change；was attracted <strong>to / by</strong> the lecture</div>
+  </div>
+
+  <div class="footer">
+    今日课堂反馈 · 2026-09-19 · 配合《高考英语语法思维导图》使用<br>
+    原图仅作课堂档案；订正以正文表格为准。建议隔天把第八节 6 题再做一遍，错题抄进纠错本。
+  </div>
+</div>
+</body>
+</html>
