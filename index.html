@@ -82,6 +82,44 @@ body {
   font-weight: 500;
   letter-spacing: 0.06em;
 }
+.lesson-entry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 4px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 24px rgba(180, 140, 130, 0.08);
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.lesson-entry:active { transform: scale(0.99); }
+.lesson-kicker {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #9A6B66;
+  font-weight: 650;
+}
+.lesson-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: #5C534C;
+  margin-top: 2px;
+}
+.lesson-sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+.lesson-arrow {
+  margin-left: auto;
+  color: var(--ink-soft);
+  font-size: 22px;
+}
 .desk {
   max-width: 1120px;
   width: 100%;
@@ -470,6 +508,14 @@ body.modal-open { overflow: hidden; }
 </div>
 
 <div class="desk">
+  <a class="lesson-entry" href="reading-lesson1.html">
+    <div>
+      <div class="lesson-kicker">手机也能做</div>
+      <div class="lesson-title">阅读技巧 · 第1课 细节理解题</div>
+      <div class="lesson-sub">点开即可练习，也能复制链接发到手机</div>
+    </div>
+    <span class="lesson-arrow">›</span>
+  </a>
   <div class="quick-nav" id="qnav"></div>
   <div id="content"></div>
 </div>
