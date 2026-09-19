@@ -121,7 +121,7 @@ a { color: inherit; }
   color: #fff;
 }
 .phone-card {
-  margin-top: 12px;
+  margin: 12px 0 4px;
   padding: 12px 14px;
   border-radius: 16px;
   background: #F7F1EA;
@@ -345,13 +345,6 @@ th { background: var(--accent-soft); font-weight: 650; }
     <div class="top-links">
       <a href="index.html">← 语法导图</a>
       <button class="share-btn primary" type="button" onclick="shareToPhone()">发给手机</button>
-      <button class="share-btn" type="button" onclick="copyPageLink()">复制链接</button>
-      <button class="share-btn" type="button" onclick="toggleQr()">显示二维码</button>
-    </div>
-    <div class="phone-card" id="phoneCard">
-      <p>用手机扫码就能打开这一课，也可以把链接发到微信。</p>
-      <img id="qrImg" alt="本页二维码" width="148" height="148">
-      <div class="phone-url" id="phoneUrl"></div>
     </div>
     <div class="toast" id="toast"></div>
     <div class="nav-row">
@@ -364,6 +357,14 @@ th { background: var(--accent-soft); font-weight: 650; }
 </div>
 
 <div class="desk">
+  <div class="phone-card" id="phoneCard">
+    <p>用手机扫这个码，或把下面链接发到微信，就能在手机上做这一课。</p>
+    <img id="qrImg" src="reading-lesson1-qr.png" alt="阅读第1课二维码" width="148" height="148">
+    <div class="phone-url" id="phoneUrl"></div>
+    <div class="top-links">
+      <button class="share-btn" type="button" onclick="copyPageLink()">复制链接</button>
+    </div>
+  </div>
   <section class="section" id="methods">
     <div class="section-kicker">METHOD</div>
     <h2 class="section-title">一、方法速记</h2>
@@ -930,8 +931,13 @@ function revealAnswer(qid) {
   panel.textContent = "答案：" + key;
 }
 
+const PUBLIC_SHARE_URL = "https://htmlpreview.github.io/?https://github.com/mohibulkhan798-rgb/gaokao-English-Grammar/blob/cursor/reading-mobile-pages-5abb/reading-lesson1.html";
+
 function pageLink() {
-  return window.location.href.split("#")[0];
+  const here = window.location.href.split("#")[0];
+  const host = window.location.hostname;
+  if (host.endsWith("github.io")) return here;
+  return PUBLIC_SHARE_URL;
 }
 
 function toast(msg) {
@@ -976,9 +982,7 @@ function toggleQr(forceOpen) {
   const open = forceOpen === true ? true : !card.classList.contains("show");
   card.classList.toggle("show", open);
   if (open) {
-    const url = pageLink();
-    document.getElementById("phoneUrl").textContent = url;
-    document.getElementById("qrImg").src = "https://api.qrserver.com/v1/create-qr-code/?size=296x296&data=" + encodeURIComponent(url);
+    document.getElementById("phoneUrl").textContent = pageLink();
   }
 }
 </script>
