@@ -307,6 +307,38 @@ th { background: var(--accent-soft); font-weight: 650; }
   border-radius: 999px;
   font-weight: 500;
 }
+.phone-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.phone-card img {
+  width: 112px;
+  height: 112px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: #FAF6F1;
+}
+.phone-card strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.phone-card p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+}
+.phone-card a {
+  color: #9A6B66;
+  font-size: 13px;
+  word-break: break-all;
+}
 .to-top {
   position: fixed;
   right: max(14px, env(safe-area-inset-right));
@@ -347,6 +379,14 @@ th { background: var(--accent-soft); font-weight: 650; }
     <div class="phone-bar">
       <span class="phone-hint">手机可添加到主屏幕</span>
       <button class="btn sec" type="button" id="shareBtn">发给手机 / 分享</button>
+    </div>
+    <div class="phone-card">
+      <img src="phone-qr.png" width="112" height="112" alt="扫码用手机打开第1课">
+      <div>
+        <strong>发给手机</strong>
+        <p>用手机扫码，或把下面链接发到微信/备忘录后打开。</p>
+        <a id="phoneLink" href="https://htmlpreview.github.io/?https://github.com/mohibulkhan798-rgb/gaokao-English-Grammar/blob/cursor/reading-mobile-a37a/reading-lesson1.html">点这里用手机打开</a>
+      </div>
     </div>
     <div class="nav-row">
       <button class="nav-btn" type="button" onclick="jump('methods')">方法速记</button>
