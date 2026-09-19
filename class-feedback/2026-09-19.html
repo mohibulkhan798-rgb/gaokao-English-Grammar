@@ -19,6 +19,9 @@
     word-break: normal;
     overflow-wrap: break-word;
   }
+  .originals { break-before: page; }
+  .skills { break-before: page; }
+  .dictation { break-before: page; }
   .nw { white-space: nowrap; }
   .sheet { max-width: 190mm; margin: 0 auto; }
   h2, h3, .rule, .eg, .card, .keep { break-inside: avoid; }
@@ -29,7 +32,7 @@
     background: linear-gradient(135deg, #5c4038 0%, #8a5a52 58%, #c9a39c 100%);
     color: #fff;
     border-radius: 16px;
-    padding: 18px 20px 16px;
+    padding: 20px 22px 18px;
     margin-bottom: 12px;
     position: relative;
     overflow: hidden;
@@ -42,31 +45,13 @@
     border-radius: 50%;
     background: rgba(255,255,255,.12);
   }
-  .kicker {
-    font-size: 11px;
-    letter-spacing: .18em;
-    opacity: .88;
-    margin-bottom: 4px;
-  }
   h1 {
-    font-size: 22px;
-    margin: 0 0 6px;
+    font-size: 26px;
+    margin: 0;
     font-weight: 700;
-    letter-spacing: .04em;
-  }
-  .hero p { margin: 0; font-size: 12.5px; opacity: .95; max-width: 92%; }
-  .meta {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-    flex-wrap: wrap;
-  }
-  .chip {
-    background: rgba(255,255,255,.16);
-    border: 1px solid rgba(255,255,255,.28);
-    border-radius: 999px;
-    padding: 3px 10px;
-    font-size: 11px;
+    letter-spacing: .08em;
+    position: relative;
+    z-index: 1;
   }
 
   h2 {
@@ -92,6 +77,14 @@
     font-size: 12.6px;
   }
   .rule b { color: #7a4e48; }
+  .warn {
+    background: #fff4e8;
+    border-left: 4px solid #d9893b;
+    padding: 7px 10px;
+    border-radius: 0 10px 10px 0;
+    margin: 6px 0 8px;
+    font-size: 12.3px;
+  }
 
   table {
     width: 100%;
@@ -106,7 +99,6 @@
   }
   th { background: #f4e8e4; color: #5c4038; text-align: left; }
   td.ok { background: #eef6ee; }
-  td.no { background: #fbeeee; }
   .muted { color: #7a716b; }
 
   .eg {
@@ -126,7 +118,6 @@
   .that { background: #dceaf7; color: #1d4e89; }
   .what { background: #fde8c8; color: #8a4b12; }
   .whether { background: #e4f0d8; color: #3c5d22; }
-  .how { background: #eadff4; color: #5b3a7a; }
   .blue {
     background: #d7ebfb;
     color: #1a4f7a;
@@ -146,9 +137,8 @@
   }
   .card h4 { margin: 0 0 4px; font-size: 12.6px; color: #5c4038; }
 
-  .vocab-row td:nth-child(1) { width: 9%; }
-  .vocab-row td:nth-child(2) { width: 22%; }
-  .note { font-size: 11.3px; color: #6b635d; }
+  .steps { margin: 4px 0 8px 18px; padding: 0; }
+  .steps li { margin-bottom: 3px; }
 
   figure {
     margin: 0 0 10px;
@@ -173,7 +163,6 @@
   }
   .img-stack figure { margin-bottom: 8px; }
   .img-stack img { max-height: 118mm; object-fit: contain; margin: 0 auto; }
-  .check li { margin-bottom: 4px; }
   .foot {
     margin-top: 10px;
     font-size: 10.5px;
@@ -191,10 +180,10 @@
     vertical-align: 1px;
   }
   .mini { font-size: 11.4px; }
-  .q { margin: 4px 0; }
   .ans { color: #1f7a3a; font-weight: 700; }
   ul { margin: 4px 0 8px 18px; padding: 0; }
   ol { margin: 4px 0 8px 20px; padding: 0; }
+  .word14 td:first-child { width: 22%; }
 </style>
 </head>
 <body>
@@ -202,21 +191,14 @@
 
 <section class="page">
   <div class="hero">
-    <div class="kicker">CLASS FEEDBACK · GAOKAO ENGLISH</div>
     <h1>今日课堂反馈</h1>
-    <p>名词性从句引导词辨析 · 阅读蓝词精读 · 词汇错题订正 · 日后注意清单</p>
-    <div class="meta">
-      <span class="chip">2026年9月19日</span>
-      <span class="chip">杭州一模阅读A + 浙江强基联盟阅读A</span>
-      <span class="chip">Welcome Unit · Unit 1</span>
-    </div>
   </div>
 
-  <h2>一、语法核心：名词性从句里的三大易混点</h2>
-  <p>今天的阅读里已经在用这三类引导词。记住一个总原则：<b>先看从句缺不缺成分，再看语义是“事实 / 是否 / 方式 / 内容”。</b></p>
+  <h2>一、语法：名词性从句 that / what · whether / that</h2>
+  <p>总原则：<b>先看从句缺不缺成分，再看语义是“确定事实”还是“是否”。</b></p>
 
   <h3>1. <span class="mark that">that</span> 和 <span class="mark what">what</span> —— 缺不缺成分</h3>
-  <div class="rule"><b>口诀：</b>从句本身完整 → 用 <b>that</b>（只连接，不作成分，有时可省）；从句缺主语 / 宾语 / 表语 → 用 <b>what</b>（= the thing that，既连接又充当成分）。</div>
+  <div class="rule">从句本身完整 → 用 <b>that</b>（只连接，不作成分，有时可省）；从句缺主语 / 宾语 / 表语 → 用 <b>what</b>（= the thing that，既连接又充当成分）。</div>
   <table>
     <tr>
       <th style="width:18%">词</th>
@@ -238,12 +220,12 @@
     </tr>
   </table>
   <div class="eg">
-    <div class="en">Officials say <span class="mark that">that</span> this is the worst flooding the region has seen in years.</div>
-    <div class="mini muted">课堂原句（that 常省略）：Officials say this is the worst flooding...　→ 后面 <i>this is the worst flooding</i> 完整，只能是 that，不能换成 what。</div>
+    <div class="en"><span class="blue">Officials</span> say <span class="mark that">that</span> this is the worst flooding the region has seen in years.</div>
+    <div class="mini muted">课堂原句（that 常省略）：Officials say this is the worst flooding...　→ 后面完整，只能是 that，不能换成 what。</div>
   </div>
   <div class="eg">
-    <div class="en">You can build media literacy into <span class="mark what">what</span> <span class="nw">youʼre</span> already doing.</div>
-    <div class="mini muted">doing 后面缺宾语：已经在做的<b>事情</b>。若写成 that <span class="nw">youʼre</span> already doing，语法上变成定语从句，但这里没有先行词，必须用 what。</div>
+    <div class="en">You can build media literacy into <span class="mark what">what</span> you are already doing.</div>
+    <div class="mini muted">doing 后面缺宾语：已经在做的<b>事情</b>。这里没有先行词，必须用 what。</div>
   </div>
   <div class="grid2">
     <div class="card">
@@ -251,7 +233,7 @@
       <ul>
         <li>宾语从句中常可省略：I think (that) ...</li>
         <li>主语从句句首、同位语从句、并列第二个 that：<b>不可省</b></li>
-        <li><b>不</b>能放在介词后面直接作宾语（要用 the fact that）</li>
+        <li>不能直接放在介词后（要用 the fact that）</li>
       </ul>
     </div>
     <div class="card">
@@ -263,16 +245,14 @@
       </ul>
     </div>
   </div>
-  <p class="mini"><b>一秒自测：</b>① The problem is ____ we <span class="nw">donʼt</span> have enough time. → <span class="ans">that</span>（从句完整）　② ____ we need is more practice. → <span class="ans">What</span>（缺宾语）</p>
-</section>
+  <p class="mini">自测：① The problem is ____ we do not have enough time. → <span class="ans">that</span>　② ____ we need is more practice. → <span class="ans">What</span></p>
 
-<section class="page">
-  <h3>2. <span class="mark whether">whether</span> 和 <span class="mark that">that</span> —— 语境：是否 vs 事实</h3>
-  <div class="rule"><b>口诀：</b>已经当作<b>确定事实</b>来说 → <b>that</b>；还在问<b>是不是 / 能否 / 哪边</b> → <b>whether</b>（是否）。不是看中文能不能翻译成“那”，而是看说话人<b>确定不确定</b>。</div>
+  <h3>2. <span class="mark whether">whether</span> 和 <span class="mark that">that</span> —— 是否 vs 事实</h3>
+  <div class="rule">已经当作<b>确定事实</b>来说 → <b>that</b>；还在问<b>是不是 / 能否 / 哪边</b> → <b>whether</b>。看说话人确定不确定，不是看中文能不能译成“那”。</div>
   <table>
     <tr>
       <th style="width:16%">语境</th>
-      <th style="width:22%">用词</th>
+      <th style="width:20%">用词</th>
       <th>信号词 / 场面</th>
       <th>例子</th>
     </tr>
@@ -289,266 +269,141 @@
       <td>I wonder <b>whether</b> the warning was accurate.</td>
     </tr>
     <tr>
-      <td>介词后 / 句首主语从句 / 与 or not 连用</td>
-      <td class="ok"><span class="mark whether">whether</span>（此时不用 if）</td>
+      <td>介词后 / 句首 / 与 or not 连用</td>
+      <td class="ok"><span class="mark whether">whether</span>（不用 if）</td>
       <td>on, of, about；句首；whether or not</td>
-      <td><b>Whether</b> he comes or not <span class="nw">doesnʼt</span> matter.</td>
+      <td><b>Whether</b> he comes or not does not matter.</td>
     </tr>
   </table>
   <div class="grid2">
     <div class="card">
-      <h4>和今天阅读的挂钩</h4>
-      <p class="mini">新闻导语 <i>Officials say this is the worst flooding</i> 是官方<b>定性</b>，当作已发生的事实转述，所以是 <b>that</b> 从句（可省 that）。</p>
-      <p class="mini">若改成救援还没结论：Rescuers are not sure <b>whether</b> the 25 campers are still alive. —— 这才是 whether。</p>
+      <h4>和今天阅读挂钩</h4>
+      <p class="mini">新闻导语 Officials say this is the worst flooding 是官方<b>定性</b>，当作已发生的事实转述，所以是 <b>that</b> 从句（可省 that）。</p>
+      <p class="mini">若救援还没结论：Rescuers are not sure <b>whether</b> the 25 campers are still alive.</p>
     </div>
     <div class="card">
-      <h4>doubt 的固定搭配（必记）</h4>
-      <p class="mini">I <b>doubt whether</b> he will come.（怀疑<b>是否</b>会来）</p>
-      <p class="mini">I <b><span class="nw">donʼt</span> doubt that</b> he will come.（不怀疑 = 确信他会来）</p>
-      <p class="mini">There is no doubt <b>that</b> ...（毫无疑问<b>这一事实</b>）</p>
+      <h4>doubt 的固定搭配</h4>
+      <p class="mini">I <b>doubt whether</b> he will come.（怀疑是否会来）</p>
+      <p class="mini">I <b>do not doubt that</b> he will come.（确信他会来）</p>
+      <p class="mini">There is no doubt <b>that</b> ...（毫无疑问这一事实）</p>
+      <p class="mini"><b>whether vs if：</b>口语宾语从句里常可互换；但介词后、句首、to do 前、or not 紧跟只用 whether。</p>
     </div>
   </div>
-  <p class="mini"><b>whether vs if：</b>口语宾语从句里常可互换；但<b>介词后、句首、to do 前、or not 紧跟</b>只用 whether：depend on whether；whether to go；whether or not。</p>
-
-  <h3>3. <span class="mark how">how</span> 和 <span class="mark what">what</span> —— 方式 vs 内容</h3>
-  <div class="rule"><b>口诀：</b><b>how</b> = 怎么样 / 如何（方式、程度、过程）；<b>what</b> = 什么（内容、对象、东西）。最狠的一对：<b>what to do</b>（做什么）≠ <b>how to do it</b>（怎么做）。</div>
-  <table>
-    <tr>
-      <th>问的是</th>
-      <th>用</th>
-      <th>课堂原句</th>
-      <th>中文意识</th>
-    </tr>
-    <tr>
-      <td>内容、对象</td>
-      <td><span class="mark what">what</span></td>
-      <td><b><span class="nw">Whatʼs</span></b> the message?</td>
-      <td>信息<b>是什么</b></td>
-    </tr>
-    <tr>
-      <td>方式、手段、过程</td>
-      <td><span class="mark how">how</span></td>
-      <td>understanding <b>how</b> media works</td>
-      <td>媒体<b>如何</b>运作</td>
-    </tr>
-    <tr>
-      <td>方式 + 视觉呈现</td>
-      <td><span class="mark how">how</span></td>
-      <td><b>How</b> is it being communicated visually?</td>
-      <td>视觉上<b>怎样</b>传递</td>
-    </tr>
-    <tr>
-      <td>方法（疑问词 + to do）</td>
-      <td><span class="mark how">how</span></td>
-      <td>demonstrating ... <b>how to</b> think critically</td>
-      <td>示范<b>如何</b>批判思考</td>
-    </tr>
-    <tr>
-      <td>程度 / 方式（特殊疑问）</td>
-      <td><span class="mark how">how</span></td>
-      <td><b>How</b> can teachers best <span class="blue">stimulate</span> <span class="nw">studentsʼ</span> curiosity?</td>
-      <td>教师<b>怎样</b>才能最好地激发</td>
-    </tr>
-  </table>
-  <div class="eg">
-    <div class="mini"><b>易混套装，必须背：</b></div>
-    <div class="en">I <span class="nw">donʼt</span> know <span class="mark what">what</span> to do.　（不知道该<b>做哪件事</b>）</div>
-    <div class="en">I <span class="nw">donʼt</span> know <span class="mark how">how</span> to do it.　（不知道该<b>怎么做这件事</b>）</div>
-    <div class="en">What is he like?　（他是<b>什么样的人</b>）　How does he look?　（他<b>看起来怎样</b>）</div>
-    <div class="en">What do you think of the article? / How do you like it?　（评价，两者都可，但 what 问看法内容，how 问感受程度）</div>
-  </div>
-  <p class="mini"><b>一秒自测：</b>① Media literacy means understanding ____ a message is created to influence us. → <span class="ans">how</span>　② Students should compare ____ facts are emphasized. → 这里原文是 <span class="ans">what facts</span>（什么事实被强调），不是 how facts。</p>
 </section>
 
 <section class="page">
-  <h2>二、阅读理解：蓝色高亮词 + 课堂批注</h2>
-  <p>蓝色是今天精读时圈出的词，考试里既是词汇分也是定位词。旁边红笔是词性和近义拓展，要连着记。</p>
+  <h2>二、阅读理解十四词</h2>
+  <p>今天精读圈出的 14 个词，考试里既是词汇分也是定位词。练习1 杭州一模 8 个，练习2 强基联盟 6 个。</p>
 
-  <h3>练习1　2026届杭州一模 · 阅读A篇　<span class="badge">媒体素养</span></h3>
-  <table>
-    <tr><th>高亮 / 批注</th><th>词性与意思</th><th>在本篇中怎么用</th><th>日后怎么记</th></tr>
+  <h3>练习1　2026届杭州一模 · 阅读A篇　<span class="badge">8词</span></h3>
+  <table class="word14">
+    <tr><th>单词</th><th>词性与意思</th><th>本篇用法</th></tr>
     <tr>
-      <td><span class="blue">essential</span> → essence</td>
-      <td>adj. 必不可少的；n. 本质</td>
-      <td>Media literacy <span class="nw">isnʼt</span> a nice-to-have — <span class="nw">itʼs</span> <b>essential</b>.</td>
-      <td>形：essential　名：essence　副：essentially</td>
+      <td><span class="blue">essential</span></td>
+      <td>adj. 必不可少的（名：essence 本质）</td>
+      <td>Media literacy is <b>essential</b>.</td>
     </tr>
     <tr>
       <td><span class="blue">misleading</span></td>
       <td>adj. 误导人的</td>
       <td>some messages are helpful, others <b>misleading</b></td>
-      <td>mislead (v.) / misleading (令人误导) / misled</td>
     </tr>
     <tr>
       <td><span class="blue">evaluate</span></td>
       <td>v. 评估</td>
       <td>analyze, question, and <b>evaluate</b></td>
-      <td>evaluation (n.)；近义：assess / judge</td>
     </tr>
     <tr>
       <td><span class="blue">perspectives</span></td>
       <td>n. 视角；立场</td>
       <td>two texts from different <b>perspectives</b></td>
-      <td>from <span class="nw">oneʼs</span> perspective = 从某人角度看</td>
     </tr>
     <tr>
-      <td><span class="blue">emphasized</span> / ignored</td>
-      <td>v. 强调 / 忽视</td>
+      <td><span class="blue">emphasized</span></td>
+      <td>v. 强调（近义 ignore ≈ neglect / overlook）</td>
       <td>What facts are <b>emphasized</b> or ignored?</td>
-      <td>红笔近义：<b>neglect / overlook</b> ≈ ignore</td>
     </tr>
     <tr>
-      <td><span class="blue">bias</span>（偏见）</td>
+      <td><span class="blue">bias</span></td>
       <td>n. 偏见</td>
       <td>teach <b>bias</b> and point of view</td>
-      <td>be biased against / towards</td>
     </tr>
     <tr>
-      <td><span class="blue">demonstrating</span>（演示）</td>
+      <td><span class="blue">demonstrating</span></td>
       <td>v. 示范；证明</td>
-      <td><span class="nw">youʼre</span> <b>demonstrating</b> how to think critically</td>
-      <td>与第23题 <i>Show, <span class="nw">donʼt</span> just tell</i> 直接对应</td>
+      <td>you are <b>demonstrating</b> how to think critically</td>
     </tr>
     <tr>
       <td><span class="blue">stimulate</span></td>
       <td>v. 激发</td>
       <td>How can teachers best <b>stimulate</b> curiosity?</td>
-      <td>近义：inspire / spark / arouse</td>
     </tr>
   </table>
-  <p class="mini">主旨题：<b>What is the primary purpose of teaching media literacy to students?</b> 课上选 <span class="ans">C</span>。抓首段：give them the tools to <b>think critically and make informed choices</b>。</p>
-  <p class="mini">第23题：<b>How can teachers best stimulate <span class="nw">studentsʼ</span> curiosity?</b> 定位 “model curiosity / demonstrating” → 答案倾向 <span class="ans">B. Show, <span class="nw">donʼt</span> just tell</span>。</p>
 
-  <h3>练习2　2026届浙江强基联盟 · 阅读A篇　<span class="badge">德州洪水</span></h3>
-  <table>
-    <tr><th>高亮 / 批注</th><th>词性与意思</th><th>在本篇中怎么用</th><th>日后怎么记</th></tr>
+  <h3>练习2　2026届浙江强基联盟 · 阅读A篇　<span class="badge">6词</span></h3>
+  <table class="word14">
+    <tr><th>单词</th><th>词性与意思</th><th>本篇用法</th></tr>
     <tr>
-      <td><span class="blue">Officials say</span></td>
-      <td>官方称（that 从句）</td>
-      <td>转述确定结论：this is the worst flooding</td>
-      <td>新闻体：officials say / warn / confirm + (that)</td>
+      <td><span class="blue">Officials</span></td>
+      <td>n. 官员（官方人士）</td>
+      <td><b>Officials</b> say this is the worst flooding...</td>
     </tr>
     <tr>
       <td><span class="blue">Casualties</span></td>
       <td>n. 伤亡人员</td>
-      <td>小标题 1. Casualties &amp; Emergency Response</td>
-      <td>casualty 单数；新闻高频，不等于 accident</td>
-    </tr>
-    <tr>
-      <td>have rescued 237 people</td>
-      <td>现在完成：已救出</td>
-      <td>红笔划出结果：救援已发生并对现在有影响</td>
-      <td>和 remain missing 对照：有的已救，有的仍失踪</td>
+      <td>1. <b>Casualties</b> &amp; Emergency Response</td>
     </tr>
     <tr>
       <td><span class="blue">isolated</span></td>
       <td>adj. 被隔绝的</td>
-      <td>isolated communities 进不去的社区</td>
-      <td>isolate (v.) / isolation (n.)</td>
+      <td>struggled to reach <b>isolated</b> communities</td>
     </tr>
     <tr>
-      <td><span class="blue">issued</span> an emergency declaration</td>
+      <td><span class="blue">issued</span></td>
       <td>v. 颁布；发布</td>
       <td>Governor ... <b>issued</b> an emergency disaster declaration</td>
-      <td>issue a statement / warning / visa</td>
     </tr>
     <tr>
-      <td><span class="blue">accelerating</span> = boost</td>
-      <td>v. 加快</td>
-      <td>accelerating state funding 加快拨款</td>
-      <td>红笔：<b>boost</b>；名：acceleration</td>
+      <td><span class="blue">accelerating</span></td>
+      <td>v. 加快（= boost）</td>
+      <td><b>accelerating</b> state funding for recovery</td>
     </tr>
     <tr>
-      <td>delayed <b>locating</b></td>
-      <td>delay doing 耽误做某事</td>
-      <td>outages delayed locating missing campers</td>
-      <td>delay / miss / finish / avoid + doing</td>
+      <td><span class="blue">locating</span></td>
+      <td>v. 定位；找到（delay doing）</td>
+      <td>outages delayed <b>locating</b> missing campers</td>
     </tr>
   </table>
-  <p class="mini keep">第21题：<b>Which county was most severely affected?</b> 课上选 <span class="ans">A. Hunt</span>。表中 Hunt 经济损失 $28 million、受损建筑 85 栋，均为最高。比较题先看表，再看文字。</p>
 </section>
 
-<section class="page">
-  <h2>三、单词写错 / 搭配写错的地方</h2>
-  <p>只订正课上打叉、圈出、词性不对或中文对不上的条目。正确形式请按右边一列改到词汇本上。</p>
-
-  <h3>Unit 1 Teenage Life</h3>
+<section class="page dictation">
+  <h2>三、默写词汇：错点 / 注意</h2>
+  <p>今天默写里要单独记住的三处。词性、介词绑在一起背，不要只背中文。</p>
   <table>
-    <tr><th>题号</th><th>中文</th><th>你的写法</th><th>正确写法</th><th>错因 / 记住</th></tr>
-    <tr class="vocab-row">
-      <td>7</td><td>温室效应</td><td><span class="wrong">greenhouse effection</span></td>
+    <tr><th style="width:28%">正确形式</th><th>注意</th></tr>
+    <tr>
       <td><span class="right">greenhouse effect</span></td>
-      <td>effect 效果；affection 感情。没有 effection 这个词。</td>
+      <td>
+        <b>effect</b> 是<b>名词</b>（效果、效应）；<b>affect</b> 是<b>动词</b>（影响）；<b>affection</b> 是<b>喜爱</b>。<br>
+        没有 effection 这个词。温室效应 = greenhouse <b>effect</b>。<br>
+        例：The greenhouse <span class="right">effect</span> <span class="right">affects</span> the climate. / He has a deep <span class="right">affection</span> for his hometown.
+      </td>
     </tr>
-    <tr class="vocab-row">
-      <td>15</td><td>说得流利；精通</td><td><span class="wrong">influence</span></td>
-      <td><span class="right">be fluent in / have a good command of</span></td>
-      <td>influence = 影响。流利是 fluent；精通是 command / master。</td>
+    <tr>
+      <td><span class="right">an expert in sth</span></td>
+      <td>
+        某方面的专家固定用 <b>expert in</b>。<br>
+        不要写成 expert at（课上已圈出）。例：She is an <span class="right">expert in</span> biology.
+      </td>
     </tr>
-    <tr class="vocab-row">
-      <td>21</td><td>承担……的责任</td><td><span class="wrong">take responsibility with sth</span></td>
-      <td><span class="right">take responsibility for sth</span></td>
-      <td>责任搭配 for，不是 with。be responsible for 同一介词。</td>
-    </tr>
-    <tr class="vocab-row">
-      <td>23</td><td>日程安排</td><td>schedule / arrangement</td>
-      <td><span class="right">schedule</span>（时间表）；<span class="right">arrangement</span>（安排、筹备）</td>
-      <td>on schedule 按时按计划；make arrangements for 为……做安排。</td>
-    </tr>
-    <tr class="vocab-row">
-      <td>26</td><td>某方面的专家</td><td>an expert <span class="wrong">at</span>（课上圈出）</td>
-      <td><span class="right">an expert in / at / on</span></td>
-      <td>领域多用 <b>in</b>：an expert in biology；技能可用 at：an expert at chess。</td>
-    </tr>
-    <tr class="vocab-row">
-      <td>29</td><td>被……吸引</td><td><span class="wrong">be attracted in</span></td>
-      <td><span class="right">be attracted to / by</span></td>
-      <td>to 表对象，by 表施动者。没有 attracted in。</td>
+    <tr>
+      <td><span class="right">be attracted to do</span></td>
+      <td>
+        被……吸引 / 被吸引去做：<b>be attracted to do</b>。<br>
+        不要写成 be attracted <span class="wrong">in</span>。例：Students are <span class="right">attracted to do</span> volunteer work.
+      </td>
     </tr>
   </table>
-  <p class="mini">同页正确示范，别和错的混：prefer A <b>to</b> B；confuse A <b>with</b> B；be suitable <b>for</b>；sign up <b>for</b>；quit doing；be responsible <b>for</b>；the solution <b>to</b> the problem；concentrate <b>on</b>；be addicted <b>to</b>；<b>behaviour</b>（英式）。</p>
-  <p class="mini"><b>-ing / -ed 一套（11–14 已写对，要迁移到第17题）：</b>confusing 令人迷惑的（物） / confused 感到迷惑的（人） / confuse 使迷惑（动）。</p>
-
-  <h3>Welcome Unit</h3>
-  <table>
-    <tr><th>题号</th><th>中文</th><th>你的写法</th><th>正确写法</th><th>错因 / 记住</th></tr>
-    <tr>
-      <td>3</td><td>登记；注册；挂号</td><td><span class="wrong">regist</span></td>
-      <td><span class="right">register</span>（v.）</td>
-      <td>没有 regist。动：register；名：registration。</td>
-    </tr>
-    <tr>
-      <td>4</td><td>登记；注册；登记簿</td><td>register</td>
-      <td><span class="right">register</span>（名，登记簿）/ <span class="right">registration</span>（注册）</td>
-      <td>第3题是动词，第4题偏名词。词性要分开记。</td>
-    </tr>
-    <tr>
-      <td>17</td><td>惊吓的；害怕的</td><td><span class="wrong">frighten</span>（v.）</td>
-      <td><span class="right">frightening</span>（令人害怕，物）<br><span class="right">frightened</span>（感到害怕，人）</td>
-      <td>和 confuse 同一套。中文是形容词，不能只写动词原形。</td>
-    </tr>
-    <tr>
-      <td>25</td><td>给……留下深刻印象</td><td>leave an <span class="wrong">impressed</span></td>
-      <td><span class="right">leave a deep impression on sb</span> / <span class="right">impress sb</span></td>
-      <td>impression 是名词；impressed 是“被打动的”。</td>
-    </tr>
-    <tr>
-      <td>26</td><td>留下好印象</td><td>（空）</td>
-      <td><span class="right">make a good impression (on sb)</span></td>
-      <td>和上一题捆绑记。</td>
-    </tr>
-    <tr>
-      <td>40</td><td>盼望；期待</td><td>look forward</td>
-      <td><span class="right">look forward to (doing) sth</span></td>
-      <td>to 是介词，后接名词或动名词：look forward to seeing you。</td>
-    </tr>
-    <tr>
-      <td>42 / 43</td><td>闪光；教学卡片</td><td>flash　/　（空）</td>
-      <td>flash（闪光、发出信号）<br><span class="right">flashcard</span>（识字卡）</td>
-      <td>43 被划去可能暂不要求，但别把 flashcard 写成 flash。</td>
-    </tr>
-  </table>
-  <p class="mini">词性三件套以后看到中文带“的”，先问：修饰人还是修饰物？<b>人用 -ed，物用 -ing。</b> 再写：anxious / annoyed / frightened / confused / interested。</p>
 </section>
 
 <section class="page originals">
@@ -557,21 +412,21 @@
   <div class="img-stack">
     <figure>
       <img src="images/01-reading-hangzhou.jpg" alt="杭州一模阅读A篇批注">
-      <figcaption>图1　杭州一模阅读A：蓝词 + essence / neglect / 演示</figcaption>
+      <figcaption>图1　杭州一模阅读A：蓝词精读</figcaption>
     </figure>
     <figure>
       <img src="images/02-reading-zhejiang.jpg" alt="浙江强基联盟阅读A篇批注">
-      <figcaption>图2　强基联盟阅读A：Officials say / casualties / accelerate=boost</figcaption>
+      <figcaption>图2　强基联盟阅读A：Officials / Casualties / accelerating / locating</figcaption>
     </figure>
   </div>
   <div class="img-grid">
     <figure>
       <img src="images/03-vocab-unit1-p1.jpg" alt="Unit1词汇表第1页">
-      <figcaption>图3　Unit 1 第1页：greenhouse effect 打叉</figcaption>
+      <figcaption>图3　Unit 1 第1页：greenhouse effect</figcaption>
     </figure>
     <figure>
       <img src="images/04-vocab-unit1-p2.jpg" alt="Unit1词汇表第2页">
-      <figcaption>图4　Unit 1 第2页：responsibility for / expert in / attracted to</figcaption>
+      <figcaption>图4　Unit 1 第2页：expert in / be attracted to</figcaption>
     </figure>
   </div>
 </section>
@@ -580,67 +435,82 @@
   <div class="img-grid">
     <figure>
       <img src="images/05-vocab-welcome-p15.jpg" alt="Welcome Unit第15页">
-      <figcaption>图5　Welcome Unit p.15：register 拼写；frighten 词性</figcaption>
+      <figcaption>图5　Welcome Unit p.15</figcaption>
     </figure>
     <figure>
       <img src="images/06-vocab-welcome-p16.jpg" alt="Welcome Unit第16页">
-      <figcaption>图6　Welcome Unit p.16：impression / look forward to</figcaption>
+      <figcaption>图6　Welcome Unit p.16</figcaption>
     </figure>
   </div>
   <figure>
     <img src="images/07-vocab-welcome-p17.jpg" alt="Welcome Unit第17页" style="max-height: 118mm; width: auto; max-width: 100%; margin: 0 auto;">
-    <figcaption>图7　Welcome Unit p.17：flash / organization / strategy 等</figcaption>
+    <figcaption>图7　Welcome Unit p.17</figcaption>
   </figure>
 </section>
 
-<section class="page">
-  <h2>五、日后一定要注意的点</h2>
-  <div class="rule"><b>总原则：</b>名词性从句先判成分，再判语气；单词先判词性，再判介词。今天错的全部属于这两类，不是“没背过”，是“背的时候没带结构”。</div>
+<section class="page skills">
+  <h2>五、阅读技巧：细节理解题</h2>
+  <p>细节题不靠“感觉”，靠定位 + 同义替换 + 排除干扰。按下面三个技巧做，每题大约 20 秒。</p>
 
-  <h3>语法：每次做题按这三步</h3>
-  <ol>
-    <li><b>从句完整吗？</b>完整 → that / whether（再看是事实还是是否）；缺主宾表 → what / who / which。</li>
-    <li><b>问的是内容还是方式？</b>内容 what；方式 how。what to do ≠ how to do。</li>
-    <li><b>能不能换成 if？</b>句首、介词后、to do 前、whether or not → 只能 whether。</li>
+  <h3>技巧1：关键词定位法</h3>
+  <div class="rule">定位词优先级：<b>专有名词（大写）＞ 数字 ＞ 特殊符号（引号 / 破折号）＞ 名词短语</b></div>
+  <div class="warn">不要选全文反复出现的高频词做定位词。</div>
+  <p><b>操作三步走</b></p>
+  <ol class="steps">
+    <li><b>圈词（3秒）：</b>读题干，圈 1–2 个最独特的定位词。</li>
+    <li><b>扫读（10秒）：</b>回原文快速找定位词及其同义词。</li>
+    <li><b>比对（5秒）：</b>在定位句前后 1–2 句范围内比对选项。</li>
   </ol>
+  <p class="mini muted">今天第21题 Which county was most severely affected？定位词是专有名词 + 比较级，不是 flood。表中 Hunt $28 million / 85 buildings 最高 → A.</p>
 
-  <h3>词汇：五种高频错法，对号入座</h3>
+  <h3>技巧2：同义替换识别</h3>
+  <div class="rule">正确答案一定不是原文原句，一定经过改写。</div>
   <table>
-    <tr><th>错法</th><th>今天的例子</th><th>以后怎么防</th></tr>
-    <tr><td>词形瞎造 / 形近混淆</td><td>effection、regist、influence 当“流利”</td><td>记单词时写“形近干扰词”，effect ≠ affect ≠ affection</td></tr>
-    <tr><td>介词固定搭配</td><td>responsibility <b>with</b>、attracted <b>in</b>、expert 介词、look forward 掉 to</td><td>动词和介词绑成一块背：be adj. + prep. 整条抄</td></tr>
-    <tr><td>词性不看中文尾巴</td><td>惊吓<b>的</b>却写 frighten；印象写成 impressed</td><td>看到“的”先选 -ing/-ed；看到“使……”才写动词</td></tr>
-    <tr><td>英式拼写要求</td><td>behaviour 已写对，同类还有 colour / favourite</td><td>题目写“英式拼写”就不要写 -or</td></tr>
-    <tr><td>新闻阅读词只认识中文</td><td>casualty、isolated、issue、accelerate、bias</td><td>蓝词要能英英转述，不只是中文对译</td></tr>
+    <tr><th style="width:22%">类型</th><th>说明</th><th>示例</th></tr>
+    <tr>
+      <td>同义词替换</td>
+      <td>原文词换成同义词</td>
+      <td>essential → crucial</td>
+    </tr>
+    <tr>
+      <td>句式转换</td>
+      <td>主动 ↔ 被动、条件 ↔ 结果</td>
+      <td>Nava developed AI → AI was developed by Nava</td>
+    </tr>
+    <tr>
+      <td>归纳概括</td>
+      <td>具体描述 → 抽象概括</td>
+      <td>rescued 237 people → efficiency in processing data</td>
+    </tr>
   </table>
+  <div class="warn">看到和原文一模一样的词，反而要警惕——那是干扰项的特征。</div>
 
-  <h3>阅读：蓝色词就是命题点</h3>
-  <ul class="check">
-    <li>表格式材料先比<b>最大数字</b>（Hunt 最严重），再回原文。</li>
-    <li>小标题 Casualties / Challenges / Government Response 是定位地图。</li>
-    <li>完成时 have rescued 表“已救出”，和 remain missing 对比，别混成正在救。</li>
-    <li>主旨题优先看首段定义句：media literacy → think critically and make informed choices。</li>
-    <li>细节态度题盯动词：demonstrating / model curiosity = show, <span class="nw">donʼt</span> tell。</li>
-  </ul>
-
-  <h3>本周口头过一遍（合上资料能说出来才算会）</h3>
-  <div class="eg mini">
-    <div class="q">1. I know ____ he is honest. / I know ____ he wants. （that / what）</div>
-    <div class="q">2. Officials say ____ this is the worst flooding. / <span class="nw">Iʼm</span> not sure ____ the campers are safe. （that / whether）</div>
-    <div class="q">3. I <span class="nw">donʼt</span> know ____ to do / ____ to do it. （what / how）</div>
-    <div class="q">4. greenhouse ____；be attracted ____；take responsibility ____；look forward ____ seeing you.</div>
-    <div class="q">5. a frightening film / a frightened girl；leave a deep ____ on sb</div>
-    <div class="ans">答案：1 that / what　2 that / whether　3 what / how　4 effect；to/by；for；to　5 impression</div>
-  </div>
-
-  <h3>下次课前请完成</h3>
-  <ul>
-    <li>把本页“正确写法”抄到词汇表空白或错题旁，介词用另一种颜色。</li>
-    <li>用 that / what / whether / how 各造一句，必须和今天阅读主题有关（媒体或洪水）。</li>
-    <li>Welcome Unit 被划掉的空（gender、flashcard、partner、take notes 等）先不用赶，但 register / frighten / impression 必须当天清掉。</li>
-  </ul>
-
-  <div class="foot">今日课堂反馈 · 2026-09-19 · 名词性从句 that / what / whether / how · 阅读蓝词 · 词汇订正<br>配合仓库内语法导图页：三大从句 → 名词性从句</div>
+  <h3>技巧3：干扰项排除法</h3>
+  <table>
+    <tr><th style="width:22%">干扰类型</th><th>特征</th><th>怎么识别</th></tr>
+    <tr>
+      <td>偷换概念</td>
+      <td>主语 / 宾语被替换</td>
+      <td>逐项比对主谓宾</td>
+    </tr>
+    <tr>
+      <td>无中生有</td>
+      <td>原文完全没提</td>
+      <td>回原文找依据</td>
+    </tr>
+    <tr>
+      <td>扩大范围</td>
+      <td>some → all，may → will</td>
+      <td>注意绝对化词汇：always, never, all, only</td>
+    </tr>
+    <tr>
+      <td>张冠李戴</td>
+      <td>A 做的事安到 B 头上</td>
+      <td>标注每个选项对应的主体是谁</td>
+    </tr>
+  </table>
+  <p><b>排除顺序：</b>先排无中生有 → 再排偷换概念 → 最后比对剩下的。</p>
+  <div class="foot">今日课堂反馈 · 2026-09-19</div>
 </section>
 
 </div>
