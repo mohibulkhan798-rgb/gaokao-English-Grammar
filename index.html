@@ -82,6 +82,12 @@ body {
   font-weight: 500;
   letter-spacing: 0.06em;
 }
+.header-tips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.header .tip-link {
+  text-decoration: none;
+  color: #6F8A73;
+  background: #E6EEE7;
+}
 .desk {
   max-width: 1120px;
   width: 100%;
@@ -466,7 +472,10 @@ body.modal-open { overflow: hidden; }
 <div class="header">
   <h1>高考英语语法 · 考前扫盲导图</h1>
   <p>知识点按桌面图标横排整理，点开即可复习</p>
-  <div class="tip">点击知识点查看详情 · 共 11 大语法体系</div>
+  <div class="header-tips">
+    <div class="tip">点击知识点查看详情 · 共 11 大语法体系</div>
+    <a class="tip tip-link" href="goodnotes/高三英语课堂进度手账.pdf">高三课堂进度手账（GoodNotes）</a>
+  </div>
 </div>
 
 <div class="desk">
