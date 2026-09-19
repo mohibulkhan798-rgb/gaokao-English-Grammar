@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第1课 细节理解题 · 浙江高三英语讲义</title>
+<title>阅读技巧第1课 细节理解题</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -75,7 +75,7 @@ a { color: inherit; }
   scrollbar-width: none;
 }
 .nav-row::-webkit-scrollbar { display: none; }
-.nav-btn, .ghost-link {
+.nav-btn {
   flex-shrink: 0;
   padding: 7px 14px;
   border-radius: 999px;
@@ -85,10 +85,9 @@ a { color: inherit; }
   background: var(--card);
   color: var(--ink-soft);
   cursor: pointer;
-  text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
-.nav-btn:active, .ghost-link:active { transform: scale(0.97); }
+.nav-btn:active { transform: scale(0.97); }
 .desk { max-width: 880px; margin: 0 auto; padding: 8px 16px 0; }
 .section { margin: 22px 0 8px; }
 .section-kicker {
@@ -145,14 +144,6 @@ a { color: inherit; }
   font-family: var(--font-serif);
   font-size: 18px;
   font-weight: 600;
-}
-.skill-head small {
-  display: block;
-  color: var(--ink-soft);
-  font-size: 12.5px;
-  margin-top: 2px;
-  font-family: var(--font-sans);
-  font-weight: 500;
 }
 .chev {
   margin-left: auto;
@@ -263,10 +254,9 @@ th { background: var(--accent-soft); font-weight: 650; }
   padding: 10px 12px;
 }
 .reveal.show { display: block; }
-.toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 8px; }
 .answer-lock .skill-body { background: #FBF8F4; }
 @media (hover: hover) and (pointer: fine) {
-  .nav-btn:hover, .ghost-link:hover, .skill-head:hover { background: var(--accent-soft); }
+  .nav-btn:hover, .skill-head:hover { background: var(--accent-soft); }
   .opt:hover { background: #FBF6F2; }
 }
 @media (max-width: 520px) {
@@ -282,11 +272,9 @@ th { background: var(--accent-soft); font-weight: 650; }
 <body>
 <div class="header">
   <div class="wrap">
-    <h1>第1课 · 细节理解题</h1>
+    <h1>阅读技巧 · 第1课 细节理解题</h1>
     <p>浙江高三英语阅读理解与七选五技巧讲义 · 学生版</p>
-    <div class="tip">技巧先收着 · 点卡片才展开 · 答案做完再看</div>
     <div class="nav-row">
-      <a class="ghost-link" href="index.html">语法导图</a>
       <button class="nav-btn" type="button" onclick="jump('methods')">方法速记</button>
       <button class="nav-btn" type="button" onclick="jump('practice')">例题练习</button>
       <button class="nav-btn" type="button" onclick="jump('homework')">课后作业</button>
@@ -299,17 +287,12 @@ th { background: var(--accent-soft); font-weight: 650; }
   <section class="section" id="methods">
     <div class="section-kicker">METHOD</div>
     <h2 class="section-title">一、方法速记</h2>
-    <div class="toolbar">
-      <button class="btn sec" type="button" onclick="toggleAllSkills(true)">展开全部技巧</button>
-      <button class="btn sec" type="button" onclick="toggleAllSkills(false)">收起全部技巧</button>
-    </div>
 
     <article class="card skill" id="skill-1">
       <button class="skill-head" type="button" onclick="toggleSkill('skill-1')" aria-expanded="false">
         <span class="skill-no">1</span>
         <span>
           <h3>技巧1：关键词定位法</h3>
-          <small>点击展开 · 圈词 / 扫读 / 比对</small>
         </span>
         <span class="chev">▾</span>
       </button>
@@ -331,7 +314,6 @@ th { background: var(--accent-soft); font-weight: 650; }
         <span class="skill-no">2</span>
         <span>
           <h3>技巧2：同义替换识别</h3>
-          <small>点击展开 · 三种改写 / 干扰特征</small>
         </span>
         <span class="chev">▾</span>
       </button>
@@ -355,7 +337,6 @@ th { background: var(--accent-soft); font-weight: 650; }
         <span class="skill-no">3</span>
         <span>
           <h3>技巧3：干扰项排除法</h3>
-          <small>点击展开 · 四类干扰 / 排除顺序</small>
         </span>
         <span class="chev">▾</span>
       </button>
@@ -781,7 +762,6 @@ th { background: var(--accent-soft); font-weight: 650; }
         <span class="skill-no">答</span>
         <span>
           <h3>第1课 细节理解题 · 答案表</h3>
-          <small>点击展开 · 先做完再看</small>
         </span>
         <span class="chev">▾</span>
       </button>
@@ -842,14 +822,6 @@ function toggleSkill(id) {
   if (btn) btn.setAttribute("aria-expanded", el.classList.contains("open") ? "true" : "false");
 }
 
-function toggleAllSkills(open) {
-  document.querySelectorAll("#methods .skill").forEach((el) => {
-    el.classList.toggle("open", open);
-    const btn = el.querySelector(".skill-head");
-    if (btn) btn.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-}
-
 function jump(id) {
   document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -876,13 +848,7 @@ function revealAnswer(qid) {
   });
   const panel = document.getElementById("rev-" + qid);
   panel.classList.add("show");
-  if (!picked) {
-    panel.textContent = "本题答案：" + key + "（你还没选题）";
-  } else if (picked === key) {
-    panel.textContent = "正确。答案是 " + key + "。";
-  } else {
-    panel.textContent = "你选了 " + picked + "，正确答案是 " + key + "。回原文用定位词再对一次。";
-  }
+  panel.textContent = "答案：" + key;
 }
 </script>
 </body>
